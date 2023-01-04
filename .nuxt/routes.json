@@ -1,0 +1,32 @@
+[
+  {
+    "name": "[slug]",
+    "path": "/[slug]",
+    "component": "/Users/martingeorgiev/Desktop/projects/iCalc/pages/[slug].js",
+    "chunkName": "pages/[slug]"
+  },
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "/Users/martingeorgiev/Desktop/projects/iCalc/pages/about.js",
+    "chunkName": "pages/about"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/martingeorgiev/Desktop/projects/iCalc/pages/index.js",
+    "chunkName": "pages/index"
+  },
+  {
+    "name": "app",
+    "path": "/:app",
+    "component": "/Users/martingeorgiev/Desktop/projects/iCalc/pages/_app.js",
+    "chunkName": "pages/_app"
+  },
+  {
+    "name": "document",
+    "path": "/:document",
+    "component": "/Users/martingeorgiev/Desktop/projects/iCalc/pages/_document.js",
+    "chunkName": "pages/_document"
+  }
+]
