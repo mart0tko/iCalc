@@ -1,14 +1,23 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 import Navigation from "../components/navigation";
+import Button from "@mui/material/Button";
 
 export default function About() {
   const { t } = useTranslation("");
+  const { locale } = useRouter();
+
+  // TODO Make builder as per the provided route
+  if (locale !== "en") {
+    return <h1>Test</h1>;
+  }
 
   return (
     <>
       <Navigation />
       <div className="mt-5">
+        <h1>{locale}</h1>
         <h1>{t("about.About title")}</h1>
         <p>{t("about.About description")}</p>
       </div>
@@ -25,9 +34,8 @@ export async function getStaticProps({ locale }) {
 }
 
 export const getStaticPaths = async () => {
-
   return {
-      paths: [], //indicates that no page needs be created at build time
-      fallback: 'blocking' //indicates the type of fallback
-  }
-}
+    paths: [], //indicates that no page needs be created at build time
+    fallback: "blocking", //indicates the type of fallback
+  };
+};
