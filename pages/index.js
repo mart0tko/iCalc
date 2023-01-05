@@ -8,22 +8,33 @@ export default function Home() {
 
   return (
     <>
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
-      <CalculaterHomeLink />
+      <Box
+        sx={{
+          display: "flex",
+          flexFlow: "row wrap",
+          "& > :not(style)": {
+            m: 1,
+            width: "100%",
+          },
+        }}
+      >
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+        <CalculaterHomeLink />
+      </Box>
     </>
   );
 }
