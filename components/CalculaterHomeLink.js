@@ -1,7 +1,7 @@
 import { useTranslation } from "next-i18next";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Paper from "@mui/material/Paper";
-import { AccessAlarm, ThreeDRotation } from "@mui/icons-material";
+import { ThreeDRotation } from "@mui/icons-material";
 import Link from "next/link";
 
 const sizePaper = 128;
@@ -38,10 +38,10 @@ export default function CalculaterHomeLink() {
   );
 }
 
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
-}
+// export async function getStaticProps({ locale }) {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale, ["common"])),
+//     },
+//   };
+// }
