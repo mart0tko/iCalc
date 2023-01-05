@@ -8,9 +8,7 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Fab from "@mui/material/Fab";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Fade from "@mui/material/Fade";
-import CalculateIcon from "@mui/icons-material/Calculate";
 import Link from "next/link";
 
 function ScrollTop(props) {
@@ -63,7 +61,7 @@ export default function BackToTop(props) {
     <React.Fragment>
       <AppBar position="static" sx={{ pl: 0 }}>
         <Toolbar>
-          <CalculateIcon sx={{ mr: 1, width: 50, height: 50 }} />
+          {/* <CalculateIcon sx={{ mr: 1, width: 50, height: 50 }} /> */}
           <Link href="/">
             <Typography
               variant="h4"
@@ -86,7 +84,7 @@ export default function BackToTop(props) {
       </Container>
       <ScrollTop {...props}>
         <Fab size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
+          {/* <KeyboardArrowUpIcon /> */}
         </Fab>
       </ScrollTop>
     </React.Fragment>

@@ -1,7 +1,6 @@
 import { useTranslation } from "next-i18next";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Paper from "@mui/material/Paper";
-import { ThreeDRotation } from "@mui/icons-material";
 import Link from "next/link";
 
 const sizePaper = 128;
@@ -29,9 +28,9 @@ export default function CalculaterHomeLink() {
           textAlign: "center",
         }}
       >
-        <ThreeDRotation
+        {/* <ThreeDRotation
           sx={{ width: sizeIcon, height: sizeIcon, marginBottom: "1rem" }}
-        />
+        /> */}
         {t("home.Home title")}
       </Paper>
     </Link>
