@@ -11,6 +11,7 @@ import Fab from "@mui/material/Fab";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Fade from "@mui/material/Fade";
 import CalculateIcon from "@mui/icons-material/Calculate";
+import Link from "next/link";
 
 function ScrollTop(props) {
   const { children, window } = props;
@@ -63,20 +64,20 @@ export default function BackToTop(props) {
       <AppBar position="static" sx={{ pl: 0 }}>
         <Toolbar>
           <CalculateIcon sx={{ mr: 1, width: 50, height: 50 }} />
-          <Typography
-            variant="h4"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              fontFamily: "monospace",
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            CALCALATOR
-          </Typography>
+          <Link href="/">
+            <Typography
+              variant="h4"
+              noWrap
+              sx={{
+                fontFamily: "monospace",
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              CALCALATOR
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <Toolbar id="back-to-top-anchor" />
