@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 import Fab from "@mui/material/Fab";
 import Fade from "@mui/material/Fade";
 import Link from "next/link";
+import { Icon } from "@mui/material";
 
 function ScrollTop(props) {
   const { children, window } = props;
@@ -35,16 +36,15 @@ function ScrollTop(props) {
   };
 
   return (
-    // <Fade in={trigger}>
-    //   <Box
-    //     onClick={handleClick}
-    //     role="presentation"
-    //     sx={{ position: "fixed", bottom: 16, right: 16 }}
-    //   >
-    //     {children}
-    //   </Box>
-    // </Fade>
-    <></>
+    <Fade in={trigger}>
+      <Box
+        onClick={handleClick}
+        role="presentation"
+        sx={{ position: "fixed", bottom: 16, right: 16 }}
+      >
+        {children}
+      </Box>
+    </Fade>
   );
 }
 
@@ -62,7 +62,9 @@ export default function BackToTop(props) {
     <React.Fragment>
       <AppBar position="static" sx={{ pl: 0 }}>
         <Toolbar>
-          {/* <CalculateIcon sx={{ mr: 1, width: 50, height: 50 }} /> */}
+          <Icon sx={{ mr: 1 }} style={{ fontSize: "50px" }}>
+            calculate
+          </Icon>
           <Link href="/">
             <Typography
               variant="h4"
@@ -85,7 +87,10 @@ export default function BackToTop(props) {
       </Container>
       <ScrollTop {...props}>
         <Fab size="small" aria-label="scroll back to top">
-          {/* <KeyboardArrowUpIcon /> */}
+          {/* TODO fix it when there is enough content */}
+          {/* <Icon sx={{ mr: 1 }} style={{ fontSize: "50px" }}>
+            arrow
+          </Icon> */}
         </Fab>
       </ScrollTop>
     </React.Fragment>

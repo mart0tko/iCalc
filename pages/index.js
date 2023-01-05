@@ -2,6 +2,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Box from "@mui/material/Box";
 import CalculaterHomeLink from "../components/CalculaterHomeLink";
+import Icon from "@mui/material/Icon";
 
 export default function Home() {
   const { t } = useTranslation();
