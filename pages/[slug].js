@@ -2,7 +2,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import Navigation from "../components/navigation";
-import Button from "@mui/material/Button";
+import BackToTop from "../components/nav";
 
 export default function About() {
   const { t } = useTranslation("");
@@ -10,7 +10,13 @@ export default function About() {
 
   // TODO Make builder as per the provided route
   if (locale !== "en") {
-    return <h1>Test</h1>;
+    return (
+      <div className="mt-5">
+        <h1>{locale}</h1>
+        <h1>{t("about.About title")}</h1>
+        <p>{t("about.About description")}</p>
+      </div>
+    );
   }
 
   return (

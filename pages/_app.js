@@ -1,9 +1,15 @@
 import "../styles/globals.css";
 import { appWithTranslation } from "next-i18next";
-import "bootstrap/dist/css/bootstrap.min.css";
+import BackToTop from "../components/nav";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <BackToTop>
+        <Component {...pageProps} />
+      </BackToTop>
+    </>
+  );
 }
 
 export default appWithTranslation(MyApp);

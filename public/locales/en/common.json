@@ -1,10 +1,11 @@
 {
   "home": {
     "Home title": "Home title",
-    "Home description": "Home description"
+    "Home description": "Home description",
+    "BackToTopBtn": "Scroll to see button"
   },
   "about": {
-    "About title": "About title",
+    "About title": "About titlee",
     "About description": "About description"
   },
   "header": {

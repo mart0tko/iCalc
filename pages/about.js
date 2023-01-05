@@ -7,7 +7,6 @@ export default function About() {
 
   return (
     <>
-      <Navigation />
       <div className="mt-5">
         <h1>{t("about.About title")}</h1>
         <p>{t("about.About description")}</p>
