@@ -6,7 +6,7 @@ export default function About() {
   const { t } = useTranslation("");
   const { locale } = useRouter();
 
-  // TODO Make builder as per the provided route
+  // TODO Make builder as per the provided routee
   if (locale !== "en") {
     return (
       <div className="mt-5">
