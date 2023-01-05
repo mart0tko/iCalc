@@ -9,6 +9,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n,
+  generateEtags: false,
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
