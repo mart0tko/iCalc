@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Box from "@mui/material/Box";
+// import Box from "@mui/material/Box";
 import CalculaterHomeLink from "../components/CalculaterHomeLink";
 
 export default function Home() {
@@ -8,33 +8,22 @@ export default function Home() {
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          flexFlow: "row wrap",
-          "& > :not(style)": {
-            m: 1,
-            width: "100%",
-          },
-        }}
-      >
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-      </Box>
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
+      <CalculaterHomeLink />
     </>
   );
 }

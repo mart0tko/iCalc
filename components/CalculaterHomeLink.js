@@ -1,7 +1,7 @@
 import { useTranslation } from "next-i18next";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Paper from "@mui/material/Paper";
-import { ThreeDRotation } from "@mui/icons-material";
+// import Paper from "@mui/material/Paper";
+// import { ThreeDRotation } from "@mui/icons-material";
 import Link from "next/link";
 
 const sizePaper = 128;
@@ -12,7 +12,7 @@ export default function CalculaterHomeLink() {
 
   return (
     <Link href="/test" style={{ maxWidth: sizePaper, height: sizePaper }}>
-      <Paper
+      {/* <Paper
         variant="outlined"
         href="/test"
         hrefLang="en"
@@ -33,7 +33,7 @@ export default function CalculaterHomeLink() {
           sx={{ width: sizeIcon, height: sizeIcon, marginBottom: "1rem" }}
         />
         {t("home.Home title")}
-      </Paper>
+      </Paper> */}
     </Link>
   );
 }
