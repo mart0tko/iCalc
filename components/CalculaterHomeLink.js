@@ -2,7 +2,6 @@ import { useTranslation } from "next-i18next";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Paper from "@mui/material/Paper";
 import { AccessAlarm, ThreeDRotation } from "@mui/icons-material";
-import Icon from "@material-ui/core/Icon";
 import Link from "next/link";
 
 const sizePaper = 128;
