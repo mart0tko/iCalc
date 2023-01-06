@@ -2,15 +2,16 @@ import { useTranslation } from "next-i18next";
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Paper from "@mui/material/Paper";
 import Link from "next/link";
+import { Icon } from "@mui/material";
 
 const sizePaper = 128;
 const sizeIcon = sizePaper / 2.5;
 
-export default function CalculaterHomeLink() {
+export default function CalculaterHomeLink({ route, icon, title }) {
   const { t } = useTranslation();
 
   return (
-    <Link href="/test" style={{ maxWidth: sizePaper, height: sizePaper }}>
+    <Link href={route} style={{ maxWidth: sizePaper, height: sizePaper }}>
       <Paper
         variant="outlined"
         href="/test"
@@ -26,21 +27,14 @@ export default function CalculaterHomeLink() {
           maxWidth: sizePaper,
           height: sizePaper,
           textAlign: "center",
+          lineHeight: 1.2,
         }}
       >
-        {/* <ThreeDRotation
-          sx={{ width: sizeIcon, height: sizeIcon, marginBottom: "1rem" }}
-        /> */}
-        {t("home.Home title")}
+        <Icon sx={{ mb: 1 }} style={{ fontSize: "25px" }}>
+          percent
+        </Icon>
+        {t(title)}
       </Paper>
     </Link>
   );
 }
-
-// export async function getStaticProps({ locale }) {
-//   return {
-//     props: {
-//       ...(await serverSideTranslations(locale, ["common"])),
-//     },
-//   };
-// }

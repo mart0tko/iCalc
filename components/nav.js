@@ -85,14 +85,14 @@ export default function BackToTop(props) {
       <Container>
         <Box sx={{ my: 2 }}>{props.children}</Box>
       </Container>
-      <ScrollTop {...props}>
+      {/* <ScrollTop {...props}>
         <Fab size="small" aria-label="scroll back to top">
-          {/* TODO fix it when there is enough content */}
-          {/* <Icon sx={{ mr: 1 }} style={{ fontSize: "50px" }}>
+          TODO fix it when there is enough content
+          <Icon sx={{ mr: 1 }} style={{ fontSize: "50px" }}>
             arrow
-          </Icon> */}
+          </Icon>
         </Fab>
-      </ScrollTop>
+      </ScrollTop> */}
     </React.Fragment>
   );
 }

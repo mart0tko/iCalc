@@ -1,10 +1,12 @@
+import { Box } from "@mui/material";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
+import PercentageDifferance from "../components/Calculaters/PercentageDifferance";
 
 export default function About() {
   const { t } = useTranslation("");
-  const { locale } = useRouter();
+  const { locale, route } = useRouter();
 
   // TODO Make builder as per the provided routee
   if (locale !== "en") {
@@ -17,15 +19,7 @@ export default function About() {
     );
   }
 
-  return (
-    <>
-      <div className="mt-5">
-        <h1>{locale}</h1>
-        <h1>{t("about.About title")}</h1>
-        <p>{t("about.About description")}</p>
-      </div>
-    </>
-  );
+  return <PercentageDifferance />;
 }
 
 export async function getStaticProps({ locale }) {

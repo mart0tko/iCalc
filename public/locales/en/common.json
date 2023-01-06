@@ -11,5 +11,22 @@
   "header": {
     "Home": "Home",
     "About": "About"
+  },
+  "percentDiffCalc": {
+    "title": "Percentage Difference Calculator",
+    "description": "Find the percent difference between two positive numbers greater than 0. It is usually calculated when you want to know the difference in percentage between two numbers.",
+    "valueOne": "First Value",
+    "valueTwo": "Second Value",
+    "note": "NOTE: Percent Difference is not the same like "
+  },
+  "percentChange": {
+    "title": "Percent Change"
+  },
+  "common": {
+    "calculate": "Calculate",
+    "reset": "Reset",
+    "result": "Result:",
+    "pageNotFound": "Page Not Found",
+    "goBackHome": "Go back home"
   }
 }

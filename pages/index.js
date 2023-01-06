@@ -19,22 +19,10 @@ export default function Home() {
           },
         }}
       >
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
-        <CalculaterHomeLink />
+        <CalculaterHomeLink
+          title="percentDiffCalc.title"
+          route="percentage-difference-calculator"
+        />
       </Box>
     </>
   );
