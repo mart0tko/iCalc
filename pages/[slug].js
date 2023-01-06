@@ -3,23 +3,20 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import PercentageDifferance from "../components/Calculaters/PercentageDifferance";
+import NotFoundPage from "./404";
 
 export default function About() {
   const { t } = useTranslation("");
-  const { locale, route } = useRouter();
+  const { asPath } = useRouter();
+  const clearAsPath = asPath.replaceAll("/", "");
 
-  // TODO Make builder as per the provided routee
-  if (locale !== "en") {
-    return (
-      <div className="mt-5">
-        <h1>{locale}</h1>
-        <h1>{t("about.About title")}</h1>
-        <p>{t("about.About description")}</p>
-      </div>
-    );
+  // TODO Make to match as per different languages
+  switch (clearAsPath) {
+    case "percentage-difference-calculator":
+      return <PercentageDifferance />;
+    default:
+      return <NotFoundPage />;
   }
-
-  return <PercentageDifferance />;
 }
 
 export async function getStaticProps({ locale }) {

@@ -3,9 +3,10 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/material/styles";
 
-export default function PageNotFound() {
+export default function NotFoundPage() {
   const theme = useTheme();
   const { t } = useTranslation();
+
   return (
     <>
       <h1>404 - {t("common.pageNotFound")}</h1>
