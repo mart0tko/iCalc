@@ -5,6 +5,7 @@ import Script from "next/script";
 import * as gtag from "../lib/gtag";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Footer from "../components/footer";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -43,6 +44,7 @@ function MyApp({ Component, pageProps }) {
       <BackToTop>
         <Component {...pageProps} />
       </BackToTop>
+      <Footer />
     </>
   );
 }
