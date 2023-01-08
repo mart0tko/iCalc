@@ -6,12 +6,15 @@ import * as gtag from "../lib/gtag";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Footer from "../components/footer";
+import getConfig from "next/config";
 
 function MyApp({ Component, pageProps }) {
+  const { publicRuntimeConfig } = getConfig();
   const router = useRouter();
+
   useEffect(() => {
     const handleRouteChange = (url) => {
-      gtag.pageview(url);
+      !publicRuntimeConfig.isDev && gtag.pageview(url);
     };
     router.events.on("routeChangeComplete", handleRouteChange);
     router.events.on("hashChangeComplete", handleRouteChange);

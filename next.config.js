@@ -11,6 +11,13 @@ const nextConfig = {
   swcMinify: true,
   i18n,
   generateEtags: false,
+  serverRuntimeConfig: {
+    // Will only be available on the server side
+  },
+  publicRuntimeConfig: {
+    // Will be available on both server and client
+    isDev: process.env.DEV, // Pass through env variables
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

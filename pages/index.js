@@ -22,6 +22,10 @@ export default function Home() {
           title="percentDiffCalc.title"
           route="percentage-difference-calculator"
         />
+        <CalculaterHomeLink
+          title="percentChange.title"
+          route="percentage-change-calculator"
+        />
       </Box>
     </>
   );

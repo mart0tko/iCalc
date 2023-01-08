@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
+import PercentageChange from "../components/Calculaters/PercentageChange";
 import PercentageDifferance from "../components/Calculaters/PercentageDifferance";
 import NotFoundPage from "./404";
 
@@ -14,6 +15,8 @@ export default function About() {
   switch (clearAsPath) {
     case "percentage-difference-calculator":
       return <PercentageDifferance />;
+    case "percentage-change-calculator":
+      return <PercentageChange />;
     default:
       return <NotFoundPage />;
   }

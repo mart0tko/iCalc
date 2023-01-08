@@ -20,13 +20,19 @@
     "note": "NOTE: Percent Difference is not the same like "
   },
   "percentChange": {
-    "title": "Percent Change"
+    "title": "Percent Change",
+    "description": "The Percentage Change Calculator will calculate the change from one number to another and express it as an increase or decrease. Example: From 100$ to 200$ is a 100% increase (change), but from 200$ to 100% is 50% decrease.",
+    "valueOne": "First Value",
+    "valueTwo": "Second Value",
+    "related": "You may also check "
   },
   "common": {
     "calculate": "Calculate",
     "reset": "Reset",
     "result": "Result:",
     "pageNotFound": "Page Not Found",
-    "goBackHome": "Go back home"
+    "goBackHome": "Go back home",
+    "increase": "Increase",
+    "decrease": "Decrease"
   }
 }
