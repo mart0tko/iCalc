@@ -3,18 +3,23 @@ import { useTranslation } from "next-i18next";
 import Paper from "@mui/material/Paper";
 import Link from "next/link";
 import { Icon } from "@mui/material";
+import { useRouter } from "next/router";
+import { InternationalLinks } from "./consts";
 
 const sizePaper = 128;
-const sizeIcon = sizePaper / 2.5;
 
 export default function CalculaterHomeLink({ route, icon, title }) {
   const { t } = useTranslation();
+  const { locale } = useRouter();
 
   return (
-    <Link href={route} style={{ maxWidth: sizePaper, height: sizePaper }}>
+    <Link
+      href={InternationalLinks[route][locale]}
+      style={{ maxWidth: sizePaper, height: sizePaper }}
+      locale={locale}
+    >
       <Paper
         variant="outlined"
-        href="/test"
         hrefLang="en"
         sx={{
           cursor: "pointer",

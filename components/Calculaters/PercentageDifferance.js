@@ -4,6 +4,7 @@ import { useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import { useTheme } from "@mui/material/styles";
+import CopyToClipboardButton from "../CopyToClipboardButton";
 
 export default function PercentageDifferance() {
   const theme = useTheme();
@@ -47,14 +48,14 @@ export default function PercentageDifferance() {
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <TextField
             type="number"
-            label={t("percentDiffCalc.valueOne")}
+            label={t("common.valueOne")}
             variant="standard"
             value={valueOne}
             onChange={(e) => handleChange(e, setValueOne)}
           />
           <TextField
             type="number"
-            label={t("percentDiffCalc.valueTwo")}
+            label={t("common.valueTwo")}
             variant="standard"
             value={valueTwo}
             onChange={(e) => handleChange(e, setValueTwo)}
@@ -62,9 +63,11 @@ export default function PercentageDifferance() {
         </Container>
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
-          <Typography sx={{ color: "success.dark" }}>
-            {result} {result ? "%" : null}
-          </Typography>
+          <CopyToClipboardButton result={result}>
+            <Typography sx={{ color: "success.dark", fontSize: "1.5rem" }}>
+              {result} {result ? "%" : null}
+            </Typography>
+          </CopyToClipboardButton>
           <br />
           <Typography sx={{ fontSize: "0.75rem" }}>
             {t("percentDiffCalc.note")}
@@ -73,6 +76,13 @@ export default function PercentageDifferance() {
               style={{ color: theme.palette.primary.main }}
             >
               {t("percentChange.title")}
+            </Link>
+            {", "}
+            <Link
+              href="/percent-change-calculator"
+              style={{ color: theme.palette.primary.main }}
+            >
+              {t("percentage.title")}
             </Link>
           </Typography>
         </Container>

@@ -15,15 +15,19 @@
   "percentDiffCalc": {
     "title": "Percentage Difference Calculator",
     "description": "Find the percent difference between two positive numbers greater than 0. It is usually calculated when you want to know the difference in percentage between two numbers.",
-    "valueOne": "First Value",
-    "valueTwo": "Second Value",
     "note": "NOTE: Percent Difference is not the same like "
   },
   "percentChange": {
-    "title": "Percent Change",
+    "title": "Percent Change Calculator",
     "description": "The Percentage Change Calculator will calculate the change from one number to another and express it as an increase or decrease. Example: From 100$ to 200$ is a 100% increase (change), but from 200$ to 100% is 50% decrease.",
-    "valueOne": "First Value",
-    "valueTwo": "Second Value",
+    "related": "You may also check "
+  },
+  "percentage": {
+    "title": "Percentage Calculator",
+    "description": "The Percentage Calculator will find what percent of X is Y.",
+    "example": "Example: 1% of 12 is 0.12",
+    "valueOne": "What is",
+    "valueTwo": "% Of",
     "related": "You may also check "
   },
   "common": {
@@ -33,6 +37,10 @@
     "pageNotFound": "Page Not Found",
     "goBackHome": "Go back home",
     "increase": "Increase",
-    "decrease": "Decrease"
+    "decrease": "Decrease",
+    "valueOne": "First Value",
+    "valueTwo": "Second Value",
+    "copiedToClibboard": "Copied to clibboard",
+    "copyToClibboard": "Copy to clibboard"
   }
 }

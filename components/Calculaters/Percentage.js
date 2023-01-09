@@ -6,31 +6,27 @@ import { useTranslation } from "next-i18next";
 import { useTheme } from "@mui/material/styles";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 
-export default function PercentageChange() {
+export default function Percentage() {
   const theme = useTheme();
   const { t } = useTranslation("");
   const [valueOne, setValueOne] = useState("");
   const [valueTwo, setValueTwo] = useState("");
   const [result, setResult] = useState("");
-  const [isNegative, setIsNegative] = useState(false);
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
 
   const handleSubmit = () => {
     setResult("");
-    const val1 = +valueTwo - +valueOne;
-    const val2 = +valueOne;
-    const res = (val1 / val2) * 100;
+    const val1 = +valueTwo * +valueOne;
+    const res = val1 / 100;
     setResult(res.toFixed(2));
-    setIsNegative(res < 0);
   };
 
   const handleClear = () => {
     valueOne && setValueOne("");
     valueTwo && setValueTwo("");
     result && setResult("");
-    setIsNegative(null);
   };
 
   return (
@@ -40,24 +36,27 @@ export default function PercentageChange() {
         gutterBottom
         sx={{ fontSize: "2rem", lineHeight: "3rem" }}
       >
-        {t("percentChange.title")}
+        {t("percentage.title")}
       </Typography>
       <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("percentChange.description")}
+        {t("percentage.description")}
+      </Typography>
+      <Typography variant="p" gutterBottom sx={{ fontSize: "1rem" }}>
+        {t("percentage.example")}
       </Typography>
       <br />
       <Container sx={{ display: "flex", alignItems: "center" }}>
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <TextField
             type="number"
-            label={t("common.valueOne")}
+            label={t("percentage.valueOne")}
             variant="standard"
             value={valueOne}
             onChange={(e) => handleChange(e, setValueOne)}
           />
           <TextField
             type="number"
-            label={t("common.valueTwo")}
+            label={t("percentage.valueTwo")}
             variant="standard"
             value={valueTwo}
             onChange={(e) => handleChange(e, setValueTwo)}
@@ -66,18 +65,18 @@ export default function PercentageChange() {
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
           <CopyToClipboardButton result={result}>
-            <Typography sx={{ color: "success.dark", fontSize: "1.5rem" }}>
-              {result} {result ? "%" : null}{" "}
-              {result
-                ? !!isNegative
-                  ? t("common.decrease")
-                  : t("common.increase")
-                : null}
+            <Typography
+              sx={{
+                color: "success.dark",
+                fontSize: "1.5rem",
+              }}
+            >
+              {result}
             </Typography>
-            <br />
           </CopyToClipboardButton>
+          <br />
           <Typography sx={{ fontSize: "0.75rem" }}>
-            {t("percentChange.related")}
+            {t("percentage.related")}
             <Link
               href="/percent-difference-calculator"
               style={{ color: theme.palette.primary.main }}
@@ -89,7 +88,7 @@ export default function PercentageChange() {
               href="/percent-difference-calculator"
               style={{ color: theme.palette.primary.main }}
             >
-              {t("percentage.title")}
+              {t("percentChange.title")}
             </Link>
           </Typography>
         </Container>

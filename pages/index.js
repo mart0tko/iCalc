@@ -18,6 +18,7 @@ export default function Home() {
           },
         }}
       >
+        <CalculaterHomeLink title="percentage.title" route="percentage" />
         <CalculaterHomeLink
           title="percentDiffCalc.title"
           route="percentage-difference-calculator"
