@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "DEV=true next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
     "checkBundle": "ANALYZE=true npm run build"
