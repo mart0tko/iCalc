@@ -13,6 +13,11 @@ class MyDocument extends Document {
         lang={this.props.locale}
       >
         <Head>
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7683444095694539"
+            crossorigin="anonymous"
+          ></script>
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
