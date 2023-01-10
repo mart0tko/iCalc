@@ -36,7 +36,7 @@ export default function CalculaterHomeLink({ route, icon, title }) {
         }}
       >
         <Icon sx={{ mb: 1 }} style={{ fontSize: "25px" }}>
-          percent
+          {icon}
         </Icon>
         {t(title)}
       </Paper>

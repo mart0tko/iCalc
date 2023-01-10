@@ -78,14 +78,14 @@ export default function Percentage() {
           <Typography sx={{ fontSize: "0.75rem" }}>
             {t("percentage.related")}
             <Link
-              href="/percent-difference-calculator"
+              href="/percentage-difference-calculator"
               style={{ color: theme.palette.primary.main }}
             >
               {t("percentDiffCalc.title")}
             </Link>
             {", "}
             <Link
-              href="/percent-difference-calculator"
+              href="/percentage-change-calculator"
               style={{ color: theme.palette.primary.main }}
             >
               {t("percentChange.title")}

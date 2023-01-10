@@ -30,6 +30,14 @@
     "valueTwo": "% Of",
     "related": "You may also check "
   },
+  "ageCalc": {
+    "title": "Age Calculator",
+    "description": "Age calculator helps you to calculate the exact age and how old are you in years, months, weeks, days, hours, minutes, and seconds. Even you can calculate the interval between two dates with this age our age calculator.",
+    "years": "Years",
+    "valueOne": "Date of Birth:",
+    "valueTwo": "Age at Date:",
+    "wrongValue": "Age at Date should be greater than Date of Birth."
+  },
   "common": {
     "calculate": "Calculate",
     "reset": "Reset",

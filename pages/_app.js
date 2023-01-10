@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      console.log(url);
       !publicRuntimeConfig.isDev && gtag.pageview(url);
     };
     router.events.on("routeChangeComplete", handleRouteChange);

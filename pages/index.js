@@ -18,14 +18,25 @@ export default function Home() {
           },
         }}
       >
-        <CalculaterHomeLink title="percentage.title" route="percentage" />
+        <CalculaterHomeLink
+          title="percentage.title"
+          route="percentage-calculator"
+          icon="percent"
+        />
         <CalculaterHomeLink
           title="percentDiffCalc.title"
           route="percentage-difference-calculator"
+          icon="percent"
         />
         <CalculaterHomeLink
           title="percentChange.title"
           route="percentage-change-calculator"
+          icon="percent"
+        />
+        <CalculaterHomeLink
+          title="ageCalc.title"
+          route="age-calculator"
+          icon="date_range"
         />
       </Box>
     </>

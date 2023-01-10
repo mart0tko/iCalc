@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
+import Age from "../components/Calculaters/Age";
 import Percentage from "../components/Calculaters/Percentage";
 import PercentageChange from "../components/Calculaters/PercentageChange";
 import PercentageDifferance from "../components/Calculaters/PercentageDifferance";
@@ -18,8 +19,10 @@ export default function About() {
       return <PercentageDifferance />;
     case "percentage-change-calculator":
       return <PercentageChange />;
-    case "percentage":
+    case "percentage-calculator":
       return <Percentage />;
+    case "age-calculator":
+      return <Age />;
     default:
       return <NotFoundPage />;
   }
