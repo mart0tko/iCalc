@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      !publicRuntimeConfig.isDev && gtag.pageview(url);
+      !publicRuntimeConfig?.isDev && gtag.pageview(url);
     };
     router.events.on("routeChangeComplete", handleRouteChange);
     router.events.on("hashChangeComplete", handleRouteChange);
@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange);
       router.events.off("hashChangeComplete", handleRouteChange);
     };
-  }, [router.events, publicRuntimeConfig.isDev]);
+  }, [router.events, publicRuntimeConfig]);
 
   return (
     <>

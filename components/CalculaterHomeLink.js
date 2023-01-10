@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import Link from "next/link";
 import { Icon } from "@mui/material";
 import { useRouter } from "next/router";
-import { InternationalLinks } from "./consts";
+import InternationalLinks from "./consts";
 
 const sizePaper = 128;
 

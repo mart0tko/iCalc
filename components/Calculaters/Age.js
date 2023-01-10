@@ -18,7 +18,9 @@ export default function Age() {
   const [valueOne, setValueOne] = useState("");
   const [valueTwo, setValueTwo] = useState("");
   const [result, setResult] = useState("");
+  const [showResult, setShowResult] = useState(false);
 
+  // TODO add Today option
   useEffect(() => {
     setValueTwo(moment().format("YYYY-MM-DD"));
   }, []);
@@ -32,8 +34,10 @@ export default function Age() {
     let endDateMoment = moment(valueTwo);
     if (startDateMoment.valueOf() > endDateMoment.valueOf()) {
       setResult(t("ageCalc.wrongValue"));
+      setShowResult(false);
       return;
     }
+    setShowResult(true);
     setResult(endDateMoment.diff(startDateMoment, "years").toString());
   };
 
@@ -41,6 +45,7 @@ export default function Age() {
     valueOne && setValueOne("");
     valueTwo && setValueTwo("");
     result && setResult("");
+    setShowResult(false);
   };
 
   return (
@@ -90,7 +95,7 @@ export default function Age() {
                 fontSize: "1.5rem",
               }}
             >
-              {result} {result && t("ageCalc.years")}
+              {result} {showResult && t("ageCalc.years")}
             </Typography>
           </CopyToClipboardButton>
         </Container>
