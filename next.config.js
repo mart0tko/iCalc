@@ -18,7 +18,6 @@ const nextConfig = {
     // Will be available on both server and client
     isDev: process.env.DEV, // Pass through env variables
   },
-  output: "standalone",
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
