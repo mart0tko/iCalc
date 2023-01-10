@@ -24,6 +24,7 @@ export default function Home() {
           icon="percent"
         />
         <CalculaterHomeLink
+          color={true}
           title="percentDiffCalc.title"
           route="percentage-difference-calculator"
           icon="percent"
@@ -34,9 +35,15 @@ export default function Home() {
           icon="percent"
         />
         <CalculaterHomeLink
+          color={true}
           title="ageCalc.title"
           route="age-calculator"
           icon="date_range"
+        />
+        <CalculaterHomeLink
+          title="simpleLoanCalc.title"
+          route="simple-loan-calculator"
+          icon="currency_exchange"
         />
       </Box>
     </>

@@ -12,16 +12,13 @@ import { useTheme } from "@mui/material/styles";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import moment from "moment";
 
-export default function Age() {
+export default function SimpleLoanCalculator() {
   const theme = useTheme();
   const { t } = useTranslation("");
   const [valueOne, setValueOne] = useState("");
   const [valueTwo, setValueTwo] = useState("");
   const [result, setResult] = useState("");
 
-  useEffect(() => {
-    setValueTwo(moment().format("YYYY-MM-DD"));
-  }, []);
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };

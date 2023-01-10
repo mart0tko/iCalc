@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange);
       router.events.off("hashChangeComplete", handleRouteChange);
     };
-  }, [router.events]);
+  }, [router.events, publicRuntimeConfig.isDev]);
 
   return (
     <>

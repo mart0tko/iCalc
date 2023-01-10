@@ -8,7 +8,7 @@ import { InternationalLinks } from "./consts";
 
 const sizePaper = 128;
 
-export default function CalculaterHomeLink({ route, icon, title }) {
+export default function CalculaterHomeLink({ route, icon, title, color }) {
   const { t } = useTranslation();
   const { locale } = useRouter();
 
@@ -23,7 +23,7 @@ export default function CalculaterHomeLink({ route, icon, title }) {
         hrefLang="en"
         sx={{
           cursor: "pointer",
-          backgroundColor: "primary.light",
+          backgroundColor: color ? "primary.light" : "primary.dark",
           color: "#fff",
           display: "flex",
           flexDirection: "column",

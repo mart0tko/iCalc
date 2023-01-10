@@ -1,12 +1,13 @@
 import { Box } from "@mui/material";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Error from "next/error";
 import { useRouter } from "next/router";
 import Age from "../components/Calculaters/Age";
 import Percentage from "../components/Calculaters/Percentage";
 import PercentageChange from "../components/Calculaters/PercentageChange";
 import PercentageDifferance from "../components/Calculaters/PercentageDifferance";
-import NotFoundPage from "./404";
+import SimpleLoanCalculator from "../components/Calculaters/SimpleLoanCalculator";
 
 export default function About() {
   const { t } = useTranslation("");
@@ -23,8 +24,10 @@ export default function About() {
       return <Percentage />;
     case "age-calculator":
       return <Age />;
+    case "simple-loan-calculator":
+      return <SimpleLoanCalculator />;
     default:
-      return <NotFoundPage />;
+      return <Error statusCode={404} />;
   }
 }
 

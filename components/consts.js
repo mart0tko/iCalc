@@ -1,4 +1,4 @@
-export const InternationalLinks = {
+const InternationalLinks = {
   "percentage-calculator": {
     en: "/percentage-calculator",
   },
@@ -11,4 +11,9 @@ export const InternationalLinks = {
   "age-calculator": {
     en: "/age-calculator",
   },
+  "simple-loan-calculator": {
+    en: "/simple-loan-calculator",
+  },
 };
+
+export default InternationalLinks;
