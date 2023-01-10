@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "DEV=true next dev",
-    "build": "next build && rm -rf ./.next/cache",
+    "build": "next build && rm -rf ./.next/cache && m -rf ./node_modules/@next/swc-*",
     "start": "next start",
     "lint": "next lint",
     "checkBundle": "ANALYZE=true npm run build"
