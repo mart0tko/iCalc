@@ -11,6 +11,7 @@ import Fab from "@mui/material/Fab";
 import Fade from "@mui/material/Fade";
 import Link from "next/link";
 import { Icon } from "@mui/material";
+import { grey } from '@mui/material/colors';
 
 function ScrollTop(props) {
   const { children, window } = props;
@@ -81,9 +82,18 @@ export default function BackToTop(props) {
           </Link>
         </Toolbar>
       </AppBar>
-      <Toolbar id="back-to-top-anchor" />
-      <Container>
-        <Box sx={{ my: 2 }}>{props.children}</Box>
+      <Toolbar id="back-to-top-anchor" sx={{
+        backgroundColor: 'primary.light',
+        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'white',
+        padding: '3rem'
+      }}>
+        <Typography variant="h4">Free Online Calculators</Typography>
+      </Toolbar>
+      <Container sx={{ backgroundColor: grey[100], minHeight: 'calc(100vh - 220px)'}}>
+        <Box>{props.children}</Box>
       </Container>
       {/* <ScrollTop {...props}>
         <Fab size="small" aria-label="scroll back to top">
