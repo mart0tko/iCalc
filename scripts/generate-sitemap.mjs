@@ -18,6 +18,9 @@ const InternationalLinks = {
   "simple-loan-calculator": {
     en: "/simple-loan-calculator",
   },
+  "conversion-rate-calculator": {
+    en: "/conversion-rate-calculator",
+  },
 };
 
 async function generate() {

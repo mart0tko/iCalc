@@ -38,16 +38,19 @@
     "valueTwo": "Age at Date:",
     "wrongValue": "Age at Date should be greater than Date of Birth."
   },
+  "conversionRateCalc": {
+    "title": "Conversion Rate Calculator",
+    "description": "Age calculator helps you to calculate the exact age and how old are you in years, months, weeks, days, hours, minutes, and seconds. Even you can calculate the interval between two dates with this age our age calculator.",
+    "years": "Years",
+    "valueOne": "Date of Birth:",
+    "valueTwo": "Age at Date:",
+    "wrongValue": "Age at Date should be greater than Date of Birth."
+  },
   "simpleLoanCalc": {
     "title": "Simple Loan Calculator",
-    "description": "Your monthly payment for a loan will depend on the amount, term, and interest rate of the loan. Use the inputs below to get a sense of what your monthly payment could end up being.",
-    "loanAmount": "Loan Amount:",
-    "loanTerm": "Loan Term:",
-    "months": "Months",
-    "interestRate": "Interest Rate:",
-    "resultMontly": "Total Montly Paid: ",
-    "resultTotal": "Total Paid: ",
-    "resultTotalInterest": "Total Interest Paid: "
+    "description": "Enter your number of conversions and visits, and then click Calculate!",
+    "valueOne": "Conversions",
+    "valueTwo": "Visits"
   },
 
   "common": {

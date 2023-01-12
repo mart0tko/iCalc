@@ -45,6 +45,12 @@ export default function Home() {
           route="simple-loan-calculator"
           icon="currency_exchange"
         />
+        <CalculaterHomeLink
+          color={true}
+          title="conversionRateCalc.title"
+          route="conversion-rate-calculator"
+          icon="ads_click"
+        />
       </Box>
     </>
   );

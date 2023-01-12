@@ -4,6 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Error from "next/error";
 import { useRouter } from "next/router";
 import Age from "../components/Calculaters/Age";
+import ConversionRateCalculator from "../components/Calculaters/ConversionRateCalculator";
 import Percentage from "../components/Calculaters/Percentage";
 import PercentageChange from "../components/Calculaters/PercentageChange";
 import PercentageDifferance from "../components/Calculaters/PercentageDifferance";
@@ -26,6 +27,8 @@ export default function About() {
       return <Age />;
     case "simple-loan-calculator":
       return <SimpleLoanCalculator />;
+    case "conversion-rate-calculator":
+      return <ConversionRateCalculator />;
     default:
       return <Error statusCode={404} />;
   }
