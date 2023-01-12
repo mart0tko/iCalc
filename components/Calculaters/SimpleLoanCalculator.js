@@ -1,43 +1,58 @@
-import {
-  Button,
-  Container,
-  InputLabel,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { useEffect, useState } from "react";
+import { Button, Container, Slider, Typography } from "@mui/material";
+import { useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
-import { useTheme } from "@mui/material/styles";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import moment from "moment";
+import currency from "currency.js";
+
+const loanAmountefaultValue = 100000;
+const loanTermDefaultValue = 60;
+const interestDefaultValue = 5;
 
 export default function SimpleLoanCalculator() {
-  const theme = useTheme();
   const { t } = useTranslation("");
-  const [valueOne, setValueOne] = useState("");
-  const [valueTwo, setValueTwo] = useState("");
-  const [result, setResult] = useState("");
+  const [valueOne, setValueOne] = useState(loanAmountefaultValue);
+  const [valueTwo, setValueTwo] = useState(loanTermDefaultValue);
+  const [valueThree, setValueThree] = useState(interestDefaultValue);
+  const [resultMontly, setResultMontly] = useState("");
+  const [resultTotal, setResultTotal] = useState("");
+  const [resultTotalInterest, setResultTotalInterest] = useState("");
 
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
 
   const handleSubmit = () => {
-    setResult("");
-    let startDateMoment = moment(valueOne);
-    let endDateMoment = moment(valueTwo);
-    if (startDateMoment.valueOf() > endDateMoment.valueOf()) {
-      setResult(t("ageCalc.wrongValue"));
-      return;
-    }
-    setResult(endDateMoment.diff(startDateMoment, "years").toString());
+    setResultMontly("");
+    setResultTotal("");
+    setResultTotalInterest("");
+    const i = currency(+valueThree, { precision: 10 })
+      .divide(100)
+      .divide(12).value;
+    let down = currency(i, { precision: 10 }).add(1).value;
+    down = currency(Math.pow(down, +valueTwo), { precision: 10 }).subtract(
+      1
+    ).value;
+    let up = currency(i, { precision: 10 }).add(1).value;
+    up = currency(Math.pow(up, valueTwo), { precision: 10 }).value;
+    const upFinal = currency(+valueOne).multiply(i).multiply(up).value;
+    const resMontly = currency(upFinal, { precision: 2 }).divide(down).value;
+    const resTotal = currency(resMontly, { precision: 2 }).multiply(
+      +valueTwo
+    ).value;
+    const resTotalInterest = currency(resTotal, { precision: 2 }).subtract(
+      +valueOne
+    ).value;
+    setResultMontly(resMontly);
+    setResultTotal(resTotal);
+    setResultTotalInterest(resTotalInterest);
   };
 
   const handleClear = () => {
-    valueOne && setValueOne("");
-    valueTwo && setValueTwo("");
-    result && setResult("");
+    resultMontly && setResultMontly("");
+    resultTotal && setResultTotal("");
+    resultTotalInterest && setResultTotalInterest("");
   };
 
   return (
@@ -47,47 +62,79 @@ export default function SimpleLoanCalculator() {
         gutterBottom
         sx={{ fontSize: "2rem", lineHeight: "3rem" }}
       >
-        {t("ageCalc.title")}
+        {t("simpleLoanCalc.title")}
       </Typography>
       <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("ageCalc.description")}
+        {t("simpleLoanCalc.description")}
       </Typography>
       <br />
       <Container sx={{ display: "flex", alignItems: "center" }}>
         <Container sx={{ display: "flex", flexDirection: "column" }}>
-          <InputLabel htmlFor="age-calculator-input-one">
-            {t("ageCalc.valueOne")}
-          </InputLabel>
-          <TextField
-            type="date"
-            id="age-calculator-input-one"
-            variant="outlined"
+          {/* Inputs */}
+          <Typography gutterBottom>
+            {t("simpleLoanCalc.loanAmount")} {valueOne} $
+          </Typography>
+          <Slider
             value={valueOne}
+            min={10000}
+            step={10000}
+            max={1000000}
             onChange={(e) => handleChange(e, setValueOne)}
           />
-          <br />
-          <InputLabel htmlFor="age-calculator-input-two">
-            {t("ageCalc.valueTwo")}
-          </InputLabel>
-          <TextField
-            type="date"
-            id="age-calculator-input-two"
-            variant="outlined"
-            sx={{ borderWidth: "1px", backgroundColor: "primary" }}
+          <Typography gutterBottom>
+            {t("simpleLoanCalc.loanTerm")} {valueTwo}{" "}
+            {t("simpleLoanCalc.months")}
+          </Typography>
+          <Slider
             value={valueTwo}
+            min={1}
+            step={1}
+            max={360}
             onChange={(e) => handleChange(e, setValueTwo)}
+          />
+          <Typography gutterBottom>
+            {t("simpleLoanCalc.interestRate")} {valueThree} %
+          </Typography>
+          <Slider
+            value={valueThree}
+            min={1}
+            step={1}
+            max={100}
+            onChange={(e) => handleChange(e, setValueThree)}
           />
         </Container>
         <Container sx={{ display: "flex", flexDirection: "column" }}>
-          <Typography>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={result}>
+          <CopyToClipboardButton result={resultMontly}>
             <Typography
               sx={{
                 color: "success.dark",
                 fontSize: "1.5rem",
               }}
             >
-              {result} {result && t("ageCalc.years")}
+              {t("simpleLoanCalc.resultMontly")} {resultMontly && "$"}{" "}
+              {resultMontly}
+            </Typography>
+          </CopyToClipboardButton>
+          <CopyToClipboardButton result={resultTotal}>
+            <Typography
+              sx={{
+                color: "success.dark",
+                fontSize: "1.5rem",
+              }}
+            >
+              {t("simpleLoanCalc.resultTotal")} {resultTotal && "$"}{" "}
+              {resultTotal}
+            </Typography>
+          </CopyToClipboardButton>
+          <CopyToClipboardButton result={resultTotalInterest}>
+            <Typography
+              sx={{
+                color: "success.dark",
+                fontSize: "1.5rem",
+              }}
+            >
+              {t("simpleLoanCalc.resultTotalInterest")}{" "}
+              {resultTotalInterest && "$"} {resultTotalInterest}
             </Typography>
           </CopyToClipboardButton>
         </Container>

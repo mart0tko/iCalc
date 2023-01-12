@@ -92,7 +92,7 @@ export default function BackToTop(props) {
       }}>
         <Typography variant="h4">Free Online Calculators</Typography>
       </Toolbar>
-      <Container sx={{ backgroundColor: grey[100], minHeight: 'calc(100vh - 220px)'}}>
+      <Container sx={{ backgroundColor: grey[100], minHeight: 'calc(100vh - 220px)', marginLeft: 0, marginRight: 0, minWidth: '100%'}}>
         <Box>{props.children}</Box>
       </Container>
       {/* <ScrollTop {...props}>
