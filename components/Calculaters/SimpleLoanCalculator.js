@@ -104,6 +104,7 @@ export default function SimpleLoanCalculator() {
           />
         </Container>
         <Container sx={{ display: "flex", flexDirection: "column" }}>
+          <Typography>{t("common.result")}</Typography>
           <CopyToClipboardButton result={resultMontly}>
             <Typography
               sx={{
