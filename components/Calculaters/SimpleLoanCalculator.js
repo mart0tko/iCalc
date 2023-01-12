@@ -77,7 +77,7 @@ export default function SimpleLoanCalculator() {
           <Slider
             value={valueOne}
             min={10000}
-            step={10000}
+            step={1000}
             max={1000000}
             onChange={(e) => handleChange(e, setValueOne)}
           />
@@ -98,7 +98,7 @@ export default function SimpleLoanCalculator() {
           <Slider
             value={valueThree}
             min={1}
-            step={1}
+            step={0.1}
             max={100}
             onChange={(e) => handleChange(e, setValueThree)}
           />
