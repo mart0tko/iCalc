@@ -20,7 +20,7 @@ export default function Percentage() {
     setResult("");
     const val1 = +valueTwo * +valueOne;
     const res = val1 / 100;
-    setResult(res.toFixed(2));
+    setResult(res.toFixed(5));
   };
 
   const handleClear = () => {

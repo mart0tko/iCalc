@@ -26,8 +26,8 @@
     "title": "Percentage Calculator",
     "description": "The Percentage Calculator will find what percent of X is Y.",
     "example": "Example: 1% of 12 is 0.12",
-    "valueOne": "What is",
-    "valueTwo": "% Of",
+    "valueOne": "%",
+    "valueTwo": "Of Number",
     "related": "You may also check "
   },
   "ageCalc": {
