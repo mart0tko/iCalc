@@ -1,6 +1,8 @@
-import { Box, Container, Paper, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation("");
   return (
     <Paper
       sx={{
@@ -17,7 +19,7 @@ export default function Footer() {
       variant="outlined"
     >
       <Typography variant="caption" color="initial">
-        Copyright ©2023. Calcalator Limited
+        {t("common.copyright")}
       </Typography>
     </Paper>
   );

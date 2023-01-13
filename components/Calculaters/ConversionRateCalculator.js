@@ -2,7 +2,6 @@ import { Button, Container, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
-import { useTheme } from "@mui/material/styles";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import currency from "currency.js";
 

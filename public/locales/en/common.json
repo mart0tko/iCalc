@@ -64,6 +64,7 @@
     "valueOne": "First Value",
     "valueTwo": "Second Value",
     "copiedToClibboard": "Copied to clibboard",
-    "copyToClibboard": "Copy to clibboard"
+    "copyToClibboard": "Copy to clibboard",
+    "copyright": "© Copyright 2023 Calcalator. All Rights Reserved."
   }
 }

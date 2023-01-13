@@ -5,12 +5,11 @@ export default function About() {
   const { t } = useTranslation("");
 
   return (
-    <>
-      <div className="mt-5">
-        <h1>{t("about.About title")}</h1>
-        <p>{t("about.About description")}</p>
-      </div>
-    </>
+    <div>
+      <h6>
+        We are not responsible for any desitions based on our calculators!
+      </h6>
+    </div>
   );
 }
 

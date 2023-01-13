@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
-    <loc>https://calcalator.com/about</loc>
+    <loc>https://calcalator.com/[slug]</loc>
   </url>
 
   <url>
     <loc>https://calcalator.com</loc>
+  </url>
+
+  <url>
+    <loc>https://calcalator.com/privacy-policy</loc>
+  </url>
+
+  <url>
+    <loc>https://calcalator.com/terms-of-use</loc>
   </url>
 
   <url>
