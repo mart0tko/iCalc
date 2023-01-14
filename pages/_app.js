@@ -5,7 +5,7 @@ import Script from "next/script";
 import * as gtag from "../lib/gtag";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import getConfig from "next/config";
 
 function MyApp({ Component, pageProps }) {

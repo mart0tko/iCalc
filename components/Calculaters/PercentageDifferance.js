@@ -5,6 +5,7 @@ import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import { useTheme } from "@mui/material/styles";
 import CopyToClipboardButton from "../CopyToClipboardButton";
+import CalcButtons from "../CalcButtons";
 
 export default function PercentageDifferance() {
   const theme = useTheme();
@@ -88,22 +89,7 @@ export default function PercentageDifferance() {
         </Container>
       </Container>
       <br />
-      <Container sx={{ padding: "1rem" }}>
-        <Button
-          variant="contained"
-          onClick={handleClear}
-          sx={{ backgroundColor: "secondary.dark", margin: "1rem" }}
-        >
-          {t("common.reset")}
-        </Button>
-        <Button
-          variant="contained"
-          onClick={handleSubmit}
-          sx={{ margin: "1rem" }}
-        >
-          {t("common.calculate")}
-        </Button>
-      </Container>
+      <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>
   );
 }

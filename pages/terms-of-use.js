@@ -5,11 +5,11 @@ export default function About() {
   const { t } = useTranslation("");
 
   return (
-    <div>
-      <h6>
-        We are not responsible for any desitions based on our calculators!
-      </h6>
-    </div>
+    <>
+      <h1 style={{ marginTop: 0, paddingTop: "1rem" }}>
+        We are not responsible for any decisions made based on our calculators!
+      </h1>
+    </>
   );
 }
 

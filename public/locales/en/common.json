@@ -48,9 +48,14 @@
   },
   "simpleLoanCalc": {
     "title": "Simple Loan Calculator",
-    "description": "Enter your number of conversions and visits, and then click Calculate!",
-    "valueOne": "Conversions",
-    "valueTwo": "Visits"
+    "description": "Your monthly payment for a loan will depend on the amount, term, and interest rate of the loan. Use the inputs below to get a sense of what your monthly payment could end up being.",
+    "loanAmount": "Loan Amount:",
+    "loanTerm": "Loan Term:",
+    "months": "Months",
+    "interestRate": "Interest Rate:",
+    "resultMontly": "Total Montly Paid: ",
+    "resultTotal": "Total Paid: ",
+    "resultTotalInterest": "Total Interest Paid: "
   },
 
   "common": {
@@ -65,6 +70,8 @@
     "valueTwo": "Second Value",
     "copiedToClibboard": "Copied to clibboard",
     "copyToClibboard": "Copy to clibboard",
-    "copyright": "© Copyright 2023 Calcalator. All Rights Reserved."
+    "copyright": "© Copyright 2023 Calcalator. All Rights Reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use"
   }
 }

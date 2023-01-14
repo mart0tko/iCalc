@@ -4,6 +4,7 @@ import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import currency from "currency.js";
+import CalcButtons from "../CalcButtons";
 
 export default function ConversionRateCalculator() {
   const { t } = useTranslation("");
@@ -72,22 +73,7 @@ export default function ConversionRateCalculator() {
         </Container>
       </Container>
       <br />
-      <Container sx={{ padding: "1rem" }}>
-        <Button
-          variant="contained"
-          onClick={handleClear}
-          sx={{ backgroundColor: "secondary.dark", margin: "1rem" }}
-        >
-          {t("common.reset")}
-        </Button>
-        <Button
-          variant="contained"
-          onClick={handleSubmit}
-          sx={{ margin: "1rem" }}
-        >
-          {t("common.calculate")}
-        </Button>
-      </Container>
+      <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>
   );
 }

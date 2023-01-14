@@ -1,4 +1,4 @@
-import { Paper, Typography } from "@mui/material";
+import { Link, Paper, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 export default function Footer() {
@@ -18,9 +18,34 @@ export default function Footer() {
       component="footer"
       variant="outlined"
     >
-      <Typography variant="caption" color="initial">
+      <Typography
+        variant="caption"
+        color="initial"
+        sx={{ marginRight: "1rem" }}
+      >
         {t("common.copyright")}
       </Typography>
+      <Link
+        href="/privacy-policy"
+        sx={{
+          color: "initial",
+          textDecorationColor: "initial",
+          cursor: "pointer",
+        }}
+      >
+        {t("common.privacyPolicy")}
+      </Link>
+      {" | "}
+      <Link
+        href="/terms-of-use"
+        sx={{
+          color: "initial",
+          textDecorationColor: "initial",
+          cursor: "pointer",
+        }}
+      >
+        {t("common.termsOfUse")}
+      </Link>
     </Paper>
   );
 }

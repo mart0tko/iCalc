@@ -2,7 +2,7 @@ import { Box, Grid } from "@mui/material";
 
 export default function ThreeColumnLayout({ children }) {
   return (
-    <Box>
+    <Box sx={{ paddingTop: "2rem" }}>
       <Grid container>
         <Grid item xs={1} sm={2} md={2}>
           {/* TODO Google Adsense */}
