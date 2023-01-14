@@ -1,4 +1,6 @@
-export default function About() {
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+export default function PrivacyPolicy() {
   return (
     <>
       <h1 style={{ marginTop: 0, paddingTop: "1rem" }}>
@@ -137,4 +139,12 @@ export default function About() {
       </p>
     </>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 }

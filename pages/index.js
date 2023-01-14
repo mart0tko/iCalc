@@ -1,11 +1,9 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Box from "@mui/material/Box";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import CalculaterHomeLink from "../components/CalculaterHomeLink";
+import Footer from "../components/footer";
 
 export default function Home() {
-  const { t } = useTranslation();
-
   return (
     <>
       <Box

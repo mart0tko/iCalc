@@ -1,12 +1,12 @@
 import "../styles/globals.css";
 import { appWithTranslation } from "next-i18next";
-import BackToTop from "../components/nav";
+import BackToTop from "../components/BackToTop";
 import Script from "next/script";
 import * as gtag from "../lib/gtag";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import Footer from "../components/Footer";
 import getConfig from "next/config";
+import Footer from "../components/footer";
 
 function MyApp({ Component, pageProps }) {
   const { publicRuntimeConfig } = getConfig();
@@ -45,8 +45,8 @@ function MyApp({ Component, pageProps }) {
       />
       <BackToTop>
         <Component {...pageProps} />
+        <Footer />
       </BackToTop>
-      <Footer />
     </>
   );
 }

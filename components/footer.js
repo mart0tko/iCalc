@@ -1,8 +1,6 @@
 import { Link, Paper, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
 
 export default function Footer() {
-  const { t } = useTranslation("");
   return (
     <Paper
       sx={{
@@ -23,7 +21,7 @@ export default function Footer() {
         color="initial"
         sx={{ marginRight: "1rem" }}
       >
-        {t("common.copyright")}
+        © Copyright 2023 Calcalator. All Rights Reserved.
       </Typography>
       <Link
         href="/privacy-policy"
@@ -33,7 +31,7 @@ export default function Footer() {
           cursor: "pointer",
         }}
       >
-        {t("common.privacyPolicy")}
+        Privacy Policy
       </Link>
       {" | "}
       <Link
@@ -44,7 +42,7 @@ export default function Footer() {
           cursor: "pointer",
         }}
       >
-        {t("common.termsOfUse")}
+        Terms of Use
       </Link>
     </Paper>
   );

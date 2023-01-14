@@ -19,24 +19,25 @@ export default function Navigation() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link href="/">
-          Next.js Multi-Language
-        </Link>
+        <Link href="/">Next.js Multi-Language</Link>
         <div className="navbar-collapse" id="navbarText">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link href="/" className={`nav-link ${
-                    router?.pathname === "/" ? "active" : ""
-                  }`}>
-                  {t("header.Home")}
+              <Link
+                href="/"
+                className={`nav-link ${
+                  router?.pathname === "/" ? "active" : ""
+                }`}
+              >
+                {t("header.Home")}
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/about" className={`nav-link ${
+              {/* <Link href="/about" className={`nav-link ${
                     router?.pathname === "/about" ? "active" : ""
                   }`}>
                   {t("header.About")}
-              </Link>
+              </Link> */}
             </li>
           </ul>
           <LocaleSwitcher />

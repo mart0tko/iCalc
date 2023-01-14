@@ -35,24 +35,24 @@ export default function ConversionRateCalculator() {
         gutterBottom
         sx={{ fontSize: "2rem", lineHeight: "3rem" }}
       >
-        {t("simpleLoanCalc.title")}
+        {t("conversionRateCalc.title")}
       </Typography>
       <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("simpleLoanCalc.description")}
+        {t("conversionRateCalc.description")}
       </Typography>
       <br />
       <Container sx={{ display: "flex", alignItems: "center" }}>
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <TextField
             type="number"
-            label={t("simpleLoanCalc.valueOne")}
+            label={t("conversionRateCalc.valueOne")}
             variant="standard"
             value={valueOne}
             onChange={(e) => handleChange(e, setValueOne)}
           />
           <TextField
             type="number"
-            label={t("simpleLoanCalc.valueTwo")}
+            label={t("conversionRateCalc.valueTwo")}
             variant="standard"
             value={valueTwo}
             onChange={(e) => handleChange(e, setValueTwo)}

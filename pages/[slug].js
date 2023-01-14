@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Error from "next/error";

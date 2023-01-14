@@ -16,7 +16,7 @@ class MyDocument extends Document {
           <script
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7683444095694539"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           ></script>
           <link
             rel="stylesheet"

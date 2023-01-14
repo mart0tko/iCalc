@@ -1,5 +1,4 @@
 import { useTranslation } from "next-i18next";
-// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Paper from "@mui/material/Paper";
 import Link from "next/link";
 import { Icon } from "@mui/material";
