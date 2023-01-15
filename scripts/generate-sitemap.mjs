@@ -21,6 +21,9 @@ const InternationalLinks = {
   "conversion-rate-calculator": {
     en: "/conversion-rate-calculator",
   },
+  "profit-margin-calculator": {
+    en: "/profit-margin-calculator",
+  },
 };
 
 async function generate() {

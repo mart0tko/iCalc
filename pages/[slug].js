@@ -7,6 +7,7 @@ import ConversionRateCalculator from "../components/Calculaters/ConversionRateCa
 import Percentage from "../components/Calculaters/Percentage";
 import PercentageChange from "../components/Calculaters/PercentageChange";
 import PercentageDifferance from "../components/Calculaters/PercentageDifferance";
+import ProfitMarginCalculator from "../components/Calculaters/ProfitMarginCalculator";
 import SimpleLoanCalculator from "../components/Calculaters/SimpleLoanCalculator";
 
 export default function About() {
@@ -28,6 +29,8 @@ export default function About() {
       return <SimpleLoanCalculator />;
     case "conversion-rate-calculator":
       return <ConversionRateCalculator />;
+    case "profit-margin-calculator":
+      return <ProfitMarginCalculator />;
     default:
       return <Error statusCode={404} />;
   }

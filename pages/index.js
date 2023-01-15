@@ -49,6 +49,11 @@ export default function Home() {
           route="conversion-rate-calculator"
           icon="ads_click"
         />
+        <CalculaterHomeLink
+          title="profitMarginCalc.title"
+          route="profit-margin-calculator"
+          icon="score"
+        />
       </Box>
     </>
   );
