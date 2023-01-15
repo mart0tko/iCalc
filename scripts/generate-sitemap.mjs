@@ -24,6 +24,9 @@ const InternationalLinks = {
   "profit-margin-calculator": {
     en: "/profit-margin-calculator",
   },
+  "margin-calculator": {
+    en: "/margin-calculator",
+  },
 };
 
 async function generate() {

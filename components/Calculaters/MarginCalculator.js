@@ -7,14 +7,14 @@ import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import { useTheme } from "@mui/material/styles";
 
-export default function ProfitMarginCalculator() {
+export default function MarginCalculator() {
   const theme = useTheme();
   const { t } = useTranslation("");
-  const [valueOne, setValueOne] = useState(50);
-  const [valueTwo, setValueTwo] = useState(100);
-  const [netProfitMarginResult, setNetProfitMarginResult] = useState(null);
-  const [netProfitResult, setNetProfitResult] = useState(null);
-  const [profitPercentageResult, setProfitPercentageResult] = useState(null);
+  const [valueOne, setValueOne] = useState(125);
+  const [valueTwo, setValueTwo] = useState(250);
+  const [grossMarginResult, setGrossMarginResult] = useState(null);
+  const [markupResult, setMarkupResult] = useState(null);
+  const [grossProfitResult, setGrossProfitResult] = useState(null);
 
   useEffect(() => {
     handleSubmit();
@@ -28,31 +28,31 @@ export default function ProfitMarginCalculator() {
     if (!valueOne || !valueTwo) {
       return;
     }
-    setNetProfitMarginResult(null);
-    setNetProfitResult(null);
-    setProfitPercentageResult(null);
+    setGrossMarginResult(null);
+    setMarkupResult(null);
+    setGrossProfitResult(null);
 
-    const netProfit = currency(+valueTwo, { precision: 2 }).subtract(
+    const grossProfit = currency(+valueTwo, { precision: 2 }).subtract(
       +valueOne
     ).value;
-    const netProfitMargin = currency(netProfit, { precision: 2 }).divide(
-      +valueTwo
-    ).value;
-    const profitPercentage = currency(netProfit, { precision: 2 }).divide(
-      +valueOne
-    ).value;
+    const markup = currency(grossProfit, { precision: 2 })
+      .divide(+valueOne)
+      .multiply(100).value;
+    const grossMargin = currency(grossProfit, { precision: 2 })
+      .divide(+valueTwo)
+      .multiply(100).value;
 
-    setNetProfitMarginResult(netProfitMargin);
-    setNetProfitResult(netProfit);
-    setProfitPercentageResult(profitPercentage);
+    setGrossMarginResult(grossMargin);
+    setMarkupResult(markup);
+    setGrossProfitResult(grossProfit);
   };
 
   const handleClear = () => {
     valueOne && setValueOne("");
     valueTwo && setValueTwo("");
-    netProfitMarginResult && setNetProfitMarginResult(null);
-    netProfitResult && setNetProfitResult(null);
-    profitPercentageResult && setProfitPercentageResult(null);
+    grossMarginResult && setGrossMarginResult(null);
+    markupResult && setMarkupResult(null);
+    grossProfitResult && setGrossProfitResult(null);
   };
 
   return (
@@ -62,17 +62,17 @@ export default function ProfitMarginCalculator() {
         gutterBottom
         sx={{ fontSize: "2rem", lineHeight: "3rem" }}
       >
-        {t("profitMarginCalc.title")}
+        {t("marginCalc.title")}
       </Typography>
       <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("profitMarginCalc.description")}
+        {t("marginCalc.description")}
       </Typography>
       <br />
       <Container sx={{ display: "flex", alignItems: "center" }}>
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <TextField
             type="number"
-            label={t("profitMarginCalc.valueOne")}
+            label={t("marginCalc.valueOne")}
             variant="standard"
             value={valueOne}
             onChange={(e) => handleChange(e, setValueOne)}
@@ -80,7 +80,7 @@ export default function ProfitMarginCalculator() {
           <br />
           <TextField
             type="number"
-            label={t("profitMarginCalc.valueTwo")}
+            label={t("marginCalc.valueTwo")}
             variant="standard"
             value={valueTwo}
             onChange={(e) => handleChange(e, setValueTwo)}
@@ -96,48 +96,46 @@ export default function ProfitMarginCalculator() {
         </Container>
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={netProfitMarginResult}>
+          <CopyToClipboardButton result={grossMarginResult}>
             <Typography
               sx={{
                 color: "success.dark",
                 fontSize: "1.5rem",
               }}
             >
-              {t("profitMarginCalc.netProfitMarginResult")}{" "}
-              {netProfitMarginResult} %
+              {t("marginCalc.grossMarginResult")} {grossMarginResult} %
             </Typography>
           </CopyToClipboardButton>
           <br />
-          <CopyToClipboardButton result={netProfitResult}>
+          <CopyToClipboardButton result={markupResult}>
             <Typography
               sx={{
                 color: "success.dark",
                 fontSize: "1.5rem",
               }}
             >
-              {t("profitMarginCalc.netProfitResult")} $ {netProfitResult}
+              {t("marginCalc.markupResult")} {markupResult} %
             </Typography>
           </CopyToClipboardButton>
           <br />
-          <CopyToClipboardButton result={profitPercentageResult}>
+          <CopyToClipboardButton result={grossProfitResult}>
             <Typography
               sx={{
                 color: "success.dark",
                 fontSize: "1.5rem",
               }}
             >
-              {t("profitMarginCalc.profitPercentageResult")}{" "}
-              {profitPercentageResult} %
+              {t("marginCalc.grossProfitResult")} $ {grossProfitResult}{" "}
             </Typography>
           </CopyToClipboardButton>
           <br />
           <Typography sx={{ fontSize: "0.75rem" }}>
-            {t("marginCalc.related")}
+            {t("profitMarginCalc.related")}
             <Link
-              href="/margin-calculator"
+              href="/profit-margin-calculator"
               style={{ color: theme.palette.primary.main }}
             >
-              {t("marginCalc.title")}
+              {t("profitMarginCalc.title")}
             </Link>
           </Typography>
         </Container>

@@ -54,6 +54,12 @@ export default function Home() {
           route="profit-margin-calculator"
           icon="score"
         />
+        <CalculaterHomeLink
+          color={true}
+          title="marginCalc.title"
+          route="margin-calculator"
+          icon="score"
+        />
       </Box>
     </>
   );

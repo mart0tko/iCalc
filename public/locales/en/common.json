@@ -60,11 +60,22 @@
   "profitMarginCalc": {
     "title": "Profit Margin Calculator",
     "description": "The profit margin calculator calculates net profit and profit percentage of sales from the cost and revenue. The net profit margin is net profit divided by revenue.",
-    "valueOne": "Const in $:",
-    "valueTwo": "Revenue in $:",
+    "valueOne": "Const $:",
+    "valueTwo": "Revenue $:",
     "netProfitMarginResult": "Net Profit Margin:",
     "netProfitResult": "Net Profit:",
-    "profitPercentageResult": "Profit Percentage:"
+    "profitPercentageResult": "Profit Percentage:",
+    "related": "You may also check "
+  },
+  "marginCalc": {
+    "title": "Margin Calculator",
+    "description": "The gross margin percentage calculator mark up percentage and gross profit of a sale from the cost and revenue, or selling price, of an item.",
+    "valueOne": "Const $:",
+    "valueTwo": "Revenue $:",
+    "grossMarginResult": "Gross Margin:",
+    "markupResult": "Markup:",
+    "grossProfitResult": "Gross Profit:",
+    "related": "You may also check "
   },
 
   "common": {

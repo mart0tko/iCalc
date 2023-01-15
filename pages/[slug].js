@@ -4,6 +4,7 @@ import Error from "next/error";
 import { useRouter } from "next/router";
 import Age from "../components/Calculaters/Age";
 import ConversionRateCalculator from "../components/Calculaters/ConversionRateCalculator";
+import MarginCalculator from "../components/Calculaters/MarginCalculator";
 import Percentage from "../components/Calculaters/Percentage";
 import PercentageChange from "../components/Calculaters/PercentageChange";
 import PercentageDifferance from "../components/Calculaters/PercentageDifferance";
@@ -31,6 +32,8 @@ export default function About() {
       return <ConversionRateCalculator />;
     case "profit-margin-calculator":
       return <ProfitMarginCalculator />;
+    case "margin-calculator":
+      return <MarginCalculator />;
     default:
       return <Error statusCode={404} />;
   }
