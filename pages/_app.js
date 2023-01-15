@@ -45,8 +45,8 @@ function MyApp({ Component, pageProps }) {
       />
       <BackToTop>
         <Component {...pageProps} />
-        <Footer />
       </BackToTop>
+      <Footer />
     </>
   );
 }
