@@ -10,6 +10,8 @@ export default function Home() {
         sx={{
           display: "flex",
           flexFlow: "row wrap",
+          alignItems: "center",
+          justifyContent: "center",
           "& > :not(style)": {
             m: 1,
             width: "100%",

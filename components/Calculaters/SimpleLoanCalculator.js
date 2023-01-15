@@ -69,7 +69,17 @@ export default function SimpleLoanCalculator() {
         {t("simpleLoanCalc.description")}
       </Typography>
       <br />
-      <Container sx={{ display: "flex", alignItems: "center" }}>
+      <Container
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: {
+            xs: "column",
+            sm: "column",
+            md: "row",
+          },
+        }}
+      >
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           {/* Inputs */}
           <Typography gutterBottom>
@@ -104,6 +114,7 @@ export default function SimpleLoanCalculator() {
             onChange={(e) => handleChange(e, setValueThree)}
           />
         </Container>
+        <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography>{t("common.result")}</Typography>
           <CopyToClipboardButton result={resultMontly}>

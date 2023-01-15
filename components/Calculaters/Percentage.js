@@ -46,7 +46,17 @@ export default function Percentage() {
         {t("percentage.example")}
       </Typography>
       <br />
-      <Container sx={{ display: "flex", alignItems: "center" }}>
+      <Container
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: {
+            xs: "column",
+            sm: "column",
+            md: "row",
+          },
+        }}
+      >
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <TextField
             type="number"
@@ -63,6 +73,7 @@ export default function Percentage() {
             onChange={(e) => handleChange(e, setValueTwo)}
           />
         </Container>
+        <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
           <CopyToClipboardButton result={result}>

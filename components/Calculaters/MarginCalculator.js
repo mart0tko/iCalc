@@ -68,8 +68,26 @@ export default function MarginCalculator() {
         {t("marginCalc.description")}
       </Typography>
       <br />
-      <Container sx={{ display: "flex", alignItems: "center" }}>
+      <Container
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: {
+            xs: "column",
+            sm: "column",
+            md: "column",
+            lg: "row",
+          },
+        }}
+      >
         <Container sx={{ display: "flex", flexDirection: "column" }}>
+          <Typography
+            variant="span"
+            gutterBottom
+            sx={{ fontSize: "1rem", textDecoration: "underline" }}
+          >
+            {t("common.positiveNumbersNote")}
+          </Typography>
           <TextField
             type="number"
             label={t("marginCalc.valueOne")}
@@ -85,15 +103,8 @@ export default function MarginCalculator() {
             value={valueTwo}
             onChange={(e) => handleChange(e, setValueTwo)}
           />
-          <br />
-          <Typography
-            variant="span"
-            gutterBottom
-            sx={{ fontSize: "1rem", textDecoration: "underline" }}
-          >
-            {t("common.positiveNumbersNote")}
-          </Typography>
         </Container>
+        <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography>{t("common.result")}</Typography>
           <CopyToClipboardButton result={grossMarginResult}>

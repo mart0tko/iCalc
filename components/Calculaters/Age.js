@@ -57,7 +57,17 @@ export default function Age() {
         {t("ageCalc.description")}
       </Typography>
       <br />
-      <Container sx={{ display: "flex", alignItems: "center" }}>
+      <Container
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: {
+            xs: "column",
+            sm: "column",
+            md: "row",
+          },
+        }}
+      >
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <InputLabel htmlFor="age-calculator-input-one">
             {t("ageCalc.valueOne")}
@@ -82,6 +92,7 @@ export default function Age() {
             onChange={(e) => handleChange(e, setValueTwo)}
           />
         </Container>
+        <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography>{t("common.result")}</Typography>
           <CopyToClipboardButton result={result}>
