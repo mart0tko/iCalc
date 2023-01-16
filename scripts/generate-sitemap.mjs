@@ -54,7 +54,7 @@ async function generate() {
 
             return `
               <url>
-                  <loc>${`https://calcalator.com${route}`}</loc>
+                  <loc>${`https://www.calcalator.com${route}`}</loc>
               </url>
             `;
           })
@@ -63,7 +63,7 @@ async function generate() {
           .map((page) => {
             return `
               <url>
-                  <loc>${`https://calcalator.com${InternationalLinks[page]["en"]}`}</loc>
+                  <loc>${`https://www.calcalator.com${InternationalLinks[page]["en"]}`}</loc>
               </url>
             `;
           })
