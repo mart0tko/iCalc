@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.calcalator.com/sitemap.xml
+Sitemap: https://www.wannacalc.com/sitemap.xml

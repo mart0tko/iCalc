@@ -8,14 +8,14 @@ export default function PrivacyPolicy() {
       </h1>
 
       <p>
-        Calcalotor operates the www.calcalator.com website, which provides the
+        Calcalotor operates the www.wannacalc.com website, which provides the
         SERVICE.
       </p>
 
       <p>
         This page is used to inform website visitors regarding our policies with
         the collection, use, and disclosure of Personal Information if anyone
-        decided to use our Service, the Calcalator.com website.
+        decided to use our Service, the www.wannacalc.com website.
       </p>
 
       <p>
@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
 
       <p>
         The terms used in this Privacy Policy have the same meanings as in our
-        Terms and Conditions, which is accessible at www.calcalator.com, unless
+        Terms and Conditions, which is accessible at www.wannacalc.com, unless
         otherwise defined in this Privacy Policy.
       </p>
 

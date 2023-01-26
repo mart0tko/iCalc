@@ -21,7 +21,7 @@ export default function Footer() {
         color="initial"
         sx={{ marginRight: "1rem" }}
       >
-        © Copyright 2023 Calcalator. All Rights Reserved.
+        © Copyright 2023 WannaCalc. All Rights Reserved.
       </Typography>
       <Link
         href="/privacy-policy"
