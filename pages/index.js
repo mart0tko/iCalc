@@ -73,6 +73,17 @@ export default function Home() {
           route="bmr-calculator"
           icon="favorite"
         />
+        <CalculaterHomeLink
+          title="dogAgeCalculator.title"
+          route="dog-age-calculator"
+          icon="pets"
+        />
+        <CalculaterHomeLink
+          color={true}
+          title="catAgeCalculator.title"
+          route="cat-age-calculator"
+          icon="pets"
+        />
       </Box>
     </>
   );

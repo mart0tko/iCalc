@@ -26,6 +26,12 @@ const InternationalLinks = {
   "bmr-calculator": {
     en: "/bmr-calculator",
   },
+  "dog-age-calculator": {
+    en: "/dog-age-calculator",
+  },
+  "cat-age-calculator": {
+    en: "/cat-age-calculator",
+  },
   "margin-calculator": {
     en: "/margin-calculator",
   },

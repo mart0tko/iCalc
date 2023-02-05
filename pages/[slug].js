@@ -12,6 +12,8 @@ import PercentageChange from "../components/Calculaters/PercentageChange";
 import PercentageDifferance from "../components/Calculaters/PercentageDifferance";
 import ProfitMarginCalculator from "../components/Calculaters/ProfitMarginCalculator";
 import SimpleLoanCalculator from "../components/Calculaters/SimpleLoanCalculator";
+import DogAgeCalculator from "../components/Calculaters/DogAgeCalculator";
+import CatAgeCalculator from "../components/Calculaters/CatAgeCalculator";
 
 export default function About() {
   const { t } = useTranslation("");
@@ -38,6 +40,10 @@ export default function About() {
       return <BMI />;
     case "bmr-calculator":
       return <BMR />;
+    case "dog-age-calculator":
+      return <DogAgeCalculator />;
+    case "cat-age-calculator":
+      return <CatAgeCalculator />;
     case "margin-calculator":
       return <MarginCalculator />;
     default:

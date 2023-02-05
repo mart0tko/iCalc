@@ -93,11 +93,22 @@
     "grossProfitResult": "Gross Profit:",
     "related": "You may also check "
   },
+  "dogAgeCalculator": {
+    "title": "Dog Age Calculator",
+    "description": "Dogs mature more quickly in their first two years of life and then start to slow down. The following formula is commonly used to estimate a dog's age in human years.",
+    "age": "Age"
+  },
+  "catAgeCalculator": {
+    "title": "Cat Age Calculator",
+    "description": "Cats mature more quickly in their first two years of life and then start to slow down. The following formula is commonly used to estimate a cat's age in human years.",
+    "age": "Age"
+  },
 
   "common": {
     "calculate": "Calculate",
     "reset": "Reset",
     "result": "Result:",
+    "years": "Years",
     "pageNotFound": "Page Not Found",
     "goBackHome": "Go back home",
     "increase": "Increase",
