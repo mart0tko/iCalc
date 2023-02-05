@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Fade from "@mui/material/Fade";
 import Link from "next/link";
-import Image from "next/Image";
+import Image from "next/image";
 import { grey } from "@mui/material/colors";
 import LogoImage from "../public/white_icon_transparent_background.png";
 
