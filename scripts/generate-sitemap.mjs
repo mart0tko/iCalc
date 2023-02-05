@@ -27,6 +27,9 @@ const InternationalLinks = {
   "bmi-calculator": {
     en: "/bmi-calculator",
   },
+  "bmr-calculator": {
+    en: "/bmr-calculator",
+  },
   "margin-calculator": {
     en: "/margin-calculator",
   },

@@ -36,6 +36,16 @@
     "valueOne": "Weight",
     "valueTwo": "Height"
   },
+  "bmr": {
+    "title": "Basal Metabolic Rate (BMR) Calculator",
+    "description": "The basal metabolic rate (BMR) is the amount of energy needed while resting in a temperate environment when the digestive system is inactive.",
+    "age": "Age",
+    "male": "Male",
+    "female": "Female",
+    "weight": "Weight",
+    "height": "Height",
+    "result": "Calories/day"
+  },
   "ageCalc": {
     "title": "Age Calculator",
     "description": "Age calculator helps you to calculate the exact age and how old are you in years, months, weeks, days, hours, minutes, and seconds. Even you can calculate the interval between two dates with this age our age calculator.",

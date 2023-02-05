@@ -65,7 +65,13 @@ export default function Home() {
         <CalculaterHomeLink
           title="bmi.title"
           route="bmi-calculator"
-          icon="score"
+          icon="favorite"
+        />
+        <CalculaterHomeLink
+          color={true}
+          title="bmi.title"
+          route="bmr-calculator"
+          icon="favorite"
         />
       </Box>
     </>
