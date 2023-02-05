@@ -60,8 +60,8 @@ ScrollTop.propTypes = {
 export default function Header(props) {
   return (
     <React.Fragment>
-      <AppBar position="static" sx={{ pl: 0 }}>
-        <Toolbar sx={{ justifyContent: ["center", "flex-start"] }}>
+      <AppBar position="sticky" sx={{ pl: 0 }}>
+        <Toolbar sx={{ justifyContent: ["center", "flex-start"] }} position>
           <Link href="/" style={{ display: "flex" }}>
             <Image
               src={LogoImage}
