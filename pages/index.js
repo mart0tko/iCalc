@@ -62,6 +62,11 @@ export default function Home() {
           route="margin-calculator"
           icon="score"
         />
+        <CalculaterHomeLink
+          title="bmi.title"
+          route="bmi-calculator"
+          icon="score"
+        />
       </Box>
     </>
   );

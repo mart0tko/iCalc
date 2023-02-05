@@ -24,6 +24,9 @@ const InternationalLinks = {
   "profit-margin-calculator": {
     en: "/profit-margin-calculator",
   },
+  "bmi-calculator": {
+    en: "/bmi-calculator",
+  },
   "margin-calculator": {
     en: "/margin-calculator",
   },

@@ -30,6 +30,12 @@
     "valueTwo": "Of Number",
     "related": "You may also check "
   },
+  "bmi": {
+    "title": "Body Mass Index Calculator",
+    "description": "BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height.",
+    "valueOne": "Weight",
+    "valueTwo": "Height"
+  },
   "ageCalc": {
     "title": "Age Calculator",
     "description": "Age calculator helps you to calculate the exact age and how old are you in years, months, weeks, days, hours, minutes, and seconds. Even you can calculate the interval between two dates with this age our age calculator.",

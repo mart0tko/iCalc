@@ -6,6 +6,7 @@ import Age from "../components/Calculaters/Age";
 import ConversionRateCalculator from "../components/Calculaters/ConversionRateCalculator";
 import MarginCalculator from "../components/Calculaters/MarginCalculator";
 import Percentage from "../components/Calculaters/Percentage";
+import BMI from "../components/Calculaters/BMI";
 import PercentageChange from "../components/Calculaters/PercentageChange";
 import PercentageDifferance from "../components/Calculaters/PercentageDifferance";
 import ProfitMarginCalculator from "../components/Calculaters/ProfitMarginCalculator";
@@ -32,6 +33,8 @@ export default function About() {
       return <ConversionRateCalculator />;
     case "profit-margin-calculator":
       return <ProfitMarginCalculator />;
+    case "bmi-calculator":
+      return <BMI />;
     case "margin-calculator":
       return <MarginCalculator />;
     default:
