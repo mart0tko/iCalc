@@ -4,7 +4,6 @@ export default function Footer() {
   return (
     <Paper
       sx={{
-        marginTop: "calc(10% + 60px)",
         width: "100%",
         position: "fixed",
         bottom: 0,
@@ -12,17 +11,11 @@ export default function Footer() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
+        fontSize: "1rem",
       }}
       component="footer"
       variant="outlined"
     >
-      <Typography
-        variant="caption"
-        color="initial"
-        sx={{ marginRight: "1rem" }}
-      >
-        © Copyright 2023 WannaCalc. All Rights Reserved.
-      </Typography>
       <Link
         href="/privacy-policy"
         sx={{
@@ -44,6 +37,14 @@ export default function Footer() {
       >
         Terms of Use
       </Link>
+      <br />
+      <Typography
+        variant="caption"
+        color="initial"
+        sx={{ marginRight: "1rem" }}
+      >
+        © Copyright 2023 WannaCalc. All Rights Reserved.
+      </Typography>
     </Paper>
   );
 }

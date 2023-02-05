@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Fab from "@mui/material/Fab";
 import Fade from "@mui/material/Fade";
 import Link from "next/link";
-import { Icon } from "@mui/material";
+import Image from "next/Image";
 import { grey } from "@mui/material/colors";
+import LogoImage from "../public/white_icon_transparent_background.png";
 
 function ScrollTop(props) {
   const { children, window } = props;
@@ -58,15 +57,17 @@ ScrollTop.propTypes = {
   window: PropTypes.func,
 };
 
-export default function BackToTop(props) {
+export default function Header(props) {
   return (
     <React.Fragment>
       <AppBar position="static" sx={{ pl: 0 }}>
-        <Toolbar>
-          <Icon sx={{ mr: 1 }} style={{ fontSize: "50px" }}>
-            calculate
-          </Icon>
-          <Link href="/">
+        <Toolbar sx={{ justifyContent: ["center", "flex-start"] }}>
+          <Link href="/" style={{ display: "flex" }}>
+            <Image
+              src={LogoImage}
+              alt="logo"
+              style={{ width: "60px", height: "auto" }}
+            />
             <Typography
               variant="h4"
               noWrap
@@ -99,6 +100,7 @@ export default function BackToTop(props) {
         sx={{
           backgroundColor: grey[100],
           minHeight: "calc(100vh - 220px)",
+          paddingBottom: "3rem",
           marginLeft: 0,
           marginRight: 0,
           minWidth: "100%",

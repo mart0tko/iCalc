@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import { appWithTranslation } from "next-i18next";
-import BackToTop from "../components/BackToTop";
+import Header from "../components/Header";
 import Script from "next/script";
 import * as gtag from "../lib/gtag";
 import { useRouter } from "next/router";
@@ -43,9 +43,9 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
-      <BackToTop>
+      <Header>
         <Component {...pageProps} />
-      </BackToTop>
+      </Header>
       <Footer />
     </>
   );
