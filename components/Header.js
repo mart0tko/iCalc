@@ -77,7 +77,7 @@ export default function Header(props) {
               variant="h4"
               noWrap
               sx={{
-                fontFamily: "monospace",
+                fontFamily: "Roboto, Halvetica, monospace",
                 letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
