@@ -14,6 +14,7 @@ import ProfitMarginCalculator from "../components/Calculaters/ProfitMarginCalcul
 import SimpleLoanCalculator from "../components/Calculaters/SimpleLoanCalculator";
 import DogAgeCalculator from "../components/Calculaters/DogAgeCalculator";
 import CatAgeCalculator from "../components/Calculaters/CatAgeCalculator";
+import TireSizeCalculator from "../components/Calculaters/TireSizeCalculator";
 
 export default function About() {
   const { t } = useTranslation("");
@@ -44,6 +45,8 @@ export default function About() {
       return <DogAgeCalculator />;
     case "cat-age-calculator":
       return <CatAgeCalculator />;
+    case "tire-size-calculator":
+      return <TireSizeCalculator />;
     case "margin-calculator":
       return <MarginCalculator />;
     default:

@@ -84,6 +84,11 @@ export default function Home() {
           route="cat-age-calculator"
           icon="pets"
         />
+        <CalculaterHomeLink
+          title="tireSizeCalculator.title"
+          route="tire-size-calculator"
+          icon="directions_car"
+        />
       </Box>
     </>
   );

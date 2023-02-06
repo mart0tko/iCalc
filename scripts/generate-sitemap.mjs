@@ -36,6 +36,9 @@ const InternationalLinks = {
   "cat-age-calculator": {
     en: "/cat-age-calculator",
   },
+  "tire-size-calculator": {
+    en: "/tire-size-calculator",
+  },
   "margin-calculator": {
     en: "/margin-calculator",
   },

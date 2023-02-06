@@ -22,6 +22,14 @@
     "description": "The Percentage Change Calculator will calculate the change from one number to another and express it as an increase or decrease. Example: From 100$ to 200$ is a 100% increase (change), but from 200$ to 100% is 50% decrease.",
     "related": "You may also check "
   },
+  "tireSizeCalculator": {
+    "title": "Tire Size Calculator",
+    "description": "The Tire Size Calculator takes four parameters: width, aspect ratio, and wheel size. The calculator calculates the tire diameter based on these parameters and returns the result. The tire diameter is calculated by adding the tire's width, aspect ratio, and wheel size.",
+    "width": "Width",
+    "aspectRatio": "Aspect Ratio",
+    "wheelDiameter": "Wheel Diameter",
+    "diameter": "Inches"
+  },
   "percentage": {
     "title": "Percentage Calculator",
     "description": "The Percentage Calculator will find what percent of X is Y.",
