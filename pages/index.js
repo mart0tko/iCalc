@@ -69,7 +69,7 @@ export default function Home() {
         />
         <CalculaterHomeLink
           color={true}
-          title="bmi.title"
+          title="bmr.title"
           route="bmr-calculator"
           icon="favorite"
         />
