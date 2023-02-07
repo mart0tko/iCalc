@@ -17,6 +17,7 @@ import CatAgeCalculator from "../components/Calculaters/CatAgeCalculator";
 import TireSizeCalculator from "../components/Calculaters/TireSizeCalculator";
 import TipCalculator from "../components/Calculaters/TipCalculator";
 import GratuityCalculator from "../components/Calculaters/GratuityCalculator";
+import DiscountCalculator from "../components/Calculaters/DiscountCalculator";
 
 export default function About() {
   const { t } = useTranslation("");
@@ -55,6 +56,8 @@ export default function About() {
       return <GratuityCalculator />;
     case "margin-calculator":
       return <MarginCalculator />;
+    case "discount-calculator":
+      return <DiscountCalculator />;
     default:
       return <Error statusCode={404} />;
   }

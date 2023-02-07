@@ -44,6 +44,9 @@ const InternationalLinks = {
   "margin-calculator": {
     en: "/margin-calculator",
   },
+  "discount-calculator": {
+    en: "/discount-calculator",
+  },
 };
 
 export default InternationalLinks;

@@ -56,6 +56,12 @@
     "valueOne": "Total Bill Amount",
     "valueTwo": "Tip Percentage"
   },
+  "discountCalculator": {
+    "title": "Discount Calculator",
+    "description": "A discount calculator is a tool used to calculate the final price of a product after a discount is applied. For example, if the original price of a product is $100 and the discount percentage is 20%, the discounted price would be 100 - (100 * (20/100)) = 80",
+    "valueOne": "Original Price",
+    "valueTwo": "Discount Percentage"
+  },
   "bmr": {
     "title": "Basal Metabolic Rate (BMR) Calculator",
     "description": "The basal metabolic rate (BMR) is the amount of energy needed while resting in a temperate environment when the digestive system is inactive.",

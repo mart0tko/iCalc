@@ -99,6 +99,12 @@ export default function Home() {
           route="gratuity-calculator"
           icon="payments"
         />
+        <CalculaterHomeLink
+          color={true}
+          title="discountCalculator.title"
+          route="discount-calculator"
+          icon="payments"
+        />
       </Box>
     </>
   );

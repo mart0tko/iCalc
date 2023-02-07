@@ -39,6 +39,12 @@ const InternationalLinks = {
   "tip-calculator": {
     en: "/tip-calculator",
   },
+  "gratuity-calculator": {
+    en: "/gratuity-calculator",
+  },
+  "discount-calculator": {
+    en: "/discount-calculator",
+  },
   "margin-calculator": {
     en: "/margin-calculator",
   },
