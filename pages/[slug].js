@@ -16,6 +16,7 @@ import DogAgeCalculator from "../components/Calculaters/DogAgeCalculator";
 import CatAgeCalculator from "../components/Calculaters/CatAgeCalculator";
 import TireSizeCalculator from "../components/Calculaters/TireSizeCalculator";
 import TipCalculator from "../components/Calculaters/TipCalculator";
+import GratuityCalculator from "../components/Calculaters/GratuityCalculator";
 
 export default function About() {
   const { t } = useTranslation("");
@@ -50,6 +51,8 @@ export default function About() {
       return <TireSizeCalculator />;
     case "tip-calculator":
       return <TipCalculator />;
+    case "gratuity-calculator":
+      return <GratuityCalculator />;
     case "margin-calculator":
       return <MarginCalculator />;
     default:

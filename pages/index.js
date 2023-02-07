@@ -94,6 +94,11 @@ export default function Home() {
           route="tip-calculator"
           icon="payments"
         />
+        <CalculaterHomeLink
+          title="gratuityCalculator.title"
+          route="gratuity-calculator"
+          icon="payments"
+        />
       </Box>
     </>
   );

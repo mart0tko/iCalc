@@ -50,6 +50,12 @@
     "valueOne": "Bill Amount",
     "valueTwo": "Tip %"
   },
+  "gratuityCalculator": {
+    "title": "Gratuity Calculator",
+    "description": "Where Total bill amount is the cost of your bill before the tip, and Tip percentage is the percentage of the bill you want to leave as a gratuity. You can adjust the tip percentage based on your level of satisfaction with the service. A common tip range is 15% to 20%.",
+    "valueOne": "Total Bill Amount",
+    "valueTwo": "Tip Percentage"
+  },
   "bmr": {
     "title": "Basal Metabolic Rate (BMR) Calculator",
     "description": "The basal metabolic rate (BMR) is the amount of energy needed while resting in a temperate environment when the digestive system is inactive.",
