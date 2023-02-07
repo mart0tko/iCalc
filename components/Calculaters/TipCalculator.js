@@ -5,11 +5,12 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
+import currency from "currency.js";
 
-export default function BMI() {
+export default function TipCalculator() {
   const { t } = useTranslation("");
-  const [valueOne, setValueOne] = useState("");
-  const [valueTwo, setValueTwo] = useState("");
+  const [valueOne, setValueOne] = useState(100);
+  const [valueTwo, setValueTwo] = useState(15);
   const [result, setResult] = useState("");
   const handleChange = (event, callback) => {
     callback(event.target.value);
@@ -17,9 +18,9 @@ export default function BMI() {
 
   const handleSubmit = () => {
     setResult("");
-    const weight = +valueOne;
-    const height = +valueTwo * +valueTwo;
-    const res = weight / height;
+    const res = currency(+valueOne, { precision: 2 })
+      .multiply(+valueTwo)
+      .divide(100).value;
     setResult(res.toFixed(2));
   };
 
@@ -36,10 +37,10 @@ export default function BMI() {
         gutterBottom
         sx={{ fontSize: "2rem", lineHeight: "3rem" }}
       >
-        {t("bmi.title")}
+        {t("tipCalculator.title")}
       </Typography>
       <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("bmi.description")}
+        {t("tipCalculator.description")}
       </Typography>
       <br />
       <Container
@@ -56,14 +57,14 @@ export default function BMI() {
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Input
             type="number"
-            label={t("bmi.valueOne")}
+            label={t("tipCalculator.valueOne")}
             variant="standard"
             value={valueOne}
             onChange={(e) => handleChange(e, setValueOne)}
           />
           <Input
             type="number"
-            label={t("bmi.valueTwo")}
+            label={t("tipCalculator.valueTwo")}
             variant="standard"
             value={valueTwo}
             onChange={(e) => handleChange(e, setValueTwo)}

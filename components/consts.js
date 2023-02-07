@@ -35,6 +35,9 @@ const InternationalLinks = {
   "tire-size-calculator": {
     en: "/tire-size-calculator",
   },
+  "tip-calculator": {
+    en: "/tip-calculator",
+  },
   "margin-calculator": {
     en: "/margin-calculator",
   },

@@ -44,6 +44,12 @@
     "valueOne": "Weight",
     "valueTwo": "Height"
   },
+  "tipCalculator": {
+    "title": "Tip Calculator",
+    "description": "Here's a simple formula to calculate the tip: Tip amount = Total bill amount * (Tip percentage/100). You can adjust the tip percentage based on your level of satisfaction with the service. Common tip percentages are 15% to 20%.",
+    "valueOne": "Bill Amount",
+    "valueTwo": "Tip %"
+  },
   "bmr": {
     "title": "Basal Metabolic Rate (BMR) Calculator",
     "description": "The basal metabolic rate (BMR) is the amount of energy needed while resting in a temperate environment when the digestive system is inactive.",

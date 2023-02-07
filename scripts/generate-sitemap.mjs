@@ -2,6 +2,9 @@ import { writeFileSync } from "fs";
 import { globby } from "globby";
 import prettier from "prettier";
 // TODO make it dynamic
+import Const from "../components/consts";
+
+console.log(Const);
 const InternationalLinks = {
   "percentage-calculator": {
     en: "/percentage-calculator",
@@ -36,8 +39,8 @@ const InternationalLinks = {
   "cat-age-calculator": {
     en: "/cat-age-calculator",
   },
-  "tire-size-calculator": {
-    en: "/tire-size-calculator",
+  "tip-calculator": {
+    en: "/tip-calculator",
   },
   "margin-calculator": {
     en: "/margin-calculator",
@@ -69,7 +72,7 @@ async function generate() {
 
             return `
               <url>
-                  <loc>${`https://www.wannacalc.com${route}`}</loc>
+                  <loc>${`https://wannacalc.com${route}`}</loc>
               </url>
             `;
           })
@@ -78,7 +81,7 @@ async function generate() {
           .map((page) => {
             return `
               <url>
-                  <loc>${`https://www.wannacalc.com${InternationalLinks[page]["en"]}`}</loc>
+                  <loc>${`https://wannacalc.com${InternationalLinks[page]["en"]}`}</loc>
               </url>
             `;
           })

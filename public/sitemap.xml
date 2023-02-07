@@ -1,44 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.wannacalc.com</loc>
+    <loc>https://wannacalc.com/[slug]</loc>
   </url>
 
   <url>
-    <loc>https://www.wannacalc.com/privacy-policy</loc>
+    <loc>https://wannacalc.com</loc>
   </url>
 
   <url>
-    <loc>https://www.wannacalc.com/terms-of-use</loc>
+    <loc>https://wannacalc.com/privacy-policy</loc>
   </url>
 
   <url>
-    <loc>https://www.wannacalc.com/percentage-calculator</loc>
+    <loc>https://wannacalc.com/terms-of-use</loc>
   </url>
 
   <url>
-    <loc>https://www.wannacalc.com/percentage-change-calculator</loc>
+    <loc>https://wannacalc.com/percentage-calculator</loc>
   </url>
 
   <url>
-    <loc>https://www.wannacalc.com/percentage-difference-calculator</loc>
+    <loc>https://wannacalc.com/percentage-change-calculator</loc>
   </url>
 
   <url>
-    <loc>https://www.wannacalc.com/age-calculator</loc>
+    <loc>https://wannacalc.com/percentage-difference-calculator</loc>
   </url>
 
   <url>
-    <loc>https://www.wannacalc.com/simple-loan-calculator</loc>
+    <loc>https://wannacalc.com/age-calculator</loc>
   </url>
 
   <url>
-    <loc>https://www.wannacalc.com/conversion-rate-calculator</loc>
+    <loc>https://wannacalc.com/simple-loan-calculator</loc>
   </url>
+
   <url>
-    <loc>https://www.wannacalc.com/profit-margin-calculator</loc>
+    <loc>https://wannacalc.com/conversion-rate-calculator</loc>
   </url>
+
   <url>
-    <loc>https://www.wannacalc.com/margin-calculator</loc>
+    <loc>https://wannacalc.com/profit-margin-calculator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/bmi-calculator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/bmr-calculator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/dog-age-calculator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/cat-age-calculator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/tire-size-calculator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/margin-calculator</loc>
   </url>
 </urlset>
