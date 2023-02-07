@@ -1,10 +1,7 @@
 import { writeFileSync } from "fs";
 import { globby } from "globby";
 import prettier from "prettier";
-// TODO make it dynamic
-import Const from "../components/consts";
 
-console.log(Const);
 const InternationalLinks = {
   "percentage-calculator": {
     en: "/percentage-calculator",
