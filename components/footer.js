@@ -22,6 +22,7 @@ export default function Footer() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          padding: "0.25rem 0",
         }}
       >
         <div
@@ -30,8 +31,6 @@ export default function Footer() {
             flex: 1,
             justifyContent: "center",
             alignItems: "canter",
-            flexDirection: "column",
-            padding: "1rem",
           }}
         >
           <Link
@@ -40,11 +39,11 @@ export default function Footer() {
               color: "initial",
               textDecorationColor: "initial",
               cursor: "pointer",
-              marginBottom: "0.5rem",
             }}
           >
             Privacy Policy
           </Link>
+          <span style={{ marginLeft: "1rem", marginRight: "1rem" }}>|</span>
           <Link
             href="/terms-of-use"
             sx={{
