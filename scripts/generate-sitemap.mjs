@@ -1,55 +1,10 @@
 import { writeFileSync } from "fs";
 import { globby } from "globby";
 import prettier from "prettier";
+import InternationalLinks from "../constants.js";
 
-const InternationalLinks = {
-  "percentage-calculator": {
-    en: "/percentage-calculator",
-  },
-  "percentage-change-calculator": {
-    en: "/percentage-change-calculator",
-  },
-  "percentage-difference-calculator": {
-    en: "/percentage-difference-calculator",
-  },
-  "age-calculator": {
-    en: "/age-calculator",
-  },
-  "simple-loan-calculator": {
-    en: "/simple-loan-calculator",
-  },
-  "conversion-rate-calculator": {
-    en: "/conversion-rate-calculator",
-  },
-  "profit-margin-calculator": {
-    en: "/profit-margin-calculator",
-  },
-  "bmi-calculator": {
-    en: "/bmi-calculator",
-  },
-  "bmr-calculator": {
-    en: "/bmr-calculator",
-  },
-  "dog-age-calculator": {
-    en: "/dog-age-calculator",
-  },
-  "cat-age-calculator": {
-    en: "/cat-age-calculator",
-  },
-  "tip-calculator": {
-    en: "/tip-calculator",
-  },
-  "gratuity-calculator": {
-    en: "/gratuity-calculator",
-  },
-  "discount-calculator": {
-    en: "/discount-calculator",
-  },
-  "margin-calculator": {
-    en: "/margin-calculator",
-  },
-};
-
+// To run it add in package.json - "type": "module"
+// and run - node --experimental-modules generate-sitemap.mjs
 async function generate() {
   const prettierConfig = await prettier.resolveConfig("./.prettierrc.js");
   const pages = await globby([
@@ -98,7 +53,7 @@ async function generate() {
   });
 
   // eslint-disable-next-line no-sync
-  writeFileSync("public/sitemap.xml", formatted);
+  writeFileSync("../public/sitemap.xml", formatted);
 }
 
 generate();

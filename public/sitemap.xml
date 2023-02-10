@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://wannacalc.com/[slug]</loc>
-  </url>
-
-  <url>
-    <loc>https://wannacalc.com</loc>
-  </url>
-
-  <url>
-    <loc>https://wannacalc.com/privacy-policy</loc>
-  </url>
-
-  <url>
-    <loc>https://wannacalc.com/terms-of-use</loc>
-  </url>
-
-  <url>
     <loc>https://wannacalc.com/percentage-calculator</loc>
   </url>
 
@@ -65,6 +49,18 @@
   </url>
 
   <url>
+    <loc>https://wannacalc.com/tip-calculator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/gratuity-calculator</loc>
+  </url>
+
+  <url>
     <loc>https://wannacalc.com/margin-calculator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/discount-calculator</loc>
   </url>
 </urlset>

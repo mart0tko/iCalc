@@ -7,7 +7,6 @@
     "build": "next build && rm -rf ./.next/cache",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "node ./scripts/generate-sitemap.mjs",
     "checkBundle": "ANALYZE=true npm run build"
   },
   "dependencies": {
