@@ -18,9 +18,10 @@ import TireSizeCalculator from "../components/Calculaters/TireSizeCalculator";
 import TipCalculator from "../components/Calculaters/TipCalculator";
 import GratuityCalculator from "../components/Calculaters/GratuityCalculator";
 import DiscountCalculator from "../components/Calculaters/DiscountCalculator";
+import CmToInchesConverter from "../components/converters/CmToInchesConverter";
+import MmToInchesConverter from "../components/converters/MmToInchesConverter";
 
 export default function About() {
-  const { t } = useTranslation("");
   const { asPath } = useRouter();
   const clearAsPath = asPath.replaceAll("/", "");
 
@@ -58,6 +59,10 @@ export default function About() {
       return <MarginCalculator />;
     case "discount-calculator":
       return <DiscountCalculator />;
+    case "cm-to-inches-converter":
+      return <CmToInchesConverter />;
+    case "mm-to-inches-converter":
+      return <MmToInchesConverter />;
     default:
       return <Error statusCode={404} />;
   }

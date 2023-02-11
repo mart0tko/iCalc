@@ -21,7 +21,7 @@ const InternationalLinks = {
   },
   "simple-loan-calculator": {
     en: "/simple-loan-calculator",
-    icon: "currency_exchange",
+    icon: "paid",
     title: "simpleLoanCalc.title",
   },
   "conversion-rate-calculator": {
@@ -83,6 +83,15 @@ const InternationalLinks = {
 
 export default InternationalLinks;
 
-export const Convertors = {
-  "test": ""
-}
+export const InternationalLinksConvertors = {
+  "cm-to-inches-converter": {
+    en: "/cm-to-inches-converter",
+    icon: "published_with_changes",
+    title: "cmToInchesConverter.title",
+  },
+  "mm-to-inches-converter": {
+    en: "/mm-to-inches-converter",
+    icon: "published_with_changes",
+    title: "mmToInchesConverter.title",
+  },
+};

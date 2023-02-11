@@ -1,14 +1,15 @@
-import { Container, Typography } from "@mui/material";
+import { Container, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
+import currency from "currency.js";
 import Input from "../Input";
 
-export default function CatAgeCalculator() {
+export default function MmToInchesConverter() {
   const { t } = useTranslation("");
-  const [age, setAge] = useState(5);
+  const [cm, setCm] = useState(250);
   const [result, setResult] = useState("");
 
   useEffect(() => {
@@ -21,12 +22,12 @@ export default function CatAgeCalculator() {
 
   const handleSubmit = () => {
     setResult("");
-    const res = (age - 2) * 4 + 21;
-    setResult(res.toFixed(0));
+    const res = currency(cm, { precision: 2 }).divide(2.54).divide(10).value;
+    setResult(res.toFixed(2));
   };
 
   const handleClear = () => {
-    age && setAge("");
+    cm && setCm("");
     result && setResult("");
   };
 
@@ -37,10 +38,10 @@ export default function CatAgeCalculator() {
         gutterBottom
         sx={{ fontSize: "2rem", lineHeight: "3rem" }}
       >
-        {t("catAgeCalculator.title")}
+        {t("mmToInchesConverter.title")}
       </Typography>
       <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("catAgeCalculator.description")}
+        {t("mmToInchesConverter.description")}
       </Typography>
       <br />
       <Container
@@ -57,24 +58,23 @@ export default function CatAgeCalculator() {
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Input
             type="number"
-            label={t("catAgeCalculator.age")}
+            label={t("mmToInchesConverter.cm")}
             variant="standard"
-            value={age}
-            maxLength="5"
-            onChange={(e) => handleChange(e, setAge)}
+            value={cm}
+            onChange={(e) => handleChange(e, setCm)}
           />
         </Container>
         <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={`${result} ${t("common.years")}`}>
+          <CopyToClipboardButton result={`${result} ${t("common.inches")}`}>
             <Typography
               sx={{
                 color: "success.dark",
                 fontSize: "1.5rem",
               }}
             >
-              {result} {t("common.years")}
+              {result} {t("common.inches")}
             </Typography>
           </CopyToClipboardButton>
         </Container>

@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import CalculaterHomeLink from "../components/CalculaterHomeLink";
-import InternationalLinks from "../constants";
+import InternationalLinks, { InternationalLinksConvertors } from "../constants";
 import { useRouter } from "next/router";
 
 export default function Home() {
@@ -20,6 +20,8 @@ export default function Home() {
           },
         }}
       >
+        {/* <Typography>{t("common.calculators")}</Typography>
+        <hr /> */}
         {Object.keys(InternationalLinks).map((value, index) => (
           <CalculaterHomeLink
             key={InternationalLinks[value]}
@@ -27,6 +29,15 @@ export default function Home() {
             href={InternationalLinks[value][locale]}
             icon={InternationalLinks[value].icon}
             title={InternationalLinks[value].title}
+          />
+        ))}
+        {Object.keys(InternationalLinksConvertors).map((value, index) => (
+          <CalculaterHomeLink
+            key={InternationalLinksConvertors[value]}
+            color={index % 2 == 0}
+            href={InternationalLinksConvertors[value][locale]}
+            icon={InternationalLinksConvertors[value].icon}
+            title={InternationalLinksConvertors[value].title}
           />
         ))}
       </Box>

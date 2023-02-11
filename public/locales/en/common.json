@@ -127,9 +127,22 @@
     "description": "Cats mature more quickly in their first two years of life and then start to slow down. The following formula is commonly used to estimate a cat's age in human years.",
     "age": "Age"
   },
+  "cmToInchesConverter": {
+    "title": "CM to Inches Converter",
+    "description": "To calculate CM to Inches you should divide by 2.54 or multiply by 0.3937. Example: 25cm are 9.84 inches.",
+    "cm": "CM to convert"
+  },
+  "mmToInchesConverter": {
+    "title": "MM to Inches Converter",
+    "description": "To calculate MM to Inches you should divide by 25.4. Example: 250mm are 9.84 inches.",
+    "cm": "MM to convert"
+  },
 
   "common": {
     "calculate": "Calculate",
+    "calculators": "Calculators",
+    "converters": "Converters",
+    "inches": "Inches",
     "reset": "Reset",
     "result": "Result:",
     "years": "Years",
