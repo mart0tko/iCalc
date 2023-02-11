@@ -1,5 +1,5 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
@@ -8,12 +8,17 @@ import CalcButtons from "../CalcButtons";
 
 export default function ConversionRateCalculator() {
   const { t } = useTranslation("");
-  const [valueOne, setValueOne] = useState("");
-  const [valueTwo, setValueTwo] = useState("");
+  const [valueOne, setValueOne] = useState(50);
+  const [valueTwo, setValueTwo] = useState(1000);
   const [result, setResult] = useState("");
+
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
 
   const handleSubmit = () => {
     setResult("");
@@ -71,7 +76,7 @@ export default function ConversionRateCalculator() {
         <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={result}>
+          <CopyToClipboardButton result={`${result} %`}>
             <Typography
               sx={{
                 color: "success.dark",

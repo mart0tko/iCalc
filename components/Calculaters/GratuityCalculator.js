@@ -1,5 +1,5 @@
 import { Container, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
@@ -12,6 +12,11 @@ export default function GratuityCalculator() {
   const [valueOne, setValueOne] = useState(100);
   const [valueTwo, setValueTwo] = useState(15);
   const [result, setResult] = useState("");
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
+
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };

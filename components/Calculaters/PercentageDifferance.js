@@ -1,6 +1,6 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import { useTheme } from "@mui/material/styles";
@@ -10,12 +10,16 @@ import CalcButtons from "../CalcButtons";
 export default function PercentageDifferance() {
   const theme = useTheme();
   const { t } = useTranslation("");
-  const [valueOne, setValueOne] = useState("");
-  const [valueTwo, setValueTwo] = useState("");
+  const [valueOne, setValueOne] = useState(10);
+  const [valueTwo, setValueTwo] = useState(20);
   const [result, setResult] = useState("");
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
 
   const handleSubmit = () => {
     setResult("");

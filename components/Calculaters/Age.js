@@ -8,26 +8,29 @@ import CalcButtons from "../CalcButtons";
 
 export default function Age() {
   const { t } = useTranslation("");
-  const [valueOne, setValueOne] = useState("");
-  const [valueTwo, setValueTwo] = useState("");
+  const [birth, setBirth] = useState("");
+  const [ageAtDate, setAgeAtDate] = useState("");
   const [result, setResult] = useState("");
   const [showResult, setShowResult] = useState(false);
 
   // TODO add Today option
   useEffect(() => {
-    setValueTwo(moment().format("YYYY-MM-DD"));
+    setAgeAtDate(moment().format("YYYY-MM-DD"));
+    setBirth(moment().subtract(20, "years").format("YYYY-MM-DD"));
+    handleSubmit();
   }, []);
+
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
 
   const handleSubmit = () => {
-    if (!valueOne || !valueTwo) {
+    if (!birth || !ageAtDate) {
       return;
     }
     setResult("");
-    let startDateMoment = moment(valueOne);
-    let endDateMoment = moment(valueTwo);
+    let startDateMoment = moment(birth);
+    let endDateMoment = moment(ageAtDate);
     if (startDateMoment.valueOf() > endDateMoment.valueOf()) {
       setResult(t("ageCalc.wrongValue"));
       setShowResult(false);
@@ -38,8 +41,8 @@ export default function Age() {
   };
 
   const handleClear = () => {
-    valueOne && setValueOne("");
-    valueTwo && setValueTwo("");
+    birth && setBirth("");
+    ageAtDate && setAgeAtDate("");
     result && setResult("");
     setShowResult(false);
   };
@@ -76,8 +79,8 @@ export default function Age() {
             type="date"
             id="age-calculator-input-one"
             variant="outlined"
-            value={valueOne}
-            onChange={(e) => handleChange(e, setValueOne)}
+            value={birth}
+            onChange={(e) => handleChange(e, setBirth)}
           />
           <br />
           <InputLabel htmlFor="age-calculator-input-two">
@@ -88,14 +91,14 @@ export default function Age() {
             id="age-calculator-input-two"
             variant="outlined"
             sx={{ borderWidth: "1px", backgroundColor: "primary" }}
-            value={valueTwo}
-            onChange={(e) => handleChange(e, setValueTwo)}
+            value={ageAtDate}
+            onChange={(e) => handleChange(e, setAgeAtDate)}
           />
         </Container>
         <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={result}>
+          <CopyToClipboardButton result={`${result} ${t("ageCalc.years")}`}>
             <Typography
               sx={{
                 color: "success.dark",

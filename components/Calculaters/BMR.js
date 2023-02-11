@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
@@ -14,11 +14,15 @@ import CalcButtons from "../CalcButtons";
 
 export default function BMR() {
   const { t } = useTranslation("");
-  const [age, setAge] = useState("");
-  const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
+  const [age, setAge] = useState(25);
+  const [weight, setWeight] = useState(60);
+  const [height, setHeight] = useState(1.85);
   const [gender, setGender] = useState("female");
   const [result, setResult] = useState("");
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };

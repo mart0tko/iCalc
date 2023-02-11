@@ -1,5 +1,5 @@
 import { Container, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
@@ -14,6 +14,9 @@ export default function TireSizeCalculator() {
   const [wheelDiameter, setWheelDiameter] = useState(16);
   const [result, setResult] = useState("");
 
+  useEffect(() => {
+    handleSubmit();
+  }, []);
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };

@@ -1,5 +1,5 @@
 import { Container, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
@@ -7,8 +7,12 @@ import CalcButtons from "../CalcButtons";
 
 export default function DogAgeCalculator() {
   const { t } = useTranslation("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(5);
   const [result, setResult] = useState("");
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
@@ -61,7 +65,7 @@ export default function DogAgeCalculator() {
         <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={result}>
+          <CopyToClipboardButton result={`${result} ${t("common.years")}`}>
             <Typography
               sx={{
                 color: "success.dark",

@@ -82,3 +82,7 @@ const InternationalLinks = {
 };
 
 export default InternationalLinks;
+
+export const Convertors = {
+  "test": ""
+}

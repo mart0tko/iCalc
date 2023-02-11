@@ -1,16 +1,22 @@
 import { Container, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
+import currency from "currency.js";
 
 export default function BMI() {
   const { t } = useTranslation("");
-  const [valueOne, setValueOne] = useState("");
-  const [valueTwo, setValueTwo] = useState("");
+  const [valueOne, setValueOne] = useState(50);
+  const [valueTwo, setValueTwo] = useState(1.85);
   const [result, setResult] = useState("");
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
+
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
@@ -18,8 +24,10 @@ export default function BMI() {
   const handleSubmit = () => {
     setResult("");
     const weight = +valueOne;
-    const height = +valueTwo * +valueTwo;
-    const res = weight / height;
+    const height = currency(valueTwo, { precision: 2 }).multiply(
+      valueTwo
+    ).value;
+    const res = currency(weight, { precision: 2 }).divide(height).value;
     setResult(res.toFixed(2));
   };
 
