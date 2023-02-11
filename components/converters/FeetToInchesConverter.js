@@ -58,7 +58,7 @@ export default function FeetToInchesConverter() {
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Input
             type="number"
-            label={t("feetToInchesConverter.cm")}
+            label={t("feetToInchesConverter.feet")}
             variant="standard"
             value={cm}
             onChange={(e) => handleChange(e, setCm)}
