@@ -94,4 +94,9 @@ export const InternationalLinksConvertors = {
     icon: "published_with_changes",
     title: "mmToInchesConverter.title",
   },
+  "feet-to-inches-converter": {
+    en: "/feet-to-inches-converter",
+    icon: "published_with_changes",
+    title: "feetToInchesConverter.title",
+  },
 };

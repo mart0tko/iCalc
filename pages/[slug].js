@@ -20,6 +20,7 @@ import GratuityCalculator from "../components/Calculaters/GratuityCalculator";
 import DiscountCalculator from "../components/Calculaters/DiscountCalculator";
 import CmToInchesConverter from "../components/converters/CmToInchesConverter";
 import MmToInchesConverter from "../components/converters/MmToInchesConverter";
+import FeetToInchesConverter from "../components/converters/FeetToInchesConverter";
 
 export default function About() {
   const { asPath } = useRouter();
@@ -63,6 +64,8 @@ export default function About() {
       return <CmToInchesConverter />;
     case "mm-to-inches-converter":
       return <MmToInchesConverter />;
+    case "feet-to-inches-converter":
+      return <FeetToInchesConverter />;
     default:
       return <Error statusCode={404} />;
   }

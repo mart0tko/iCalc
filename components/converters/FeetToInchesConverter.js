@@ -7,9 +7,9 @@ import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import Input from "../Input";
 
-export default function MmToInchesConverter() {
+export default function FeetToInchesConverter() {
   const { t } = useTranslation("");
-  const [cm, setCm] = useState(250);
+  const [cm, setCm] = useState(10);
   const [result, setResult] = useState("");
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function MmToInchesConverter() {
 
   const handleSubmit = () => {
     setResult("");
-    const res = currency(cm, { precision: 2 }).divide(2.54).divide(10).value;
+    const res = currency(cm, { precision: 2 }).multiply(12).value;
     setResult(res.toFixed(2));
   };
 
@@ -38,10 +38,10 @@ export default function MmToInchesConverter() {
         gutterBottom
         sx={{ fontSize: "2rem", lineHeight: "3rem" }}
       >
-        {t("mmToInchesConverter.title")}
+        {t("feetToInchesConverter.title")}
       </Typography>
       <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("mmToInchesConverter.description")}
+        {t("feetToInchesConverter.description")}
       </Typography>
       <br />
       <Container
@@ -58,7 +58,7 @@ export default function MmToInchesConverter() {
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Input
             type="number"
-            label={t("mmToInchesConverter.mm")}
+            label={t("feetToInchesConverter.cm")}
             variant="standard"
             value={cm}
             onChange={(e) => handleChange(e, setCm)}
