@@ -1,7 +1,9 @@
 import { writeFileSync } from "fs";
 import { globby } from "globby";
 import prettier from "prettier";
-import InternationalLinks from "../constants.js";
+import InternationalLinks, {
+  InternationalLinksConvertors,
+} from "../constants.js";
 
 // To run it add in package.json - "type": "module"
 // and run - node --experimental-modules generate-sitemap.mjs
@@ -40,6 +42,15 @@ async function generate() {
             return `
               <url>
                   <loc>${`https://wannacalc.com${InternationalLinks[page]["en"]}`}</loc>
+              </url>
+            `;
+          })
+          .join("")}
+        ${Object.keys(InternationalLinksConvertors)
+          .map((page) => {
+            return `
+              <url>
+                  <loc>${`https://wannacalc.com${InternationalLinksConvertors[page]["en"]}`}</loc>
               </url>
             `;
           })
