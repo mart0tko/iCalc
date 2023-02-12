@@ -1,11 +1,4 @@
-import {
-  Container,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Container, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -14,15 +7,14 @@ import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import Input from "../Input";
 
-export default function CmToInchesConverter() {
+export default function CmToFeetConverter() {
   const { t } = useTranslation("");
   const [cm, setCm] = useState(25);
-  const [direction, setDirection] = useState("cmToInch");
   const [result, setResult] = useState("");
 
   useEffect(() => {
     handleSubmit();
-  }, [direction]);
+  }, []);
 
   const handleChange = (event, callback) => {
     callback(event.target.value);
@@ -30,19 +22,12 @@ export default function CmToInchesConverter() {
 
   const handleSubmit = () => {
     setResult("");
-    if (!cm) {
-      return;
-    }
-    const res =
-      direction === "cmToInch"
-        ? currency(cm, { precision: 2 }).divide(2.54).value
-        : currency(cm, { precision: 2 }).multiply(2.54).value;
+    const res = currency(cm, { precision: 2 }).divide(2.54).value;
     setResult(res.toFixed(2));
   };
 
   const handleClear = () => {
     cm && setCm("");
-    direction && setDirection("cmToInch");
     result && setResult("");
   };
 
@@ -59,23 +44,6 @@ export default function CmToInchesConverter() {
         {t("cmToInchesConverter.description")}
       </Typography>
       <br />
-      <RadioGroup
-        defaultValue="cmToInch"
-        value={direction}
-        onChange={(e) => setDirection(e.target.value)}
-      >
-        <FormControlLabel
-          value="cmToInch"
-          control={<Radio />}
-          label={t("cmToInchesConverter.cmToInch")}
-        />
-        <FormControlLabel
-          value="inchToCm"
-          control={<Radio />}
-          label={t("cmToInchesConverter.inchToCm")}
-        />
-      </RadioGroup>
-      <br />
       <Container
         sx={{
           display: "flex",
@@ -90,11 +58,7 @@ export default function CmToInchesConverter() {
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Input
             type="number"
-            label={
-              direction === "cmToInch"
-                ? t("cmToInchesConverter.cmToInch")
-                : t("cmToInchesConverter.inchToCm")
-            }
+            label={t("cmToInchesConverter.cm")}
             variant="standard"
             value={cm}
             onChange={(e) => handleChange(e, setCm)}
@@ -103,24 +67,14 @@ export default function CmToInchesConverter() {
         <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
-          <CopyToClipboardButton
-            result={`${result} ${
-              result && direction && direction === "cmToInch"
-                ? t("common.inches")
-                : t("common.cm")
-            }`}
-          >
+          <CopyToClipboardButton result={`${result} ${t("common.inches")}`}>
             <Typography
               sx={{
                 color: "success.dark",
                 fontSize: "1.5rem",
               }}
             >
-              {result}{" "}
-              {result &&
-                (direction === "cmToInch"
-                  ? t("common.inches")
-                  : t("common.cm"))}
+              {result} {t("common.inches")}
             </Typography>
           </CopyToClipboardButton>
         </Container>

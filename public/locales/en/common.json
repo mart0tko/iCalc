@@ -128,9 +128,10 @@
     "age": "Age"
   },
   "cmToInchesConverter": {
-    "title": "CM to Inches Converter",
+    "title": "Cm to Inches Converter",
     "description": "To calculate CM to Inches you should divide by 2.54 or multiply by 0.3937. Example: 25cm are 9.84 inches.",
-    "cm": "CM to convert"
+    "cmToInch": "Cm to Inches",
+    "inchToCm": "Inches to Cm"
   },
   "mmToInchesConverter": {
     "title": "MM to Inches Converter",
@@ -148,6 +149,7 @@
     "calculators": "Calculators",
     "converters": "Converters",
     "inches": "Inches",
+    "cm": "Cm",
     "reset": "Reset",
     "result": "Result:",
     "years": "Years",
