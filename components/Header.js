@@ -11,6 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { grey } from "@mui/material/colors";
 import LogoImage from "../public/white_icon_transparent_background.png";
+import { useRouter } from "next/router";
 
 function ScrollTop(props) {
   const { children, window } = props;
@@ -58,6 +59,7 @@ ScrollTop.propTypes = {
 };
 
 export default function Header(props) {
+  const { route } = useRouter();
   return (
     <React.Fragment>
       <AppBar position="sticky" sx={{ pl: 0 }}>
@@ -88,29 +90,32 @@ export default function Header(props) {
           </Link>
         </Toolbar>
       </AppBar>
-      <Toolbar
-        id="back-to-top-anchor"
-        sx={{
-          backgroundColor: "primary.light",
-          textAlign: "center",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white",
-          padding: "3rem",
-        }}
-      >
-        <Typography variant="h4">Free Online Calculators</Typography>
-      </Toolbar>
       <Container
         sx={{
           backgroundColor: grey[100],
-          minHeight: "calc(100vh - 220px)",
-          paddingBottom: "3rem",
+          minHeight: "calc(100vh - 110px)",
           marginLeft: 0,
           marginRight: 0,
           minWidth: "100%",
         }}
       >
+        {route === "/" && (
+          <Toolbar
+            id="back-to-top-anchor"
+            sx={{
+              backgroundColor: "primary.light",
+              textAlign: "center",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "white",
+              padding: "3rem",
+              marginLeft: "-1.5rem",
+              marginRight: "-1.5rem",
+            }}
+          >
+            <Typography variant="h4">Free Online Calculators</Typography>
+          </Toolbar>
+        )}
         <Box>{props.children}</Box>
       </Container>
       {/* <ScrollTop {...props}>
