@@ -1,4 +1,11 @@
-import { Container, TextField, Typography } from "@mui/material";
+import {
+  Container,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -9,25 +16,33 @@ import Input from "../Input";
 
 export default function MmToInchesConverter() {
   const { t } = useTranslation("");
-  const [cm, setCm] = useState(250);
+  const [mm, setMm] = useState(250);
+  const [direction, setDirection] = useState("mmToInch");
   const [result, setResult] = useState("");
 
   useEffect(() => {
     handleSubmit();
-  }, []);
+  }, [direction]);
 
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
 
   const handleSubmit = () => {
+    if (!mm) {
+      return;
+    }
     setResult("");
-    const res = currency(cm, { precision: 2 }).divide(2.54).divide(10).value;
+    const res =
+      direction === "mmToInch"
+        ? currency(mm, { precision: 2 }).divide(2.54).divide(10).value
+        : currency(mm, { precision: 2 }).multiply(2.54).multiply(10).value;
     setResult(res.toFixed(2));
   };
 
   const handleClear = () => {
-    cm && setCm("");
+    mm && setMm("");
+    direction && setDirection("mmToInch");
     result && setResult("");
   };
 
@@ -44,6 +59,23 @@ export default function MmToInchesConverter() {
         {t("mmToInchesConverter.description")}
       </Typography>
       <br />
+      <RadioGroup
+        defaultValue="mmToInch"
+        value={direction}
+        onChange={(e) => setDirection(e.target.value)}
+      >
+        <FormControlLabel
+          value="mmToInch"
+          control={<Radio />}
+          label={t("mmToInchesConverter.mmToInch")}
+        />
+        <FormControlLabel
+          value="inchToMm"
+          control={<Radio />}
+          label={t("mmToInchesConverter.inchToMm")}
+        />
+      </RadioGroup>
+      <br />
       <Container
         sx={{
           display: "flex",
@@ -58,23 +90,37 @@ export default function MmToInchesConverter() {
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Input
             type="number"
-            label={t("mmToInchesConverter.mm")}
+            label={
+              direction === "mmToInch"
+                ? t("mmToInchesConverter.mmToInch")
+                : t("mmToInchesConverter.inchToMm")
+            }
             variant="standard"
-            value={cm}
-            onChange={(e) => handleChange(e, setCm)}
+            value={mm}
+            onChange={(e) => handleChange(e, setMm)}
           />
         </Container>
         <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={`${result} ${t("common.inches")}`}>
+          <CopyToClipboardButton
+            result={`${result} ${
+              result && direction === "mmToInch"
+                ? t("common.inches")
+                : t("common.mm")
+            }`}
+          >
             <Typography
               sx={{
                 color: "success.dark",
                 fontSize: "1.5rem",
               }}
             >
-              {result} {t("common.inches")}
+              {result}{" "}
+              {result &&
+                (direction === "mmToInch"
+                  ? t("common.inches")
+                  : t("common.mm"))}
             </Typography>
           </CopyToClipboardButton>
         </Container>

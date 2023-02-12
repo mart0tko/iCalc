@@ -29,10 +29,10 @@ export default function CmToInchesConverter() {
   };
 
   const handleSubmit = () => {
-    setResult("");
     if (!cm) {
       return;
     }
+    setResult("");
     const res =
       direction === "cmToInch"
         ? currency(cm, { precision: 2 }).divide(2.54).value
@@ -105,7 +105,7 @@ export default function CmToInchesConverter() {
           <Typography sx={{}}>{t("common.result")}</Typography>
           <CopyToClipboardButton
             result={`${result} ${
-              result && direction && direction === "cmToInch"
+              result && direction === "cmToInch"
                 ? t("common.inches")
                 : t("common.cm")
             }`}

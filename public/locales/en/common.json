@@ -136,12 +136,14 @@
   "mmToInchesConverter": {
     "title": "MM to Inches Converter",
     "description": "To calculate MM to Inches you should divide by 25.4. Example: 250mm are 9.84 inches.",
-    "mm": "MM to convert"
+    "mmToInch": "Mm to Inches",
+    "inchToMm": "Inches to Mm"
   },
   "feetToInchesConverter": {
     "title": "Feet to Inches Converter",
     "description": "To calculate Feet to Inches you should multiply by 12. Example: 10 feets are 120 inches.",
-    "feet": "Feet to convert"
+    "feetToInch": "Feet to Inches",
+    "inchToFeet": "Inches to Feet"
   },
 
   "common": {
@@ -150,6 +152,8 @@
     "converters": "Converters",
     "inches": "Inches",
     "cm": "Cm",
+    "mm": "Mm",
+    "feet": "Feet",
     "reset": "Reset",
     "result": "Result:",
     "years": "Years",

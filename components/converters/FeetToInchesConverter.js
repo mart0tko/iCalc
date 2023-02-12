@@ -1,4 +1,11 @@
-import { Container, TextField, Typography } from "@mui/material";
+import {
+  Container,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -11,23 +18,31 @@ export default function FeetToInchesConverter() {
   const { t } = useTranslation("");
   const [cm, setCm] = useState(10);
   const [result, setResult] = useState("");
+  const [direction, setDirection] = useState("feetToInch");
 
   useEffect(() => {
     handleSubmit();
-  }, []);
+  }, [direction]);
 
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
 
   const handleSubmit = () => {
+    if (!cm) {
+      return;
+    }
     setResult("");
-    const res = currency(cm, { precision: 2 }).multiply(12).value;
+    const res =
+      direction === "feetToInch"
+        ? currency(cm, { precision: 2 }).multiply(12).value
+        : currency(cm, { precision: 2 }).divide(12).value;
     setResult(res.toFixed(2));
   };
 
   const handleClear = () => {
     cm && setCm("");
+    direction && setDirection("feetToInch");
     result && setResult("");
   };
 
@@ -44,6 +59,23 @@ export default function FeetToInchesConverter() {
         {t("feetToInchesConverter.description")}
       </Typography>
       <br />
+      <RadioGroup
+        defaultValue="feetToInch"
+        value={direction}
+        onChange={(e) => setDirection(e.target.value)}
+      >
+        <FormControlLabel
+          value="feetToInch"
+          control={<Radio />}
+          label={t("feetToInchesConverter.feetToInch")}
+        />
+        <FormControlLabel
+          value="inchToCm"
+          control={<Radio />}
+          label={t("feetToInchesConverter.inchToFeet")}
+        />
+      </RadioGroup>
+      <br />
       <Container
         sx={{
           display: "flex",
@@ -58,7 +90,11 @@ export default function FeetToInchesConverter() {
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Input
             type="number"
-            label={t("feetToInchesConverter.feet")}
+            label={
+              direction === "feetToInch"
+                ? t("feetToInchesConverter.feetToInch")
+                : t("feetToInchesConverter.inchToFeet")
+            }
             variant="standard"
             value={cm}
             onChange={(e) => handleChange(e, setCm)}
@@ -74,7 +110,11 @@ export default function FeetToInchesConverter() {
                 fontSize: "1.5rem",
               }}
             >
-              {result} {t("common.inches")}
+              {result}{" "}
+              {result &&
+                (direction === "feetToInch"
+                  ? t("common.inches")
+                  : t("common.feet"))}
             </Typography>
           </CopyToClipboardButton>
         </Container>
