@@ -12,6 +12,7 @@ import Image from "next/image";
 import { grey } from "@mui/material/colors";
 import LogoImage from "../public/white_icon_transparent_background.png";
 import { useRouter } from "next/router";
+import { CircularProgress } from "@mui/material";
 
 function ScrollTop(props) {
   const { children, window } = props;
@@ -117,7 +118,9 @@ export default function Header(props) {
             <Typography variant="h4">Free Online Calculators</Typography>
           </Toolbar>
         )}
-        <Box>{props.children}</Box>
+        <React.Suspense fallback={<CircularProgress />}>
+          <Box>{props.children}</Box>
+        </React.Suspense>
       </Container>
       {/* <ScrollTop {...props}>
         <Fab size="small" aria-label="scroll back to top">
