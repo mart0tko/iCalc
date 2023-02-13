@@ -97,8 +97,8 @@ export default function Header(props) {
           marginLeft: 0,
           marginRight: 0,
           minWidth: "100%",
-          paddingLeft: 0,
-          paddingRight: 0,
+          paddingLeft: "0 !important",
+          paddingRight: "0 !important",
           paddingBottom: "1rem",
         }}
       >

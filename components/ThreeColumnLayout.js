@@ -13,6 +13,7 @@ export default function ThreeColumnLayout({ children }) {
               width: "100%",
               minHeight: 300,
               padding: "1rem",
+              margin: "1px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
