@@ -127,15 +127,21 @@
     "description": "Cats mature more quickly in their first two years of life and then start to slow down. The following formula is commonly used to estimate a cat's age in human years.",
     "age": "Age"
   },
+  "cmToFeetConverter": {
+    "title": "Cm to Feets Converter",
+    "description": "To calculate Cm to Feets you should divide by 2.54 and then divide by 12. Example: 25cm are 0.82 feets.",
+    "cmToFeet": "Cm to Feets",
+    "feetToCm": "Feets to Cm"
+  },
   "cmToInchesConverter": {
     "title": "Cm to Inches Converter",
-    "description": "To calculate CM to Inches you should divide by 2.54 or multiply by 0.3937. Example: 25cm are 9.84 inches.",
+    "description": "To calculate Cm to Inches you should divide by 2.54 or multiply by 0.3937. Example: 25cm are 9.84 inches.",
     "cmToInch": "Cm to Inches",
     "inchToCm": "Inches to Cm"
   },
   "mmToInchesConverter": {
     "title": "MM to Inches Converter",
-    "description": "To calculate MM to Inches you should divide by 25.4. Example: 250mm are 9.84 inches.",
+    "description": "To calculate Mm to Inches you should divide by 25.4. Example: 250mm are 9.84 inches.",
     "mmToInch": "Mm to Inches",
     "inchToMm": "Inches to Mm"
   },
@@ -145,6 +151,12 @@
     "feetToInch": "Feet to Inches",
     "inchToFeet": "Inches to Feet"
   },
+  "milesToKmConverter": {
+    "title": "Miles to Km Converter",
+    "description": "To calculate Miles to Km you should multiply kilometers by 1.609344. Example: 10 kilometers are ~6.21 miles.",
+    "milesToKm": "Miles to Km",
+    "kmToMiles": "Km to Miles"
+  },
 
   "common": {
     "calculate": "Calculate",
@@ -153,6 +165,8 @@
     "inches": "Inches",
     "cm": "Cm",
     "mm": "Mm",
+    "km": "Km",
+    "miles": "Miles",
     "feet": "Feet",
     "reset": "Reset",
     "result": "Result:",

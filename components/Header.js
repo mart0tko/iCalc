@@ -97,6 +97,7 @@ export default function Header(props) {
           marginLeft: 0,
           marginRight: 0,
           minWidth: "100%",
+          paddingBottom: "1rem",
         }}
       >
         {route === "/" && (

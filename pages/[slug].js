@@ -21,6 +21,8 @@ import DiscountCalculator from "../components/Calculaters/DiscountCalculator";
 import CmToInchesConverter from "../components/converters/CmToInchesConverter";
 import MmToInchesConverter from "../components/converters/MmToInchesConverter";
 import FeetToInchesConverter from "../components/converters/FeetToInchesConverter";
+import CmToFeetConverter from "../components/converters/CmToFeetConverter";
+import MilesToKmConverter from "../components/converters/MilesToKmConverter";
 
 export default function About() {
   const { asPath } = useRouter();
@@ -66,6 +68,10 @@ export default function About() {
       return <MmToInchesConverter />;
     case "feet-to-inches-converter":
       return <FeetToInchesConverter />;
+    case "cm-to-feet-converter":
+      return <CmToFeetConverter />;
+    case "miles-to-km-converter":
+      return <MilesToKmConverter />;
     default:
       return <Error statusCode={404} />;
   }

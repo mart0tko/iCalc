@@ -14,10 +14,10 @@ import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import Input from "../Input";
 
-export default function CmToFeetConverter() {
+export default function MilesToKmConverter() {
   const { t } = useTranslation("");
-  const [cm, setCm] = useState(25);
-  const [direction, setDirection] = useState("cmToFeet");
+  const [km, setKm] = useState(25);
+  const [direction, setDirection] = useState("milesToKm");
   const [result, setResult] = useState("");
 
   useEffect(() => {
@@ -29,20 +29,20 @@ export default function CmToFeetConverter() {
   };
 
   const handleSubmit = () => {
-    if (!cm) {
+    if (!km) {
       return;
     }
     setResult("");
     const res =
-      direction === "cmToFeet"
-        ? currency(cm, { precision: 2 }).divide(2.54).divide(12).value
-        : currency(cm, { precision: 2 }).multiply(2.54).multiply(12).value;
+      direction === "milesToKm"
+        ? currency(km, { precision: 2 }).multiply(1.609344).value
+        : currency(km, { precision: 2 }).divide(1.609344).value;
     setResult(res.toFixed(2));
   };
 
   const handleClear = () => {
-    cm && setCm("");
-    direction && setDirection("cmToFeet");
+    km && setKm("");
+    direction && setDirection("milesToKm");
     result && setResult("");
   };
 
@@ -53,26 +53,26 @@ export default function CmToFeetConverter() {
         gutterBottom
         sx={{ fontSize: "2rem", lineHeight: "3rem" }}
       >
-        {t("cmToFeetConverter.title")}
+        {t("milesToKmConverter.title")}
       </Typography>
       <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("cmToFeetConverter.description")}
+        {t("milesToKmConverter.description")}
       </Typography>
       <br />
       <RadioGroup
-        defaultValue="cmToFeet"
+        defaultValue="milesToKm"
         value={direction}
         onChange={(e) => setDirection(e.target.value)}
       >
         <FormControlLabel
-          value="cmToFeet"
+          value="milesToKm"
           control={<Radio />}
-          label={t("cmToFeetConverter.cmToFeet")}
+          label={t("milesToKmConverter.milesToKm")}
         />
         <FormControlLabel
-          value="inchToCm"
+          value="kmToMiles"
           control={<Radio />}
-          label={t("cmToFeetConverter.cmToFeet")}
+          label={t("milesToKmConverter.kmToMiles")}
         />
       </RadioGroup>
       <br />
@@ -91,13 +91,13 @@ export default function CmToFeetConverter() {
           <Input
             type="number"
             label={
-              direction === "cmToFeet"
-                ? t("cmToFeetConverter.cmToFeet")
-                : t("cmToFeetConverter.inchToCm")
+              direction === "milesToKm"
+                ? t("milesToKmConverter.milesToKm")
+                : t("milesToKmConverter.kmToMiles")
             }
             variant="standard"
-            value={cm}
-            onChange={(e) => handleChange(e, setCm)}
+            value={km}
+            onChange={(e) => handleChange(e, setKm)}
           />
         </Container>
         <br />
@@ -105,9 +105,9 @@ export default function CmToFeetConverter() {
           <Typography sx={{}}>{t("common.result")}</Typography>
           <CopyToClipboardButton
             result={`${result} ${
-              result && direction === "cmToFeet"
-                ? t("common.inches")
-                : t("common.cm")
+              result && direction === "milesToKm"
+                ? t("common.miles")
+                : t("common.km")
             }`}
           >
             <Typography
@@ -118,7 +118,9 @@ export default function CmToFeetConverter() {
             >
               {result}{" "}
               {result &&
-                (direction === "cmToFeet" ? t("common.feet") : t("common.cm"))}
+                (direction === "milesToKm"
+                  ? t("common.km")
+                  : t("common.miles"))}
             </Typography>
           </CopyToClipboardButton>
         </Container>

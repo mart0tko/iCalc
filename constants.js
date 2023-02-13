@@ -99,4 +99,14 @@ export const InternationalLinksConvertors = {
     icon: "published_with_changes",
     title: "feetToInchesConverter.title",
   },
+  "cm-to-feet-converter": {
+    en: "/cm-to-feet-converter",
+    icon: "published_with_changes",
+    title: "cmToFeetConverter.title",
+  },
+  "miles-to-km-converter": {
+    en: "/miles-to-km-converter",
+    icon: "published_with_changes",
+    title: "milesToKmConverter.title",
+  },
 };
