@@ -109,4 +109,9 @@ export const InternationalLinksConvertors = {
     icon: "published_with_changes",
     title: "milesToKmConverter.title",
   },
+  "meter-to-feet-converter": {
+    en: "/meter-to-feet-converter",
+    icon: "published_with_changes",
+    title: "mToFeetConverter.title",
+  },
 };

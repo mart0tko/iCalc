@@ -23,6 +23,7 @@ import MmToInchesConverter from "../components/converters/MmToInchesConverter";
 import FeetToInchesConverter from "../components/converters/FeetToInchesConverter";
 import CmToFeetConverter from "../components/converters/CmToFeetConverter";
 import MilesToKmConverter from "../components/converters/MilesToKmConverter";
+import MToFeetConverter from "../components/converters/mToFeetConverter";
 
 export default function About() {
   const { asPath } = useRouter();
@@ -72,6 +73,8 @@ export default function About() {
       return <CmToFeetConverter />;
     case "miles-to-km-converter":
       return <MilesToKmConverter />;
+    case "meter-to-feet-converter":
+      return <MToFeetConverter />;
     default:
       return <Error statusCode={404} />;
   }

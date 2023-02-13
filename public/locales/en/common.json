@@ -133,6 +133,12 @@
     "cmToFeet": "Cm to Feets",
     "feetToCm": "Feets to Cm"
   },
+  "mToFeetConverter": {
+    "title": "Meters to Feets Converter",
+    "description": "To calculate Meters to Feets you should multiply by 3.28. Example: 10m are 32.8 feets.",
+    "mToFeet": "M to Feets",
+    "feetToM": "Feets to M"
+  },
   "cmToInchesConverter": {
     "title": "Cm to Inches Converter",
     "description": "To calculate Cm to Inches you should divide by 2.54 or multiply by 0.3937. Example: 25cm are 9.84 inches.",
@@ -164,6 +170,7 @@
     "converters": "Converters",
     "inches": "Inches",
     "cm": "Cm",
+    "m": "M",
     "mm": "Mm",
     "km": "Km",
     "miles": "Miles",
