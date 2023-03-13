@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import Input from "../components/Input";
 import { useTranslation } from "react-i18next";
+import Calculator from "../components/calculaters/Calculator";
 
 export default function Home() {
   const { locale } = useRouter();
@@ -25,6 +26,19 @@ export default function Home() {
 
   return (
     <>
+      <Input
+        label={t("common.search")}
+        onChange={(e) => handleChange(e.target.value)}
+        // style={style}
+        sx={{
+          width: {
+            xs: "calc(100% - 10%)",
+            sm: "calc(100% - 20%)",
+            md: "calc(100% - 30%)",
+          },
+          margin: { xs: "2% 5%", sm: "2% 10%", md: "2% 15%" },
+        }}
+      />
       <Box
         sx={{
           display: "flex",
@@ -37,15 +51,7 @@ export default function Home() {
           },
         }}
       >
-        {/* <Typography>{t("common.calculators")}</Typography>
-        <hr /> */}
-        <Input
-          label={t("common.search")}
-          onChange={(e) => handleChange(e.target.value)}
-          style={{ margin: "2% 25%" }}
-        />
-
-        {/* <Calculator /> */}
+        <Calculator />
         {calculators.map((value, index) => (
           <CalculaterHomeLink
             key={value[locale]}
@@ -67,3 +73,5 @@ export async function getStaticProps({ locale }) {
     },
   };
 }
+
+// Responsive design example here with sx={}

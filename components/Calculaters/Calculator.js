@@ -121,6 +121,9 @@ export default function Calculator() {
         textAlign: "center",
         justifyContent: "flex-start",
         borderRadius: borderRadius,
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "primary.dark",
       }}
     >
       <Input
@@ -140,7 +143,7 @@ export default function Calculator() {
           },
         }}
         value={calc.num ? calc.num : calc.res}
-        deisabled={true}
+        disabled={true}
         // onChange={(e) => numClickHandler(+e.target.value)}
       />
       <div style={{ display: "flex", width: "100%", marginBottom: "0.25rem" }}>
