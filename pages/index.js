@@ -18,7 +18,7 @@ export default function Home() {
 
   const handleChange = (searchTerm) => {
     const filteredCalculators = calculatorsRef.current.filter(
-      (value) => value.en.indexOf(searchTerm) !== -1
+      (value) => value.en.indexOf(searchTerm.toLowerCase()) !== -1
     );
     setCalculators(filteredCalculators);
   };
