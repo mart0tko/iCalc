@@ -3,9 +3,27 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import CalculaterHomeLink from "../components/CalculaterHomeLink";
 import InternationalLinks, { InternationalLinksConvertors } from "../constants";
 import { useRouter } from "next/router";
+import { useRef, useState } from "react";
+import Input from "../components/Input";
+import { useTranslation } from "react-i18next";
+import Calculator from "../components/calculaters/Calculator";
 
 export default function Home() {
   const { locale } = useRouter();
+  const { t } = useTranslation("");
+  const [calculators, setCalculators] = useState([
+    ...InternationalLinks,
+    ...InternationalLinksConvertors,
+  ]);
+  const calculatorsRef = useRef(calculators);
+
+  const handleChange = (searchTerm) => {
+    const filteredCalculators = calculatorsRef.current.filter(
+      (value) => value.en.indexOf(searchTerm) !== -1
+    );
+    setCalculators(filteredCalculators);
+  };
+
   return (
     <>
       <Box
@@ -22,22 +40,20 @@ export default function Home() {
       >
         {/* <Typography>{t("common.calculators")}</Typography>
         <hr /> */}
-        {Object.keys(InternationalLinks).map((value, index) => (
+        <Input
+          label={t("common.search")}
+          onChange={(e) => handleChange(e.target.value)}
+          style={{ margin: "2% 25%" }}
+        />
+
+        <Calculator />
+        {calculators.map((value, index) => (
           <CalculaterHomeLink
-            key={InternationalLinks[value]}
+            key={value[locale]}
             color={index % 2 == 0}
-            href={InternationalLinks[value][locale]}
-            icon={InternationalLinks[value].icon}
-            title={InternationalLinks[value].title}
-          />
-        ))}
-        {Object.keys(InternationalLinksConvertors).map((value, index) => (
-          <CalculaterHomeLink
-            key={InternationalLinksConvertors[value]}
-            color={index % 2 == 0}
-            href={InternationalLinksConvertors[value][locale]}
-            icon={InternationalLinksConvertors[value].icon}
-            title={InternationalLinksConvertors[value].title}
+            href={value[locale]}
+            icon={value.icon}
+            title={value.title}
           />
         ))}
       </Box>

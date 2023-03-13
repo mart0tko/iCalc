@@ -13,6 +13,7 @@ import { grey } from "@mui/material/colors";
 import LogoImage from "../public/white_icon_transparent_background.png";
 import { useRouter } from "next/router";
 import { CircularProgress } from "@mui/material";
+import Calculator from "./calculaters/Calculator";
 
 function ScrollTop(props) {
   const { children, window } = props;
@@ -68,7 +69,6 @@ export default function Header(props) {
           sx={{
             justifyContent: { xs: "center", sm: "center", md: "flex-start" },
           }}
-          position
         >
           <Link href="/" style={{ display: "flex" }}>
             <Image
@@ -112,10 +112,12 @@ export default function Header(props) {
               alignItems: "center",
               justifyContent: "center",
               color: "white",
-              padding: "3rem",
+              padding: "2rem",
             }}
           >
-            <Typography variant="h4">Free Online Calculators</Typography>
+            <Typography variant="h4" sx={{ margin: 0 }}>
+              Free Online Calculators
+            </Typography>
           </Toolbar>
         )}
         <React.Suspense fallback={<CircularProgress />}>
