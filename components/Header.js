@@ -13,7 +13,6 @@ import { grey } from "@mui/material/colors";
 import LogoImage from "../public/white_icon_transparent_background.png";
 import { useRouter } from "next/router";
 import { CircularProgress } from "@mui/material";
-import Calculator from "./calculaters/Calculator";
 
 function ScrollTop(props) {
   const { children, window } = props;

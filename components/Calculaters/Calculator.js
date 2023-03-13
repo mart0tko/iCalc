@@ -140,7 +140,7 @@ export default function Calculator() {
           },
         }}
         value={calc.num ? calc.num : calc.res}
-        deisabled
+        deisabled={true}
         // onChange={(e) => numClickHandler(+e.target.value)}
       />
       <div style={{ display: "flex", width: "100%", marginBottom: "0.25rem" }}>
