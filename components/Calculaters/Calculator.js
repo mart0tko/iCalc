@@ -1,4 +1,4 @@
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useState } from "react";
 import Input from "../Input";
 
@@ -140,7 +140,8 @@ export default function Calculator() {
           },
         }}
         value={calc.num ? calc.num : calc.res}
-        onChange={(e) => handleChange(e, setValue)}
+        deisabled
+        // onChange={(e) => numClickHandler(+e.target.value)}
       />
       <div style={{ display: "flex", width: "100%", marginBottom: "0.25rem" }}>
         <Button
