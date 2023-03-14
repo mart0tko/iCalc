@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import Input from "../components/Input";
 import { useTranslation } from "react-i18next";
-import Calculator from "../components/calculaters/Calculator";
+import Calculator from "../components/Calculator";
 
 export default function Home() {
   const { locale } = useRouter();

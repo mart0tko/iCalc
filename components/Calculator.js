@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
-import Input from "../Input";
+import Input from "./Input";
 
 const borderRadius = "0.25rem";
 
