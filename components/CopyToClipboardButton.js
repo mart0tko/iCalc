@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Icon, Snackbar, Typography } from "@mui/material";
+import { Container, Icon, Snackbar, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 export default function CopyToClipboardButton({ children, result }) {
@@ -15,7 +15,7 @@ export default function CopyToClipboardButton({ children, result }) {
   }
 
   return (
-    <Typography
+    <Container
       sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
     >
       {children}
@@ -33,6 +33,6 @@ export default function CopyToClipboardButton({ children, result }) {
         onClose={() => setOpen(false)}
         open={open}
       />
-    </Typography>
+    </Container>
   );
 }
