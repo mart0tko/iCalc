@@ -1,12 +1,16 @@
 import Box from "@mui/material/Box";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import CalculaterHomeLink from "../components/CalculaterHomeLink";
-import InternationalLinks, { InternationalLinksConvertors } from "../constants";
+import InternationalLinks, {
+  InternationalLinksConvertors,
+  InternationalLinksGenerators,
+} from "../constants";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Input from "../components/Input";
 import { useTranslation } from "react-i18next";
 import Calculator from "../components/Calculator";
+import generateRandomNumbers from "../scripts/generate-random-number";
 
 export default function Home() {
   const { locale } = useRouter();
@@ -14,6 +18,7 @@ export default function Home() {
   const [calculators, setCalculators] = useState([
     ...InternationalLinks,
     ...InternationalLinksConvertors,
+    ...InternationalLinksGenerators,
   ]);
   const calculatorsRef = useRef(calculators);
 
@@ -58,6 +63,7 @@ export default function Home() {
             href={value[locale]}
             icon={value.icon}
             title={value.title}
+            type={value.type}
           />
         ))}
       </Box>

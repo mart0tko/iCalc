@@ -8,15 +8,15 @@ import CalcButtons from "../CalcButtons";
 
 export default function Age() {
   const { t } = useTranslation("");
-  const [birth, setBirth] = useState("");
-  const [ageAtDate, setAgeAtDate] = useState("");
+  const [birth, setBirth] = useState(
+    moment().subtract(20, "years").format("YYYY-MM-DD")
+  );
+  const [ageAtDate, setAgeAtDate] = useState(moment().format("YYYY-MM-DD"));
   const [result, setResult] = useState("");
   const [showResult, setShowResult] = useState(false);
 
   // TODO add Today option
   useEffect(() => {
-    setAgeAtDate(moment().format("YYYY-MM-DD"));
-    setBirth(moment().subtract(20, "years").format("YYYY-MM-DD"));
     handleSubmit();
   }, []);
 

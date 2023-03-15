@@ -163,11 +163,20 @@
     "milesToKm": "Miles to Km",
     "kmToMiles": "Km to Miles"
   },
+  "randomNumberGenerator": {
+    "title": "Random Number Generator",
+    "description": "Random Number Generator will generate random number between Min and Max values.",
+    "minValue": "Min Value",
+    "maxValue": "Max Value"
+  },
 
   "common": {
     "calculate": "Calculate",
     "calculators": "Calculators",
+    "calculator": "Calculator",
+    "generator": "Generator",
     "converters": "Converters",
+    "converter": "Converter",
     "inches": "Inches",
     "cm": "Cm",
     "m": "M",

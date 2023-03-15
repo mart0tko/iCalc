@@ -24,6 +24,7 @@ import FeetToInchesConverter from "../components/converters/FeetToInchesConverte
 import CmToFeetConverter from "../components/converters/CmToFeetConverter";
 import MilesToKmConverter from "../components/converters/MilesToKmConverter";
 import MToFeetConverter from "../components/converters/mToFeetConverter";
+import RandomNumberGenerator from "../components/generators/RandomNumberGenerator";
 
 export default function About() {
   const { asPath } = useRouter();
@@ -75,6 +76,8 @@ export default function About() {
       return <MilesToKmConverter />;
     case "meter-to-feet-converter":
       return <MToFeetConverter />;
+    case "random-number-generator":
+      return <RandomNumberGenerator />;
     default:
       return <Error statusCode={404} />;
   }

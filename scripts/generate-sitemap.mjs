@@ -3,6 +3,7 @@ import { globby } from "globby";
 import prettier from "prettier";
 import InternationalLinks, {
   InternationalLinksConvertors,
+  InternationalLinksGenerators,
 } from "../constants.js";
 
 // To run it add in package.json - "type": "module"
@@ -51,6 +52,15 @@ async function generate() {
             return `
               <url>
                   <loc>${`https://wannacalc.com${InternationalLinksConvertors[page]["en"]}`}</loc>
+              </url>
+            `;
+          })
+          .join("")}
+        ${Object.keys(InternationalLinksConvertors)
+          .map((page) => {
+            return `
+              <url>
+                  <loc>${`https://wannacalc.com${InternationalLinksGenerators[page]["en"]}`}</loc>
               </url>
             `;
           })
