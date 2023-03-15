@@ -151,4 +151,10 @@ export const InternationalLinksGenerators = [
     title: "randomStringGenerator.title",
     type: "Generator",
   },
+  {
+    en: "/random-password-generator",
+    icon: "generating_tokens",
+    title: "randomPasswordGenerator.title",
+    type: "Generator",
+  },
 ];

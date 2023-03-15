@@ -26,6 +26,7 @@ import MilesToKmConverter from "../components/converters/MilesToKmConverter";
 import MToFeetConverter from "../components/converters/mToFeetConverter";
 import RandomNumberGenerator from "../components/generators/RandomNumberGenerator";
 import RandomStringGenerator from "../components/generators/RandomStringGenerator";
+import RandomPasswordGenerator from "../components/generators/RandomPasswordGenerator";
 
 export default function About() {
   const { asPath } = useRouter();
@@ -81,6 +82,8 @@ export default function About() {
       return <RandomNumberGenerator />;
     case "random-string-generator":
       return <RandomStringGenerator />;
+    case "random-password-generator":
+      return <RandomPasswordGenerator />;
     default:
       return <Error statusCode={404} />;
   }

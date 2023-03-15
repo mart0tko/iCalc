@@ -171,10 +171,18 @@
   },
   "randomStringGenerator": {
     "title": "Random String Generator",
-    "description": "Random String Generator will generate a random string with the picked length. It could be used to generate unique IDs.",
+    "description": "Random String Generator will generate a random string with the picked length and characters to include in it. It could be used to generate unique IDs.",
     "length": "String Length",
     "withNumbers": "Include Numbers",
     "withCapitalLetters": "Include Capital Letters"
+  },
+  "randomPasswordGenerator": {
+    "title": "Random Password Generator",
+    "description": "Random Password Generator will generate a random password with the picked length and characters to include in it.",
+    "length": "String Length",
+    "withNumbers": "Include Numbers",
+    "withCapitalLetters": "Include Capital Letters",
+    "withSpecialCharacters": "Include Special Characters"
   },
 
   "common": {
