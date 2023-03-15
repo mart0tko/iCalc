@@ -145,4 +145,10 @@ export const InternationalLinksGenerators = [
     title: "randomNumberGenerator.title",
     type: "Generator",
   },
+  {
+    en: "/random-string-generator",
+    icon: "generating_tokens",
+    title: "randomStringGenerator.title",
+    type: "Generator",
+  },
 ];

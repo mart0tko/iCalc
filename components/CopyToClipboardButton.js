@@ -16,7 +16,12 @@ export default function CopyToClipboardButton({ children, result }) {
 
   return (
     <Container
-      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        wordBreak: "break-all",
+      }}
     >
       {children}
       <Icon

@@ -25,6 +25,7 @@ import CmToFeetConverter from "../components/converters/CmToFeetConverter";
 import MilesToKmConverter from "../components/converters/MilesToKmConverter";
 import MToFeetConverter from "../components/converters/mToFeetConverter";
 import RandomNumberGenerator from "../components/generators/RandomNumberGenerator";
+import RandomStringGenerator from "../components/generators/RandomStringGenerator";
 
 export default function About() {
   const { asPath } = useRouter();
@@ -78,6 +79,8 @@ export default function About() {
       return <MToFeetConverter />;
     case "random-number-generator":
       return <RandomNumberGenerator />;
+    case "random-string-generator":
+      return <RandomStringGenerator />;
     default:
       return <Error statusCode={404} />;
   }

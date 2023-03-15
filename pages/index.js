@@ -6,11 +6,9 @@ import InternationalLinks, {
   InternationalLinksGenerators,
 } from "../constants";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Input from "../components/Input";
 import { useTranslation } from "react-i18next";
-import Calculator from "../components/Calculator";
-import generateRandomNumbers from "../scripts/generate-random-number";
 
 export default function Home() {
   const { locale } = useRouter();
@@ -55,7 +53,6 @@ export default function Home() {
           //   margin: { xs: "2% 5%", sm: "2% 10%", md: "2% 15%" },
           // }}
         />
-        <Calculator />
         {calculators.map((value, index) => (
           <CalculaterHomeLink
             key={value[locale]}

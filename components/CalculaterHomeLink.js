@@ -44,7 +44,6 @@ export default function CalculaterHomeLink({ href, icon, title, color, type }) {
   useEffect(() => {
     setLabel(t(generateText(type)));
     setLabelColor(t(generateColor(type, theme)));
-    console.log(theme);
   }, []);
 
   return (

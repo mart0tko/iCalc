@@ -5,7 +5,6 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
-import currency from "currency.js";
 import generateRandomNumbers from "../../scripts/generate-random-number";
 
 export default function RandomNumberGenerator() {

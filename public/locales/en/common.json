@@ -165,9 +165,16 @@
   },
   "randomNumberGenerator": {
     "title": "Random Number Generator",
-    "description": "Random Number Generator will generate random number between Min and Max values.",
+    "description": "Random Number Generator will generate a random number between Min and Max values.",
     "minValue": "Min Value",
     "maxValue": "Max Value"
+  },
+  "randomStringGenerator": {
+    "title": "Random String Generator",
+    "description": "Random String Generator will generate a random string with the picked length. It could be used to generate unique IDs.",
+    "length": "String Length",
+    "withNumbers": "Include Numbers",
+    "withCapitalLetters": "Include Capital Letters"
   },
 
   "common": {
