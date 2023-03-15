@@ -1,18 +1,19 @@
-import { Link, Paper, Typography } from "@mui/material";
+import { Link, Paper, Typography, useTheme } from "@mui/material";
 import { Icon } from "@mui/material";
 
 export default function Footer() {
+  const theme = useTheme();
   return (
     <Paper
       sx={{
         width: "100%",
-        // position: "fixed",
         bottom: 0,
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
         fontSize: "1rem",
+        backgroundColor: "primary.light",
       }}
       component="footer"
       variant="outlined"
@@ -69,6 +70,7 @@ export default function Footer() {
               alignItems: "center",
               justifyContent: "center",
               textAlign: "center ",
+              color: "black",
             }}
           >
             <Icon
@@ -87,8 +89,11 @@ export default function Footer() {
       </div>
       <Typography
         variant="caption"
-        color="initial"
-        sx={{ marginRight: "1rem", borderTop: "1px solid dotted" }}
+        sx={{
+          marginRight: "1rem",
+          borderTop: "1px solid dotted",
+          color: "black",
+        }}
       >
         © Copyright 2023 WannaCalc. All Rights Reserved.
       </Typography>
