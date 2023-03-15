@@ -4,6 +4,16 @@ import Input from "./Input";
 
 const borderRadius = "0.25rem";
 
+const buttonStyles = {
+  display: "flex",
+  flex: 1,
+  minWidth: "auto",
+  backgroundColor: "white",
+  maxHeight: "1.5rem",
+  marginRight: "0.25rem",
+  cursor: "pointer",
+};
+
 export default function Calculator() {
   const [calc, setCalc] = useState({
     sign: "",
@@ -147,253 +157,79 @@ export default function Calculator() {
         // onChange={(e) => numClickHandler(+e.target.value)}
       />
       <div style={{ display: "flex", width: "100%", marginBottom: "0.25rem" }}>
-        <Button
-          value="C"
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={resetClickHandler}
-        >
+        <Button value="C" sx={buttonStyles} onClick={resetClickHandler}>
           C
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={invertClickHandler}
-        >
+        <Button sx={buttonStyles} onClick={invertClickHandler}>
           +-
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={percentClickHandler}
-        >
+        <Button sx={buttonStyles} onClick={percentClickHandler}>
           %
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-          }}
-          onClick={() => signClickHandler("/")}
-        >
+        <Button sx={buttonStyles} onClick={() => signClickHandler("/")}>
           /
         </Button>
       </div>
       <div style={{ display: "flex", width: "100%", marginBottom: "0.25rem" }}>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={() => numClickHandler(7)}
-        >
+        <Button sx={buttonStyles} onClick={() => numClickHandler(7)}>
           7
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={() => numClickHandler(8)}
-        >
+        <Button sx={buttonStyles} onClick={() => numClickHandler(8)}>
           8
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={() => numClickHandler(9)}
-        >
+        <Button sx={buttonStyles} onClick={() => numClickHandler(9)}>
           9
         </Button>
         <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-          }}
+          sx={{ ...buttonStyles, marginRight: 0 }}
           onClick={() => signClickHandler("X")}
         >
           X
         </Button>
       </div>
       <div style={{ display: "flex", width: "100%", marginBottom: "0.25rem" }}>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={() => numClickHandler(4)}
-        >
+        <Button sx={buttonStyles} onClick={() => numClickHandler(4)}>
           4
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={() => numClickHandler(5)}
-        >
+        <Button sx={buttonStyles} onClick={() => numClickHandler(5)}>
           5
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={() => numClickHandler(6)}
-        >
+        <Button sx={buttonStyles} onClick={() => numClickHandler(6)}>
           6
         </Button>
         <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-          }}
+          sx={{ ...buttonStyles, marginRight: 0 }}
           onClick={() => signClickHandler("-")}
         >
           -
         </Button>
       </div>
       <div style={{ display: "flex", width: "100%", marginBottom: "0.25rem" }}>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={() => numClickHandler(1)}
-        >
+        <Button sx={buttonStyles} onClick={() => numClickHandler(1)}>
           1
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={() => numClickHandler(2)}
-        >
+        <Button sx={buttonStyles} onClick={() => numClickHandler(2)}>
           2
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={() => numClickHandler(3)}
-        >
+        <Button sx={buttonStyles} onClick={() => numClickHandler(3)}>
           3
         </Button>
         <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-          }}
+          sx={{ ...buttonStyles, marginRight: 0 }}
           onClick={() => signClickHandler("+")}
         >
           +
         </Button>
       </div>
       <div style={{ display: "flex", width: "100%" }}>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={() => numClickHandler(0)}
-        >
+        <Button sx={buttonStyles} onClick={() => numClickHandler(0)}>
           0
         </Button>
-        <Button
-          sx={{
-            display: "flex",
-            flex: 1,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-            marginRight: "0.25rem",
-          }}
-          onClick={comaClickHandler}
-        >
+        <Button sx={buttonStyles} onClick={comaClickHandler}>
           .
         </Button>
         <Button
-          sx={{
-            display: "flex",
-            flex: 2,
-            minWidth: "auto",
-            backgroundColor: "white",
-            maxHeight: "1.5rem",
-          }}
+          sx={{ ...buttonStyles, marginRight: 0 }}
           onClick={equalsClickHandler}
         >
           =

@@ -38,33 +38,27 @@ async function generate() {
             `;
           })
           .join("")}
-        ${Object.keys(InternationalLinks)
-          .map((page) => {
-            return `
+        ${InternationalLinks.map((page) => {
+          return `
               <url>
-                  <loc>${`https://wannacalc.com${InternationalLinks[page]["en"]}`}</loc>
+                  <loc>${`https://wannacalc.com${page["en"]}`}</loc>
               </url>
             `;
-          })
-          .join("")}
-        ${Object.keys(InternationalLinksConvertors)
-          .map((page) => {
-            return `
+        }).join("")}
+        ${InternationalLinksConvertors.map((page) => {
+          return `
               <url>
-                  <loc>${`https://wannacalc.com${InternationalLinksConvertors[page]["en"]}`}</loc>
+                  <loc>${`https://wannacalc.com${page["en"]}`}</loc>
               </url>
             `;
-          })
-          .join("")}
-        ${Object.keys(InternationalLinksConvertors)
-          .map((page) => {
-            return `
+        }).join("")}
+        ${InternationalLinksGenerators.map((page) => {
+          return `
               <url>
-                  <loc>${`https://wannacalc.com${InternationalLinksGenerators[page]["en"]}`}</loc>
+                  <loc>${`https://wannacalc.com${page["en"]}`}</loc>
               </url>
             `;
-          })
-          .join("")}
+        }).join("")}
     </urlset>
     `;
 

@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const sizePaper = 128;
-const paddingTop = 0;
+const paddingTop = 2;
 
 function generateText(type) {
   switch (type) {
@@ -24,7 +24,7 @@ function generateText(type) {
 function generateColor(type, theme) {
   switch (type) {
     case "calculator":
-      return theme.palette.success.main;
+      return theme.palette.secondary.main;
     case "Converter":
       return theme.palette.warning.main;
     case "Generator":
@@ -79,6 +79,9 @@ export default function CalculaterHomeLink({ href, icon, title, color, type }) {
             left: 0,
             textAlign: "center",
             width: "100%",
+            borderBottomWidth: "1px",
+            borderBottomStyle: "solid",
+            borderColor: theme.palette.primary.main,
             backgroundColor: labelColor,
           }}
         >
