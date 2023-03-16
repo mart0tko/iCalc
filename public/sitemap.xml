@@ -91,4 +91,12 @@
   <url>
     <loc>https://wannacalc.com/random-number-generator</loc>
   </url>
+
+  <url>
+    <loc>https://wannacalc.com/random-string-generator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/random-password-generator</loc>
+  </url>
 </urlset>
