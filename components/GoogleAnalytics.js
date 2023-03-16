@@ -4,12 +4,13 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import { memo, useEffect } from "react";
 const TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
+const isDev = process.env.NODE_ENV === "development" ? true : false;
 const GoogleAnalytics = () => {
   const router = useRouter();
-  const { publicRuntimeConfig } = getConfig();
+  //   const { publicRuntimeConfig } = getConfig();
   // 👇 send page views when users gets to the landing page
   useEffect(() => {
-    if (!TRACKING_ID || router.isPreview) return;
+    if (!TRACKING_ID || router.isPreview || isDev) return;
     gtag("config", TRACKING_ID, {
       send_page_view: false, //manually send page views to have full control
     });
@@ -21,7 +22,7 @@ const GoogleAnalytics = () => {
   // 👇 send page views on route change
   useEffect(() => {
     const handleRouteChange = (url) => {
-      if (!TRACKING_ID || router.isPreview || publicRuntimeConfig.isDev) return;
+      if (!TRACKING_ID || router.isPreview || isDev) return;
       // manually send page views
       gtag("event", "page_view", {
         page_path: url,
@@ -34,9 +35,9 @@ const GoogleAnalytics = () => {
       router.events.off("routeChangeComplete", handleRouteChange);
       router.events.off("hashChangeComplete", handleRouteChange);
     };
-  }, [router.events, router.isPreview, publicRuntimeConfig.isDev]);
+  }, [router.events, router.isPreview]);
   // 👇 prevent rendering scripts if there is no TRACKING_ID or if it's preview mode.
-  if (!TRACKING_ID || router.isPreview || publicRuntimeConfig.isDev) {
+  if (!TRACKING_ID || router.isPreview || isDev) {
     return null;
   }
   return (
