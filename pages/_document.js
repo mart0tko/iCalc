@@ -27,6 +27,10 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -36,10 +40,6 @@ class MyDocument extends Document {
           `,
             }}
           />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
         </body>
       </Html>
     );
