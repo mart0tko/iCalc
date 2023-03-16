@@ -9,24 +9,24 @@ import getConfig from "next/config";
 import Footer from "../components/footer";
 
 function MyApp({ Component, pageProps }) {
-  const { publicRuntimeConfig } = getConfig();
-  const router = useRouter();
+  // const { publicRuntimeConfig } = getConfig();
+  // const router = useRouter();
 
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      !publicRuntimeConfig?.isDev && gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    router.events.on("hashChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-      router.events.off("hashChangeComplete", handleRouteChange);
-    };
-  }, [router.events, publicRuntimeConfig]);
+  // useEffect(() => {
+  //   const handleRouteChange = (url) => {
+  //     !publicRuntimeConfig?.isDev && gtag.pageview(url);
+  //   };
+  //   router.events.on("routeChangeComplete", handleRouteChange);
+  //   router.events.on("hashChangeComplete", handleRouteChange);
+  //   return () => {
+  //     router.events.off("routeChangeComplete", handleRouteChange);
+  //     router.events.off("hashChangeComplete", handleRouteChange);
+  //   };
+  // }, [router.events, publicRuntimeConfig]);
 
   return (
     <>
-      <Script
+      {/* <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
       />
@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
           gtag('config', '${gtag.GA_TRACKING_ID}');
           `,
         }}
-      />
+      /> */}
       <Header>
         <Component {...pageProps} />
       </Header>
