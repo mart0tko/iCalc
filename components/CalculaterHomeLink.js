@@ -38,12 +38,12 @@ export default function CalculaterHomeLink({ href, icon, title, color, type }) {
   const { t } = useTranslation();
   const { locale } = useRouter();
   const [label, setLabel] = useState("");
-  const [labelColor, setLabelColor] = useState("");
   const theme = useTheme();
+  const [labelColor, setLabelColor] = useState(theme.palette.grey.main);
 
   useEffect(() => {
     setLabel(t(generateText(type)));
-    setLabelColor(t(generateColor(type, theme)));
+    setLabelColor(generateColor(type, theme));
   }, []);
 
   return (
