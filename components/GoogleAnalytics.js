@@ -43,10 +43,12 @@ const GoogleAnalytics = () => {
   return (
     <>
       <Script
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${TRACKING_ID}`}
       ></Script>
       {/* 👇 gtag function definition. notice that we don't send page views at this point.  */}
       <Script
+        strategy="lazyOnload"
         id="gtag-init"
         dangerouslySetInnerHTML={{
           __html: `
