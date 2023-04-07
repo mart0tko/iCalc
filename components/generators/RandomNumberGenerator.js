@@ -89,7 +89,11 @@ export default function RandomNumberGenerator() {
         </Container>
       </Container>
       <br />
-      <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
+      <CalcButtons
+        handleClear={handleClear}
+        handleSubmit={handleSubmit}
+        type="generate"
+      />
     </ThreeColumnLayout>
   );
 }

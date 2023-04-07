@@ -28,13 +28,15 @@ function generateString(length, characters) {
   return result;
 }
 
+const defaultCheckboxValue = {
+  withCapitalLetters: true,
+  withNumbers: true,
+};
+
 export default function RandomStringGenerator() {
   const { t } = useTranslation("");
   const [length, setLength] = useState(10);
-  const [checkboxes, setCheckboxes] = useState({
-    withCapitalLetters: true,
-    withNumbers: true,
-  });
+  const [checkboxes, setCheckboxes] = useState(defaultCheckboxValue);
   const [result, setResult] = useState("");
 
   useEffect(() => {
@@ -68,7 +70,7 @@ export default function RandomStringGenerator() {
   };
 
   const handleClear = () => {
-    length && setLength("");
+    length && setLength(10);
     result && setResult("");
   };
 
@@ -151,7 +153,11 @@ export default function RandomStringGenerator() {
         </Container>
       </Container>
       <br />
-      <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
+      <CalcButtons
+        handleClear={handleClear}
+        handleSubmit={handleSubmit}
+        type="generate"
+      />
     </ThreeColumnLayout>
   );
 }

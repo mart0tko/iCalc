@@ -126,7 +126,11 @@ export default function CmToInchesConverter() {
         </Container>
       </Container>
       <br />
-      <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
+      <CalcButtons
+        handleClear={handleClear}
+        handleSubmit={handleSubmit}
+        type="convert"
+      />
     </ThreeColumnLayout>
   );
 }

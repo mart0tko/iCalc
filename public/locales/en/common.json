@@ -187,11 +187,13 @@
 
   "common": {
     "calculate": "Calculate",
+    "generate": "Generate",
     "calculators": "Calculators",
     "calculator": "Calculator",
     "generator": "Generator",
     "converters": "Converters",
     "converter": "Converter",
+    "convert": "Convert",
     "inches": "Inches",
     "cm": "Cm",
     "m": "M",
