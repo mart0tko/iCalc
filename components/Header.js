@@ -70,21 +70,25 @@ export default function Header(props) {
             justifyContent: { xs: "center", sm: "center", md: "flex-start" },
           }}
         >
-          <Link href="/" style={{ display: "flex", flexGrow: 1 }}>
+          <Link
+            href="/"
+            style={{ display: "flex", flexGrow: 1, alignItems: "center" }}
+          >
             <Image
               src={LogoImage}
               alt="logo"
               style={{ width: "60px", height: "auto" }}
             />
             <Typography
-              variant="h4"
+              variant="h1"
               noWrap
               sx={{
                 fontFamily: "Roboto, Halvetica, monospace",
                 letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
-                fontSize: { sm: "2rem" },
+                fontSize: { xs: "2rem", sm: "2.5rem", md: "2.5rem" },
+                fontWeight: 400,
               }}
             >
               WannaCalc
