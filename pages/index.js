@@ -8,11 +8,10 @@ import InternationalLinks, {
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import Input from "../components/Input";
-import { useTranslation } from "react-i18next";
+import Head from "next/head";
 
 export default function Home() {
   const { locale } = useRouter();
-  const { t } = useTranslation("");
   const [calculators, setCalculators] = useState([
     ...InternationalLinks,
     ...InternationalLinksConvertors,
@@ -29,6 +28,13 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>WannaCalc</title>
+        <meta
+          name="description"
+          content="Free online Calculators, Converters and Generators!"
+        />
+      </Head>
       <Box
         sx={{
           display: "flex",

@@ -22,11 +22,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <title>WannaCalc</title>
-          <meta
-            name="description"
-            content="Free online Calculators, Converters and Generators!"
-          />
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         </Head>
         <body>

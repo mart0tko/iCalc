@@ -1,6 +1,5 @@
 import { useTranslation } from "next-i18next";
 import { Button, Container } from "@mui/material";
-import * as gtag from "../lib/gtag";
 
 export default function CalcButtons({ handleClear, handleSubmit, type }) {
   const { t } = useTranslation();

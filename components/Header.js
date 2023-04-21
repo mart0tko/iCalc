@@ -80,7 +80,7 @@ export default function Header(props) {
               style={{ width: "60px", height: "auto" }}
             />
             <Typography
-              variant="h1"
+              variant="h6"
               noWrap
               sx={{
                 fontFamily: "Roboto, Halvetica, monospace",

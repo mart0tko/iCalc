@@ -27,68 +27,102 @@ import RandomNumberGenerator from "../components/generators/RandomNumberGenerato
 import RandomStringGenerator from "../components/generators/RandomStringGenerator";
 import RandomPasswordGenerator from "../components/generators/RandomPasswordGenerator";
 import RandomTeamGenerator from "../components/generators/RandomTeamGenerator";
+import Head from "next/head";
+import InternationalLinks, {
+  InternationalLinksConvertors,
+  InternationalLinksGenerators,
+} from "../constants";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
+const pages = [
+  ...InternationalLinks,
+  ...InternationalLinksConvertors,
+  ...InternationalLinksGenerators,
+];
 export default function About() {
-  const { asPath } = useRouter();
+  const { t } = useTranslation();
+  const { asPath, locale } = useRouter();
   const clearAsPath = asPath.replaceAll("/", "");
+  const [title, setTitle] = useState("WannaCalc");
+  const [description, setDescription] = useState("WannaCalc");
+
+  useEffect(() => {
+    const clearPath = asPath.slice(0, -1);
+    const element = pages.find((element) => element[locale] === clearPath);
+    setTitle(element.title);
+    setDescription(element.title.replace(".title", ".description"));
+  }, [asPath, locale]);
 
   // TODO Make to match as per different languages
-  switch (clearAsPath) {
-    case "percentage-difference-calculator":
-      return <PercentageDifferance />;
-    case "percentage-change-calculator":
-      return <PercentageChange />;
-    case "percentage-calculator":
-      return <Percentage />;
-    case "age-calculator":
-      return <Age />;
-    case "simple-loan-calculator":
-      return <SimpleLoanCalculator />;
-    case "conversion-rate-calculator":
-      return <ConversionRateCalculator />;
-    case "profit-margin-calculator":
-      return <ProfitMarginCalculator />;
-    case "bmi-calculator":
-      return <BMI />;
-    case "bmr-calculator":
-      return <BMR />;
-    case "dog-age-calculator":
-      return <DogAgeCalculator />;
-    case "cat-age-calculator":
-      return <CatAgeCalculator />;
-    case "tire-size-calculator":
-      return <TireSizeCalculator />;
-    case "tip-calculator":
-      return <TipCalculator />;
-    case "gratuity-calculator":
-      return <GratuityCalculator />;
-    case "margin-calculator":
-      return <MarginCalculator />;
-    case "discount-calculator":
-      return <DiscountCalculator />;
-    case "cm-to-inches-converter":
-      return <CmToInchesConverter />;
-    case "mm-to-inches-converter":
-      return <MmToInchesConverter />;
-    case "feet-to-inches-converter":
-      return <FeetToInchesConverter />;
-    case "cm-to-feet-converter":
-      return <CmToFeetConverter />;
-    case "miles-to-km-converter":
-      return <MilesToKmConverter />;
-    case "meter-to-feet-converter":
-      return <MToFeetConverter />;
-    case "random-number-generator":
-      return <RandomNumberGenerator />;
-    case "random-string-generator":
-      return <RandomStringGenerator />;
-    case "random-password-generator":
-      return <RandomPasswordGenerator />;
-    case "random-team-generator":
-      return <RandomTeamGenerator />;
-    default:
-      return <Error statusCode={404} />;
-  }
+  const pageToLoad = () => {
+    switch (clearAsPath) {
+      case "percentage-difference-calculator":
+        return <PercentageDifferance />;
+      case "percentage-change-calculator":
+        return <PercentageChange />;
+      case "percentage-calculator":
+        return <Percentage />;
+      case "age-calculator":
+        return <Age />;
+      case "simple-loan-calculator":
+        return <SimpleLoanCalculator />;
+      case "conversion-rate-calculator":
+        return <ConversionRateCalculator />;
+      case "profit-margin-calculator":
+        return <ProfitMarginCalculator />;
+      case "bmi-calculator":
+        return <BMI />;
+      case "bmr-calculator":
+        return <BMR />;
+      case "dog-age-calculator":
+        return <DogAgeCalculator />;
+      case "cat-age-calculator":
+        return <CatAgeCalculator />;
+      case "tire-size-calculator":
+        return <TireSizeCalculator />;
+      case "tip-calculator":
+        return <TipCalculator />;
+      case "gratuity-calculator":
+        return <GratuityCalculator />;
+      case "margin-calculator":
+        return <MarginCalculator />;
+      case "discount-calculator":
+        return <DiscountCalculator />;
+      case "cm-to-inches-converter":
+        return <CmToInchesConverter />;
+      case "mm-to-inches-converter":
+        return <MmToInchesConverter />;
+      case "feet-to-inches-converter":
+        return <FeetToInchesConverter />;
+      case "cm-to-feet-converter":
+        return <CmToFeetConverter />;
+      case "miles-to-km-converter":
+        return <MilesToKmConverter />;
+      case "meter-to-feet-converter":
+        return <MToFeetConverter />;
+      case "random-number-generator":
+        return <RandomNumberGenerator />;
+      case "random-string-generator":
+        return <RandomStringGenerator />;
+      case "random-password-generator":
+        return <RandomPasswordGenerator />;
+      case "random-team-generator":
+        return <RandomTeamGenerator />;
+      default:
+        return <Error statusCode={404} />;
+    }
+  };
+
+  return (
+    <>
+      <Head>
+        <title>{t(title)}</title>
+        <meta name="description" content={t(description)} />
+      </Head>
+      {pageToLoad()}
+    </>
+  );
 }
 
 export async function getStaticProps({ locale }) {
