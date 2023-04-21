@@ -5,7 +5,6 @@ import * as gtag from "../lib/gtag";
 export default function CalcButtons({ handleClear, handleSubmit, type }) {
   const { t } = useTranslation();
 
-  console.log(type);
   return (
     <Container sx={{ padding: "1rem" }}>
       <Button

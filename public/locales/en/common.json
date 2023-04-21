@@ -184,6 +184,13 @@
     "withCapitalLetters": "Include Capital Letters",
     "withSpecialCharacters": "Include Special Characters"
   },
+  "randomTeamGenerator": {
+    "title": "Random Team Generator",
+    "description": "Random Team Generator will generate a random teams with the given names and number of teams.",
+    "teamSize": "Number of teams",
+    "addTeamMember": "Add Team Member",
+    "enterTeamMemberName": "Enter Team Member Name"
+  },
 
   "common": {
     "calculate": "Calculate",

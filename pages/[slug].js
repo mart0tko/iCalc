@@ -26,6 +26,7 @@ import MToFeetConverter from "../components/converters/mToFeetConverter";
 import RandomNumberGenerator from "../components/generators/RandomNumberGenerator";
 import RandomStringGenerator from "../components/generators/RandomStringGenerator";
 import RandomPasswordGenerator from "../components/generators/RandomPasswordGenerator";
+import RandomTeamGenerator from "../components/generators/RandomTeamGenerator";
 
 export default function About() {
   const { asPath } = useRouter();
@@ -83,6 +84,8 @@ export default function About() {
       return <RandomStringGenerator />;
     case "random-password-generator":
       return <RandomPasswordGenerator />;
+    case "random-team-generator":
+      return <RandomTeamGenerator />;
     default:
       return <Error statusCode={404} />;
   }
