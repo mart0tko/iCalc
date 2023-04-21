@@ -1,8 +1,7 @@
-import { Link, Paper, Typography, useTheme } from "@mui/material";
+import { Link, Paper, Typography } from "@mui/material";
 import { Icon } from "@mui/material";
 
 export default function Footer() {
-  const theme = useTheme();
   return (
     <Paper
       sx={{

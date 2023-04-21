@@ -1,13 +1,9 @@
 import "../styles/globals.css";
 import { appWithTranslation } from "next-i18next";
 import Header from "../components/Header";
-import Script from "next/script";
-import * as gtag from "../lib/gtag";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import getConfig from "next/config";
 import Footer from "../components/footer";
 import GoogleAnalytics from "../components/GoogleAnalytics";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -19,6 +15,14 @@ function MyApp({ Component, pageProps }) {
       <Footer />
     </>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 }
 
 export default appWithTranslation(MyApp);

@@ -13,6 +13,7 @@ import { grey } from "@mui/material/colors";
 import LogoImage from "../public/white_icon_transparent_background.png";
 import { useRouter } from "next/router";
 import { CircularProgress } from "@mui/material";
+import BurgerMenu from "./BurgerMenu";
 
 function ScrollTop(props) {
   const { children, window } = props;
@@ -69,7 +70,7 @@ export default function Header(props) {
             justifyContent: { xs: "center", sm: "center", md: "flex-start" },
           }}
         >
-          <Link href="/" style={{ display: "flex" }}>
+          <Link href="/" style={{ display: "flex", flexGrow: 1 }}>
             <Image
               src={LogoImage}
               alt="logo"
@@ -83,11 +84,13 @@ export default function Header(props) {
                 letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
+                fontSize: { sm: "2rem" },
               }}
             >
               WannaCalc
             </Typography>
           </Link>
+          <BurgerMenu />
         </Toolbar>
       </AppBar>
       <Container
