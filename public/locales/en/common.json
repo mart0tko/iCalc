@@ -191,6 +191,13 @@
     "addTeamMember": "Add Team Member",
     "enterTeamMemberName": "Enter Team Member Name"
   },
+  "yesOrNoGenerator": {
+    "title": "Yes or No Generator",
+    "description": "This generator will help you to get decision by randomly pick Yes or No for you.",
+    "button": "Rerun",
+    "yes": "Yes",
+    "no": "No"
+  },
 
   "common": {
     "calculate": "Calculate",

@@ -34,6 +34,7 @@ import InternationalLinks, {
 } from "../constants";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import YesOrNoGenerator from "../components/generators/YesOrNoGenerator";
 
 const pages = [
   ...InternationalLinks,
@@ -109,6 +110,8 @@ export default function About() {
         return <RandomPasswordGenerator />;
       case "random-team-generator":
         return <RandomTeamGenerator />;
+      case "yes-or-no-generator":
+        return <YesOrNoGenerator />;
       default:
         return <Error statusCode={404} />;
     }

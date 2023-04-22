@@ -163,4 +163,10 @@ export const InternationalLinksGenerators = [
     title: "randomTeamGenerator.title",
     type: "Generator",
   },
+  {
+    en: "/yes-or-no-generator",
+    icon: "generating_tokens",
+    title: "yesOrNoGenerator.title",
+    type: "Generator",
+  },
 ];
