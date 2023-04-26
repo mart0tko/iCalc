@@ -36,6 +36,10 @@ export default function Home() {
           name="description"
           content="Free online Math, Science, Hobby, Fun, Animal - Calculators, Measuring units, Currencies, Crypto and etc. - Converters, and Password, Team, String, Yes or No - Generators!"
         />
+        <meta
+          property="og:image"
+          content={"public/white_icon_transparent_background.png"}
+        />
       </Head>
       <Box
         sx={{
