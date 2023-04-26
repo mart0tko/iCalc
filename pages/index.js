@@ -29,10 +29,12 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>WannaCalc</title>
+        <title>
+          WannaCalc - Free online Calculators, Converters and Generators!
+        </title>
         <meta
           name="description"
-          content="Free online Calculators, Converters and Generators!"
+          content="Free online Math, Science, Hobby, Fun, Animal - Calculators, Measuring units, Currencies, Crypto and etc. - Converters, and Password, Team, String, Yes or No - Generators!"
         />
       </Head>
       <Box

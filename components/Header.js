@@ -80,7 +80,7 @@ export default function Header(props) {
               style={{ width: "60px", height: "auto" }}
             />
             <Typography
-              variant="h6"
+              variant={route === "/" ? "h1" : "h2"}
               noWrap
               sx={{
                 fontFamily: "Roboto, Halvetica, monospace",
@@ -121,7 +121,7 @@ export default function Header(props) {
               padding: "2rem",
             }}
           >
-            <Typography variant="h4" sx={{ margin: 0 }}>
+            <Typography variant="h2" sx={{ margin: 0, fontSize: "2.125rem" }}>
               Free Online Calculators
             </Typography>
           </Toolbar>

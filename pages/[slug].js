@@ -51,8 +51,9 @@ export default function About() {
   useEffect(() => {
     const clearPath = asPath.slice(0, -1);
     const element = pages.find((element) => element[locale] === clearPath);
+    const newDescription = element.title.replace(".title", ".description");
     setTitle(element.title);
-    setDescription(element.title.replace(".title", ".description"));
+    setDescription(newDescription);
   }, [asPath, locale]);
 
   // TODO Make to match as per different languages
