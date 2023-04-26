@@ -38,7 +38,7 @@ export default function Home() {
         />
         <meta
           property="og:image"
-          content={"public/white_icon_transparent_background.png"}
+          content={"/white_icon_transparent_background.png"}
         />
       </Head>
       <Box
