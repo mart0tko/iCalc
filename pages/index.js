@@ -34,12 +34,15 @@ export default function Home() {
         </title>
         <meta
           name="description"
-          content="Free online Math, Science, Hobby, Fun, Animal - Calculators, Measuring units, Currencies, Crypto and etc. - Converters, and Password, Team, String, Yes or No - Generators!"
+          content="Free online Math, Science, Fun, Animal - Calculators, Units, Currencies, Crypto and etc. - Converters, and Password, Team, String, Yes or No - Generators!"
         />
         <meta
           property="og:image"
-          content={"/white_icon_transparent_background.png"}
+          content="https://wannacalc.com/white_icon_transparent_background.png"
         />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="876" />
       </Head>
       <Box
         sx={{
