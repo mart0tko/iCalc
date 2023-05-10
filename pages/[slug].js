@@ -17,6 +17,8 @@ import TireSizeCalculator from "../components/Calculaters/TireSizeCalculator";
 import TipCalculator from "../components/Calculaters/TipCalculator";
 import GratuityCalculator from "../components/Calculaters/GratuityCalculator";
 import DiscountCalculator from "../components/Calculaters/DiscountCalculator";
+import CompoundInterestCalculator from "../components/Calculaters/CompoundInterestCalculator";
+import SalaryToHourlyCalculator from "../components/Calculaters/SalaryToHourlyCalculator";
 import CmToInchesConverter from "../components/converters/CmToInchesConverter";
 import MmToInchesConverter from "../components/converters/MmToInchesConverter";
 import FeetToInchesConverter from "../components/converters/FeetToInchesConverter";
@@ -36,8 +38,6 @@ import InternationalLinks, {
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import YesOrNoGenerator from "../components/generators/YesOrNoGenerator";
-import CompoundInterestCalculator from "../components/calculaters/CompoundInterestCalculator";
-import SalaryToHourlyCalculator from "../components/calculaters/SalaryToHourlyCalculator";
 import WordCounter from "../components/other/WordCounter";
 
 const pages = [
