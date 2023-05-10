@@ -80,7 +80,7 @@ export default function Header(props) {
               style={{ width: "60px", height: "auto" }}
             />
             <Typography
-              variant={route === "/" ? "h1" : "h2"}
+              variant={route === "/" ? "h1" : "p"}
               noWrap
               sx={{
                 fontFamily: "Roboto, Halvetica, monospace",

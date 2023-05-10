@@ -4,6 +4,7 @@ import prettier from "prettier";
 import InternationalLinks, {
   InternationalLinksConvertors,
   InternationalLinksGenerators,
+  InternationalLinksOthers,
 } from "../constants.js";
 
 // To run it add in package.json - "type": "module"
@@ -53,6 +54,13 @@ async function generate() {
             `;
         }).join("")}
         ${InternationalLinksGenerators.map((page) => {
+          return `
+              <url>
+                  <loc>${`https://wannacalc.com${page["en"]}`}</loc>
+              </url>
+            `;
+        }).join("")}
+        ${InternationalLinksOthers.map((page) => {
           return `
               <url>
                   <loc>${`https://wannacalc.com${page["en"]}`}</loc>

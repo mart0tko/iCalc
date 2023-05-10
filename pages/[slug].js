@@ -31,15 +31,20 @@ import Head from "next/head";
 import InternationalLinks, {
   InternationalLinksConvertors,
   InternationalLinksGenerators,
+  InternationalLinksOthers,
 } from "../constants";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import YesOrNoGenerator from "../components/generators/YesOrNoGenerator";
+import CompoundInterestCalculator from "../components/calculaters/CompoundInterestCalculator";
+import SalaryToHourlyCalculator from "../components/calculaters/SalaryToHourlyCalculator";
+import WordCounter from "../components/other/WordCounter";
 
 const pages = [
   ...InternationalLinks,
   ...InternationalLinksConvertors,
   ...InternationalLinksGenerators,
+  ...InternationalLinksOthers,
 ];
 export default function About() {
   const { t } = useTranslation();
@@ -48,6 +53,7 @@ export default function About() {
   const [title, setTitle] = useState("WannaCalc");
   const [description, setDescription] = useState("WannaCalc");
 
+  // Set meta title and description
   useEffect(() => {
     const clearPath = asPath.slice(0, -1);
     const element = pages.find((element) => element[locale] === clearPath);
@@ -81,6 +87,8 @@ export default function About() {
         return <DogAgeCalculator />;
       case "cat-age-calculator":
         return <CatAgeCalculator />;
+      case "salary-to-hourly-calculator":
+        return <SalaryToHourlyCalculator />;
       case "tire-size-calculator":
         return <TireSizeCalculator />;
       case "tip-calculator":
@@ -91,6 +99,8 @@ export default function About() {
         return <MarginCalculator />;
       case "discount-calculator":
         return <DiscountCalculator />;
+      case "compound-interest-calculator":
+        return <CompoundInterestCalculator />;
       case "cm-to-inches-converter":
         return <CmToInchesConverter />;
       case "mm-to-inches-converter":
@@ -113,6 +123,8 @@ export default function About() {
         return <RandomTeamGenerator />;
       case "yes-or-no-generator":
         return <YesOrNoGenerator />;
+      case "word-counter":
+        return <WordCounter />;
       default:
         return <Error statusCode={404} />;
     }

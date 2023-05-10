@@ -125,7 +125,24 @@
   "catAgeCalculator": {
     "title": "Cat Age Calculator",
     "description": "Cats mature more quickly in their first two years of life and then start to slow down. The following formula is commonly used to estimate a cat's age in human years.",
-    "age": "Age"
+    "age": "Age:"
+  },
+  "salaryToHourlyCalculator": {
+    "title": "Salary to Hourly Calculator",
+    "description": "The calculator calculates the hourly wage equivalent of the given salary, assuming that the employee works 52 weeks a year with 2 weeks of vacation. It returns the hourly wage rounded to two decimal places.",
+    "salary": "Year Salary:",
+    "hoursPerWeek": "Hours Per Week:",
+    "hourlyPay": "Hourly Pay:",
+    "perWeek": "Per Week:"
+  },
+  "compoundInterestCalculator": {
+    "title": "Compound Interest Calculator",
+    "description": "Compound Interest calculator defines four parameters: \n \n Initial Money - initial amount of money invested \n Interest rate - the annual interest rate (as a percent) \n Years - the number of years the money will be invested \n Compound Per Year - the number of times per year the interest is compounded. \n \n The calculator then calculates the amount of money that will be earned after the given years, taking into account the compound interest rate.",
+    "initialMoney": "Initial Money:",
+    "interestRate": "Interest Rate:",
+    "years": "Years:",
+    "compoundPerYear": "Compound Per Year:",
+    "futureValue": "Future Value:"
   },
   "cmToFeetConverter": {
     "title": "Cm to Feets Converter",
@@ -198,9 +215,16 @@
     "yes": "Yes",
     "no": "No"
   },
+  "wordCounter": {
+    "title": "Word Counter",
+    "description": "The counter will count the words from the given text.",
+    "text": "Paste your text here:",
+    "result": "Words in the text: "
+  },
 
   "common": {
     "calculate": "Calculate",
+    "check": "Check",
     "generate": "Generate",
     "calculators": "Calculators",
     "calculator": "Calculator",
@@ -210,6 +234,7 @@
     "converter": "Converter",
     "convert": "Convert",
     "inches": "Inches",
+    "other": "Other",
     "cm": "Cm",
     "m": "M",
     "mm": "Mm",

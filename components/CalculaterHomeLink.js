@@ -16,6 +16,8 @@ function generateText(type) {
       return "common.converter";
     case "Generator":
       return "common.generator";
+    case "Other":
+      return "common.other";
     default:
       return "";
   }
@@ -29,8 +31,10 @@ function generateColor(type, theme) {
       return theme.palette.warning.main;
     case "Generator":
       return theme.palette.error.main;
+    case "Other":
+      return theme.palette.grey[800];
     default:
-      return theme.palette.grey.main;
+      return theme.palette.grey[800];
   }
 }
 

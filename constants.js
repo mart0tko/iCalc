@@ -95,6 +95,18 @@ const InternationalLinks = [
     title: "discountCalculator.title",
     type: "calculator",
   },
+  {
+    en: "/compound-interest-calculator",
+    icon: "payments",
+    title: "compoundInterestCalculator.title",
+    type: "calculator",
+  },
+  {
+    en: "/salary-to-hourly-calculator",
+    icon: "payments",
+    title: "salaryToHourlyCalculator.title",
+    type: "calculator",
+  },
 ];
 
 export default InternationalLinks;
@@ -168,5 +180,14 @@ export const InternationalLinksGenerators = [
     icon: "generating_tokens",
     title: "yesOrNoGenerator.title",
     type: "Generator",
+  },
+];
+
+export const InternationalLinksOthers = [
+  {
+    en: "/word-counter",
+    icon: "spellcheck",
+    title: "wordCounter.title",
+    type: "Other",
   },
 ];

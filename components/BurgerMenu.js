@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import InternationalLinks, {
   InternationalLinksConvertors,
   InternationalLinksGenerators,
+  InternationalLinksOthers,
 } from "../constants";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -146,6 +147,22 @@ export default function BurgerMenu() {
           <Collapse in={openGenerators} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {InternationalLinksGenerators.map((value) => (
+                <Link
+                  key={value.title}
+                  href={value[locale]}
+                  locale={locale}
+                  onClick={() => setAnchorEl(null)}
+                >
+                  <ListItemButton sx={{ pl: 4 }}>
+                    <ListItemText>{t(value.title)}</ListItemText>
+                  </ListItemButton>
+                </Link>
+              ))}
+            </List>
+          </Collapse>
+          <Collapse in={openGenerators} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {InternationalLinksOthers.map((value) => (
                 <Link
                   key={value.title}
                   href={value[locale]}

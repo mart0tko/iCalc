@@ -4,6 +4,7 @@ import CalculaterHomeLink from "../components/CalculaterHomeLink";
 import InternationalLinks, {
   InternationalLinksConvertors,
   InternationalLinksGenerators,
+  InternationalLinksOthers,
 } from "../constants";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
@@ -16,6 +17,7 @@ export default function Home() {
     ...InternationalLinks,
     ...InternationalLinksConvertors,
     ...InternationalLinksGenerators,
+    ...InternationalLinksOthers,
   ]);
   const calculatorsRef = useRef(calculators);
 

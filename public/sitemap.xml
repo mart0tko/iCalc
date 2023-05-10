@@ -65,6 +65,14 @@
   </url>
 
   <url>
+    <loc>https://wannacalc.com/compound-interest-calculator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/salary-to-hourly-calculator</loc>
+  </url>
+
+  <url>
     <loc>https://wannacalc.com/cm-to-inches-converter</loc>
   </url>
 
@@ -106,5 +114,9 @@
 
   <url>
     <loc>https://wannacalc.com/yes-or-no-generator</loc>
+  </url>
+
+  <url>
+    <loc>https://wannacalc.com/word-counter</loc>
   </url>
 </urlset>
