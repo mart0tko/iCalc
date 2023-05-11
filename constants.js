@@ -181,6 +181,12 @@ export const InternationalLinksGenerators = [
     title: "yesOrNoGenerator.title",
     type: "Generator",
   },
+  {
+    en: "/random-text-generator",
+    icon: "generating_tokens",
+    title: "randomTextGenerator.title",
+    type: "Generator",
+  },
 ];
 
 export const InternationalLinksOthers = [

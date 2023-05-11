@@ -39,6 +39,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import YesOrNoGenerator from "../components/generators/YesOrNoGenerator";
 import WordCounter from "../components/other/WordCounter";
+import RandomTextGenerator from "../components/generators/RandomTextGenerator";
 
 const pages = [
   ...InternationalLinks,
@@ -123,6 +124,8 @@ export default function About() {
         return <RandomTeamGenerator />;
       case "yes-or-no-generator":
         return <YesOrNoGenerator />;
+      case "random-text-generator":
+        return <RandomTextGenerator />;
       case "word-counter":
         return <WordCounter />;
       default:

@@ -215,6 +215,12 @@
     "yes": "Yes",
     "no": "No"
   },
+  "randomTextGenerator": {
+    "title": "Random Text Generator",
+    "description": "The generator uses a loop to generate each word by randomly selecting a character from a list of possible characters (in this case, uppercase and lowercase letters). The maximum word length is 15 characters and the maximum number of words is 1000.",
+    "wordLength": "Set words length:",
+    "numWords": "Set number of words:"
+  },
   "wordCounter": {
     "title": "Word Counter",
     "description": "The counter will count the words from the given text.",
