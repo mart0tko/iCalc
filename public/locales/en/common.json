@@ -135,6 +135,15 @@
     "hourlyPay": "Hourly Pay:",
     "perWeek": "Per Week:"
   },
+  "loveCalculator": {
+    "title": "Love Calculator",
+    "description": "A love calculator is a fun and lighthearted tool or application that aims to provide a numerical representation or score indicating the compatibility or strength of a romantic relationship between two individuals. It is often used for amusement or entertainment purposes rather than for serious relationship analysis.",
+    "yourName": "Your Name:",
+    "yourCrush": "Your Crush:",
+    "madeForEachOther": " You are made for each other!",
+    "goodChance": " You have a good chance!",
+    "sorry": " Not a strong connection, sorry!"
+  },
   "compoundInterestCalculator": {
     "title": "Compound Interest Calculator",
     "description": "Compound Interest calculator defines four parameters: \n \n Initial Money - initial amount of money invested \n Interest rate - the annual interest rate (as a percent) \n Years - the number of years the money will be invested \n Compound Per Year - the number of times per year the interest is compounded. \n \n The calculator then calculates the amount of money that will be earned after the given years, taking into account the compound interest rate.",

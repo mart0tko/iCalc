@@ -107,6 +107,12 @@ const InternationalLinks = [
     title: "salaryToHourlyCalculator.title",
     type: "calculator",
   },
+  {
+    en: "/love-calculator",
+    icon: "favorite",
+    title: "loveCalculator.title",
+    type: "calculator",
+  },
 ];
 
 export default InternationalLinks;

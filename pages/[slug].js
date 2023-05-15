@@ -40,6 +40,7 @@ import { useTranslation } from "react-i18next";
 import YesOrNoGenerator from "../components/generators/YesOrNoGenerator";
 import WordCounter from "../components/other/WordCounter";
 import RandomTextGenerator from "../components/generators/RandomTextGenerator";
+import LoveCalculator from "../components/Calculaters/LoveCalculator";
 
 const pages = [
   ...InternationalLinks,
@@ -126,6 +127,8 @@ export default function About() {
         return <YesOrNoGenerator />;
       case "random-text-generator":
         return <RandomTextGenerator />;
+      case "love-calculator":
+        return <LoveCalculator />;
       case "word-counter":
         return <WordCounter />;
       default:
