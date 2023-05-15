@@ -199,6 +199,12 @@ export const InternationalLinksGenerators = [
     title: "randomTextGenerator.title",
     type: "Generator",
   },
+  {
+    en: "/md5-generator",
+    icon: "generating_tokens",
+    title: "md5Generator.title",
+    type: "Generator",
+  },
 ];
 
 export const InternationalLinksOthers = [

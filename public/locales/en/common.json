@@ -238,6 +238,11 @@
     "wordLength": "Set words length:",
     "numWords": "Set number of words:"
   },
+  "md5Generator": {
+    "title": "MD5 Generator",
+    "description": "MD5 (Message Digest Algorithm 5) is a widely used cryptographic hash function that produces a 128-bit (16-byte) hash value. It takes an input message of any length and generates a fixed-size hash value, commonly represented as a hexadecimal string. \n \n An MD5 hash is commonly used for various purposes, such as checksumming data integrity, storing passwords securely (though it's no longer recommended), and generating unique identifiers. \n \n To generate an MD5 hash in JavaScript, you can use a library like CryptoJS, which provides a convenient API for cryptographic operations. In the example code provided earlier, we used the CryptoJS library to calculate the MD5 hash of a given input string. \n \n The process involves passing the input message to the MD5 function provided by the library. The function then applies the MD5 algorithm to the input and produces the corresponding hash value. The resulting hash value is typically represented as a hexadecimal string for easy readability. \n \n It's important to note that MD5 is now considered a weak hashing algorithm for cryptographic purposes. It has known vulnerabilities and collisions, which means different input messages can produce the same hash value. Therefore, it is strongly recommended to use stronger and more secure hash functions, such as SHA-256, for cryptographic operations that require stronger data integrity and security.",
+    "input": "Enter your text here:"
+  },
   "wordCounter": {
     "title": "Word Counter",
     "description": "The counter will count the words from the given text.",

@@ -42,6 +42,7 @@ import WordCounter from "../components/other/WordCounter";
 import RandomTextGenerator from "../components/generators/RandomTextGenerator";
 import LoveCalculator from "../components/Calculaters/LoveCalculator";
 import FuelCostCalculator from "../components/Calculaters/FuelCostCalculator";
+import MD5Generator from "../components/generators/MD5Generator";
 
 const pages = [
   ...InternationalLinks,
@@ -132,6 +133,8 @@ export default function About() {
         return <LoveCalculator />;
       case "fuel-cost-calculator":
         return <FuelCostCalculator />;
+      case "md5-generator":
+        return <MD5Generator />;
       case "word-counter":
         return <WordCounter />;
       default:

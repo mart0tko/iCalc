@@ -7,10 +7,9 @@ import InternationalLinks, {
   InternationalLinksOthers,
 } from "../constants";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Input from "../components/Input";
 import Head from "next/head";
-import socialImage from "../public/white_icon_transparent_background.png";
 
 export default function Home() {
   const { locale } = useRouter();
@@ -28,10 +27,6 @@ export default function Home() {
     );
     setCalculators(filteredCalculators);
   };
-
-  useEffect(() => {
-    console.log(socialImage);
-  });
 
   return (
     <>
@@ -52,7 +47,11 @@ export default function Home() {
           property="og:description"
           content="Free online Math, Science, Fun, Animal - Calculators, Units, Currencies, Crypto and etc. - Converters, and Password, Team, String, Yes or No - Generators!"
         />
-        <meta property="og:image" content={socialImage.src} />
+        <meta property="og:site_name" content="WannaCalc" key="ogsitename" />
+        <meta
+          property="og:image"
+          content="https://wannacalc.com/white_icon_transparent_background.png"
+        />
         <meta property="og:url" content="https://wannacalc.com/" />
         <meta property="og:type" content="website" />
       </Head>
