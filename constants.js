@@ -113,6 +113,12 @@ const InternationalLinks = [
     title: "loveCalculator.title",
     type: "calculator",
   },
+  {
+    en: "/fuel-cost-calculator",
+    icon: "local_shipping",
+    title: "fuelCostCalculator.title",
+    type: "calculator",
+  },
 ];
 
 export default InternationalLinks;

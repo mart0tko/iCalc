@@ -62,6 +62,14 @@
     "valueOne": "Original Price",
     "valueTwo": "Discount Percentage"
   },
+  "fuelCostCalculator": {
+    "title": "Fuel Cost Calculator",
+    "description": "A fuel cost calculator is a tool that helps you estimate the cost of fuel for a given distance based on factors such as fuel efficiency and fuel price. It is particularly useful for budgeting and planning purposes, allowing you to determine how much you might need to spend on fuel for a specific trip or commute. \n \n The fuel cost calculator typically takes into account the following inputs: \n 1. Distance: The total distance you will be traveling, usually measured in kilometers or miles. \n 2. Fuel efficiency: The average fuel efficiency of your vehicle, expressed in terms of distance per unit of fuel (such as kilometers per liter or miles per gallon). This value represents how far your vehicle can travel on a given amount of fuel. \n 3. Fuel price: The cost of fuel per unit, usually measured in the currency of your choice (such as dollars, euros, or pounds) per liter or gallon. This value reflects the current price of fuel in your area. \n \n Using these inputs, the calculator performs a simple calculation to estimate the fuel cost. It divides the distance by the fuel efficiency to determine the amount of fuel needed for the trip. Then, it multiplies this value by the fuel price to calculate the total cost. \n \n The result provided by the calculator is an estimate and should be used as a rough guide. Actual fuel consumption and prices may vary depending on various factors such as driving conditions, vehicle maintenance, and fluctuations in fuel prices. \n \n By using a fuel cost calculator, you can plan your travel expenses more effectively, compare different vehicles' fuel efficiencies, and make informed decisions regarding transportation options.",
+    "distance": "Distance:",
+    "fuelEfficiency": "Fuel Efficiency:",
+    "fuelPrice": "Fuel Price:",
+    "totalCost": "The trip will cost: "
+  },
   "bmr": {
     "title": "Basal Metabolic Rate (BMR) Calculator",
     "description": "The basal metabolic rate (BMR) is the amount of energy needed while resting in a temperate environment when the digestive system is inactive.",

@@ -7,9 +7,10 @@ import InternationalLinks, {
   InternationalLinksOthers,
 } from "../constants";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Input from "../components/Input";
 import Head from "next/head";
+import socialImage from "../public/white_icon_transparent_background.png";
 
 export default function Home() {
   const { locale } = useRouter();
@@ -28,6 +29,10 @@ export default function Home() {
     setCalculators(filteredCalculators);
   };
 
+  useEffect(() => {
+    console.log(socialImage);
+  });
+
   return (
     <>
       <Head>
@@ -39,12 +44,17 @@ export default function Home() {
           content="Free online Math, Science, Fun, Animal - Calculators, Units, Currencies, Crypto and etc. - Converters, and Password, Team, String, Yes or No - Generators!"
         />
         <meta
-          property="og:image"
-          content="https://wannacalc.com/white_icon_transparent_background.png"
+          property="og:title"
+          content="WannaCalc - Free online Calculators, Converters and Generators!"
         />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="876" />
+
+        <meta
+          property="og:description"
+          content="Free online Math, Science, Fun, Animal - Calculators, Units, Currencies, Crypto and etc. - Converters, and Password, Team, String, Yes or No - Generators!"
+        />
+        <meta property="og:image" content={socialImage.src} />
+        <meta property="og:url" content="https://wannacalc.com/" />
+        <meta property="og:type" content="website" />
       </Head>
       <Box
         sx={{
