@@ -119,6 +119,12 @@ const InternationalLinks = [
     title: "fuelCostCalculator.title",
     type: "calculator",
   },
+  {
+    en: "/sip-calculator",
+    icon: "payments",
+    title: "sipCalculator.title",
+    type: "calculator",
+  },
 ];
 
 export default InternationalLinks;

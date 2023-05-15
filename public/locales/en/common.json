@@ -130,6 +130,18 @@
     "description": "Dogs mature more quickly in their first two years of life and then start to slow down. The following formula is commonly used to estimate a dog's age in human years.",
     "age": "Age"
   },
+  "sipCalculator": {
+    "title": "SIP Calculator",
+    "description": "A SIP (Systematic Investment Plan) calculator is a tool used to estimate the future value of an investment made through regular and systematic contributions. It helps individuals plan their investments by calculating the potential returns based on factors such as the initial investment amount, monthly investment amount, interest rate, and investment duration.",
+    "initialAmount": "Initial investment amount:",
+    "monthlyInvestment": "Monthly investment amount:",
+    "annualInterest": "Annual interest rate:",
+    "duration": "Investment duration in years:",
+    "futureValue": "Future Value: ",
+    "totalInvestment": "Total Investment: ",
+    "totalReturns": "Total Returns: ",
+    "result": "SIP Calculator Result:"
+  },
   "catAgeCalculator": {
     "title": "Cat Age Calculator",
     "description": "Cats mature more quickly in their first two years of life and then start to slow down. The following formula is commonly used to estimate a cat's age in human years.",

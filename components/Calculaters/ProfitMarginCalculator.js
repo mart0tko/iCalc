@@ -1,4 +1,4 @@
-import { Container, Link, TextField, Typography } from "@mui/material";
+import { Container, Link, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -6,6 +6,7 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import { useTheme } from "@mui/material/styles";
+import Input from "../Input";
 
 export default function ProfitMarginCalculator() {
   const theme = useTheme();
@@ -88,7 +89,7 @@ export default function ProfitMarginCalculator() {
           >
             {t("common.positiveNumbersNote")}
           </Typography>
-          <TextField
+          <Input
             type="number"
             label={t("profitMarginCalc.valueOne")}
             variant="standard"
@@ -96,7 +97,7 @@ export default function ProfitMarginCalculator() {
             onChange={(e) => handleChange(e, setValueOne)}
           />
           <br />
-          <TextField
+          <Input
             type="number"
             label={t("profitMarginCalc.valueTwo")}
             variant="standard"

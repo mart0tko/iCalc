@@ -43,6 +43,7 @@ import RandomTextGenerator from "../components/generators/RandomTextGenerator";
 import LoveCalculator from "../components/Calculaters/LoveCalculator";
 import FuelCostCalculator from "../components/Calculaters/FuelCostCalculator";
 import MD5Generator from "../components/generators/MD5Generator";
+import SipCalculator from "../components/Calculaters/SipCalculator";
 
 const pages = [
   ...InternationalLinks,
@@ -135,6 +136,8 @@ export default function About() {
         return <FuelCostCalculator />;
       case "md5-generator":
         return <MD5Generator />;
+      case "sip-calculator":
+        return <SipCalculator />;
       case "word-counter":
         return <WordCounter />;
       default:
