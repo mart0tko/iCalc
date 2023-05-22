@@ -256,4 +256,10 @@ export const InternationalLinksOthers = [
     title: "binaryCodeTranslator.title",
     type: "Other",
   },
+  {
+    en: "/nato-phonetical-alphabet-translator",
+    icon: "abc",
+    title: "natoPhoneticAlphabetTranslator.title",
+    type: "Other",
+  },
 ];

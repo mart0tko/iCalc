@@ -50,6 +50,7 @@ import ZalgoGlitchGenerator from "../components/generators/ZalgoGlitchGenerator"
 import FacebookTextGenerator from "../components/generators/FacebookTextGenerator";
 import MorseCodeTranslator from "../components/other/MorseCodeTranslator";
 import BinaryCodeTranslator from "../components/other/BinaryCodeTranslator";
+import NatoPhoneticAlphabetTranslator from "../components/other/NatoPhoneticAlphabetTranslator";
 
 const pages = [
   ...InternationalLinks,
@@ -158,6 +159,8 @@ export default function About() {
         return <MorseCodeTranslator />;
       case "binary-code-translator":
         return <BinaryCodeTranslator />;
+      case "nato-phonetical-alphabet-translator":
+        return <NatoPhoneticAlphabetTranslator />;
       default:
         return <Error statusCode={404} />;
     }

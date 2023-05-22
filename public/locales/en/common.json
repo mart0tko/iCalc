@@ -291,6 +291,11 @@
     "description": "The Binary Code Translator will translate your text in a Binary code variant.",
     "input": "Paste your text here:"
   },
+  "natoPhoneticAlphabetTranslator": {
+    "title": "NATO Phonetical Alphabet Translator",
+    "description": "The NATO Phonetical Alphabet Translator will translate your text in a NATO Phonetic Alphabet variant.",
+    "input": "Paste your text here:"
+  },
 
   "common": {
     "calculate": "Calculate",
