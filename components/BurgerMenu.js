@@ -16,6 +16,7 @@ import InternationalLinks, {
 } from "../constants";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useTheme } from "@mui/material";
 
 export default function BurgerMenu() {
   const [anchorEl, setAnchorEl] = React.useState(false);
@@ -25,6 +26,7 @@ export default function BurgerMenu() {
   const [openConverters, setOpenConverters] = React.useState(false);
   const [openGenerators, setOpenGenerators] = React.useState(false);
   const [openOthers, setOpenOthers] = React.useState(false);
+  const theme = useTheme();
 
   return (
     <div>
@@ -53,7 +55,10 @@ export default function BurgerMenu() {
         }}
       >
         <List sx={{ padding: 0, minWidth: { xs: 250, sm: 350, md: 450 } }}>
-          <ListItemButton onClick={() => setOpenCalculators(!openCalculators)}>
+          <ListItemButton
+            onClick={() => setOpenCalculators(!openCalculators)}
+            sx={{ backgroundColor: theme.palette.primary.main }}
+          >
             <ListItemText>{t("common.calculators")}</ListItemText>
             {openCalculators ? (
               <Icon
@@ -75,21 +80,32 @@ export default function BurgerMenu() {
           </ListItemButton>
           <Collapse in={openCalculators} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {InternationalLinks.map((value) => (
+              {InternationalLinks.map((value, index) => (
                 <Link
                   key={value.title}
                   href={value[locale]}
                   locale={locale}
                   onClick={() => setAnchorEl(null)}
                 >
-                  <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemText>{t(value.title)}</ListItemText>
+                  <ListItemButton
+                    sx={{
+                      pl: 4,
+                      backgroundColor:
+                        index % 2
+                          ? theme.palette.primary.second
+                          : theme.palette.primary.light,
+                    }}
+                  >
+                    <ListItemText sx={{}}>{t(value.title)}</ListItemText>
                   </ListItemButton>
                 </Link>
               ))}
             </List>
           </Collapse>
-          <ListItemButton onClick={() => setOpenConverters(!openConverters)}>
+          <ListItemButton
+            onClick={() => setOpenConverters(!openConverters)}
+            sx={{ backgroundColor: theme.palette.primary.main }}
+          >
             <ListItemText>{t("common.converters")}</ListItemText>
             {openConverters ? (
               <Icon
@@ -111,21 +127,32 @@ export default function BurgerMenu() {
           </ListItemButton>
           <Collapse in={openConverters} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {InternationalLinksConvertors.map((value) => (
+              {InternationalLinksConvertors.map((value, index) => (
                 <Link
                   key={value.title}
                   href={value[locale]}
                   locale={locale}
                   onClick={() => setAnchorEl(null)}
                 >
-                  <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemButton
+                    sx={{
+                      pl: 4,
+                      backgroundColor:
+                        index % 2
+                          ? theme.palette.primary.second
+                          : theme.palette.primary.light,
+                    }}
+                  >
                     <ListItemText>{t(value.title)}</ListItemText>
                   </ListItemButton>
                 </Link>
               ))}
             </List>
           </Collapse>
-          <ListItemButton onClick={() => setOpenGenerators(!openGenerators)}>
+          <ListItemButton
+            onClick={() => setOpenGenerators(!openGenerators)}
+            sx={{ backgroundColor: theme.palette.primary.main }}
+          >
             <ListItemText>{t("common.generators")}</ListItemText>
             {openGenerators ? (
               <Icon
@@ -147,21 +174,32 @@ export default function BurgerMenu() {
           </ListItemButton>
           <Collapse in={openGenerators} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {InternationalLinksGenerators.map((value) => (
+              {InternationalLinksGenerators.map((value, index) => (
                 <Link
                   key={value.title}
                   href={value[locale]}
                   locale={locale}
                   onClick={() => setAnchorEl(null)}
                 >
-                  <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemButton
+                    sx={{
+                      pl: 4,
+                      backgroundColor:
+                        index % 2
+                          ? theme.palette.primary.second
+                          : theme.palette.primary.light,
+                    }}
+                  >
                     <ListItemText>{t(value.title)}</ListItemText>
                   </ListItemButton>
                 </Link>
               ))}
             </List>
           </Collapse>
-          <ListItemButton onClick={() => setOpenOthers(!openOthers)}>
+          <ListItemButton
+            onClick={() => setOpenOthers(!openOthers)}
+            sx={{ backgroundColor: theme.palette.primary.main }}
+          >
             <ListItemText>{t("common.others")}</ListItemText>
             {openOthers ? (
               <Icon
@@ -183,14 +221,22 @@ export default function BurgerMenu() {
           </ListItemButton>
           <Collapse in={openOthers} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {InternationalLinksOthers.map((value) => (
+              {InternationalLinksOthers.map((value, index) => (
                 <Link
                   key={value.title}
                   href={value[locale]}
                   locale={locale}
                   onClick={() => setAnchorEl(null)}
                 >
-                  <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemButton
+                    sx={{
+                      pl: 4,
+                      backgroundColor:
+                        index % 2
+                          ? theme.palette.primary.second
+                          : theme.palette.primary.light,
+                    }}
+                  >
                     <ListItemText>{t(value.title)}</ListItemText>
                   </ListItemButton>
                 </Link>
