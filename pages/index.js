@@ -7,7 +7,7 @@ import InternationalLinks, {
   InternationalLinksOthers,
 } from "../constants";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Input from "../components/Input";
 import Head from "next/head";
 
@@ -19,13 +19,17 @@ export default function Home() {
     ...InternationalLinksGenerators,
     ...InternationalLinksOthers,
   ]);
+
   const calculatorsRef = useRef(calculators);
 
   const handleChange = (searchTerm) => {
     const filteredCalculators = calculatorsRef.current.filter(
-      (value) => value.en.indexOf(searchTerm.toLowerCase()) !== -1
+      (value) => value.en.indexOf(searchTerm.trim().toLowerCase()) !== -1
     );
-    setCalculators(filteredCalculators);
+
+    if (filteredCalculators.length) {
+      setCalculators(filteredCalculators);
+    }
   };
 
   return (
