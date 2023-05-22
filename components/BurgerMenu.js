@@ -24,6 +24,7 @@ export default function BurgerMenu() {
   const [openCalculators, setOpenCalculators] = React.useState(false);
   const [openConverters, setOpenConverters] = React.useState(false);
   const [openGenerators, setOpenGenerators] = React.useState(false);
+  const [openOthers, setOpenOthers] = React.useState(false);
 
   return (
     <div>
@@ -51,7 +52,7 @@ export default function BurgerMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <List sx={{ padding: 0, minWidth: 250 }}>
+        <List sx={{ padding: 0, minWidth: { xs: 250, sm: 350, md: 450 } }}>
           <ListItemButton onClick={() => setOpenCalculators(!openCalculators)}>
             <ListItemText>{t("common.calculators")}</ListItemText>
             {openCalculators ? (
@@ -160,7 +161,27 @@ export default function BurgerMenu() {
               ))}
             </List>
           </Collapse>
-          <Collapse in={openGenerators} timeout="auto" unmountOnExit>
+          <ListItemButton onClick={() => setOpenOthers(!openOthers)}>
+            <ListItemText>{t("common.others")}</ListItemText>
+            {openOthers ? (
+              <Icon
+                sx={{
+                  color: "black",
+                }}
+              >
+                expand_less
+              </Icon>
+            ) : (
+              <Icon
+                sx={{
+                  color: "black",
+                }}
+              >
+                expand_more
+              </Icon>
+            )}
+          </ListItemButton>
+          <Collapse in={openOthers} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {InternationalLinksOthers.map((value) => (
                 <Link
