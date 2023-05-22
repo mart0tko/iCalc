@@ -125,6 +125,18 @@ const InternationalLinks = [
     title: "sipCalculator.title",
     type: "calculator",
   },
+  {
+    en: "/cagr-calculator",
+    icon: "payments",
+    title: "cagrCalculator.title",
+    type: "calculator",
+  },
+  {
+    en: "/bounce-rate-calculator",
+    icon: "payments",
+    title: "bounceRateCalculator.title",
+    type: "calculator",
+  },
 ];
 
 export default InternationalLinks;

@@ -50,11 +50,25 @@
     "valueOne": "Bill Amount",
     "valueTwo": "Tip %"
   },
+  "cagrCalculator": {
+    "title": "CAGR Calculator",
+    "description": "A Compound Annual Growth Rate (CAGR) calculator is a tool used to determine the average annual growth rate of an investment over a specific period of time. The CAGR is a useful metric for evaluating the performance of an investment or measuring the growth of a business or financial asset. \n \n To calculate the CAGR, the calculator requires three inputs: \n \n 1. Initial Value: The starting value or investment amount at the beginning of the period. \n 2. Final Value: The ending value or investment amount at the end of the period. \n 3. Number of Years: The duration of the investment or the time period over which the growth occurred. \n \n Using these inputs, the CAGR calculator applies the following formula: \n \n CAGR = ((Final Value / Initial Value) ^ (1 / Number of Years) - 1) * 100 \n \n The formula calculates the growth rate by dividing the final value by the initial value, raising it to the power of the inverse of the number of years, subtracting 1, and then multiplying by 100 to express the result as a percentage.\n \n The CAGR represents the average annual rate at which the investment has grown over the specified period. It provides a standardized way to compare the performance of investments or assets with different time durations or growth patterns. \n \n By using a CAGR calculator, investors, financial analysts, and business professionals can assess the growth potential, evaluate investment returns, and make informed decisions based on the historical growth rates of different assets or investments. \n \n It is important to note that the CAGR assumes a steady growth rate over the entire period, which may not always reflect the actual volatility or fluctuations within the investment's performance. Additionally, the CAGR does not consider any interim variations or compound interest earned during the period, focusing solely on the average annual growth rate.",
+    "initialValue": "Initial Investment:",
+    "finalValue": "Final value after a certain period:",
+    "numYears": "Number of years:"
+  },
   "gratuityCalculator": {
     "title": "Gratuity Calculator",
     "description": "Where Total bill amount is the cost of your bill before the tip, and Tip percentage is the percentage of the bill you want to leave as a gratuity. You can adjust the tip percentage based on your level of satisfaction with the service. A common tip range is 15% to 20%.",
     "valueOne": "Total Bill Amount",
     "valueTwo": "Tip Percentage"
+  },
+  "bounceRateCalculator": {
+    "title": "Bounce Rate Calculator",
+    "description": "A bounce rate calculator is a tool used to determine the bounce rate of a website or web page. The bounce rate is a metric that measures the percentage of visitors who navigate away from a website or web page after viewing only a single page, without interacting or navigating to any other pages on the site. \n\nTo calculate the bounce rate, the calculator requires two inputs:\n\n1. Total Number of Bounces: The number of visitors who leave the website or page after viewing only a single page.\n2. Total Number of Entrances: The total number of visitors who enter the website or land on the specific page.\n\nUsing these inputs, the bounce rate is calculated using the following formula:\n\nBounce Rate = (Total Number of Bounces / Total Number of Entrances) * 100\n\nThe formula divides the total number of bounces by the total number of entrances and multiplies the result by 100 to express it as a percentage.\n\nThe bounce rate is a critical metric for website owners, marketers, and analysts as it provides insights into visitor engagement and the effectiveness of a website or specific pages. A high bounce rate indicates that a significant portion of visitors leave after viewing only one page, which may suggest issues with content relevancy, user experience, or other factors. Conversely, a lower bounce rate suggests that visitors are exploring further and engaging with the website or page.\n\nBy monitoring and analyzing the bounce rate, website owners can identify areas for improvement and optimize their content, design, and user experience to reduce the bounce rate and increase visitor engagement and conversion rates. A bounce rate calculator simplifies the calculation process, allowing website owners and analysts to measure and track this important metric for their online presence.\n\nUsing a bounce rate calculator, you can quickly determine the bounce rate by providing the total number of bounces and the total number of entrances, helping you make informed decisions and improvements to enhance visitor engagement and overall website performance.",
+    "bounces": "Total number of bounces:",
+    "entrances": "Total number of entrances:",
+    "result": "Bounce Rate: "
   },
   "discountCalculator": {
     "title": "Discount Calculator",

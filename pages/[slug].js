@@ -51,6 +51,8 @@ import FacebookTextGenerator from "../components/generators/FacebookTextGenerato
 import MorseCodeTranslator from "../components/other/MorseCodeTranslator";
 import BinaryCodeTranslator from "../components/other/BinaryCodeTranslator";
 import NatoPhoneticAlphabetTranslator from "../components/other/NatoPhoneticAlphabetTranslator";
+import CagrCalculator from "../components/Calculaters/CagrCalculator";
+import BounceRateCalculator from "../components/Calculaters/BounceRateCalculator";
 
 const pages = [
   ...InternationalLinks,
@@ -161,6 +163,10 @@ export default function About() {
         return <BinaryCodeTranslator />;
       case "nato-phonetical-alphabet-translator":
         return <NatoPhoneticAlphabetTranslator />;
+      case "cagr-calculator":
+        return <CagrCalculator />;
+      case "bounce-rate-calculator":
+        return <BounceRateCalculator />;
       default:
         return <Error statusCode={404} />;
     }
