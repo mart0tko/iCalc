@@ -2,6 +2,7 @@
   "name": "calculators",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "DEV=true next dev",
     "build": "next build && rm -rf ./.next/cache",

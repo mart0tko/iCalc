@@ -74,7 +74,6 @@ export default function SipCalculator() {
       interestRate,
       duration
     );
-    console.log(res);
     setResult(res);
   };
 

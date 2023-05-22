@@ -44,6 +44,12 @@ import LoveCalculator from "../components/Calculaters/LoveCalculator";
 import FuelCostCalculator from "../components/Calculaters/FuelCostCalculator";
 import MD5Generator from "../components/generators/MD5Generator";
 import SipCalculator from "../components/Calculaters/SipCalculator";
+import MirrorTextGenerator from "../components/generators/MirrorTextGenerator";
+import BubbleTextGenerator from "../components/generators/BubbleTextGenerator";
+import ZalgoGlitchGenerator from "../components/generators/ZalgoGlitchGenerator";
+import FacebookTextGenerator from "../components/generators/FacebookTextGenerator";
+import MorseCodeTranslator from "../components/other/MorseCodeTranslator";
+import BinaryCodeTranslator from "../components/other/BinaryCodeTranslator";
 
 const pages = [
   ...InternationalLinks,
@@ -140,6 +146,18 @@ export default function About() {
         return <SipCalculator />;
       case "word-counter":
         return <WordCounter />;
+      case "mirror-text-generator":
+        return <MirrorTextGenerator />;
+      case "bubble-text-generator":
+        return <BubbleTextGenerator />;
+      case "zalgo-glitch-generator":
+        return <ZalgoGlitchGenerator />;
+      case "facebook-font-generator":
+        return <FacebookTextGenerator />;
+      case "morse-code-translator":
+        return <MorseCodeTranslator />;
+      case "binary-code-translator":
+        return <BinaryCodeTranslator />;
       default:
         return <Error statusCode={404} />;
     }

@@ -261,6 +261,36 @@
     "text": "Paste your text here:",
     "result": "Words in the text: "
   },
+  "mirrorTextGenerator": {
+    "title": "Mirror Text Generator",
+    "description": "The Mirror Text Generator will generate a mirror variant of your text.",
+    "input": "Paste your text here:"
+  },
+  "bubbleTextGenerator": {
+    "title": "Bubble Text Generator",
+    "description": "The Bubble Text Generator will generate a bubble variant of your text.",
+    "input": "Paste your text here:"
+  },
+  "zalgoGlitchGenerator": {
+    "title": "Zalgo Glitch Text Generator",
+    "description": "The Zalgo Glitch Text Generator will generate your text in Zalgo Glitch variant.",
+    "input": "Paste your text here:"
+  },
+  "facebookTextGenerator": {
+    "title": "Facebook Font Generator",
+    "description": "The Facebook Font Generator will generate your text in a Facebook-like font variant.",
+    "input": "Paste your text here:"
+  },
+  "morseCodeTranslator": {
+    "title": "Morse Code Translator",
+    "description": "The Morse Code Translator will translate your text in a Morse code variant.",
+    "input": "Paste your text here:"
+  },
+  "binaryCodeTranslator": {
+    "title": "Binary Code Translator",
+    "description": "The Binary Code Translator will translate your text in a Binary code variant.",
+    "input": "Paste your text here:"
+  },
 
   "common": {
     "calculate": "Calculate",

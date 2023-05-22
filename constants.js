@@ -211,6 +211,30 @@ export const InternationalLinksGenerators = [
     title: "md5Generator.title",
     type: "Generator",
   },
+  {
+    en: "/mirror-text-generator",
+    icon: "spellcheck",
+    title: "mirrorTextGenerator.title",
+    type: "Generator",
+  },
+  {
+    en: "/bubble-text-generator",
+    icon: "spellcheck",
+    title: "bubbleTextGenerator.title",
+    type: "Generator",
+  },
+  {
+    en: "/zalgo-glitch-generator",
+    icon: "spellcheck",
+    title: "zalgoGlitchGenerator.title",
+    type: "Generator",
+  },
+  {
+    en: "/facebook-font-generator",
+    icon: "abc",
+    title: "facebookTextGenerator.title",
+    type: "Generator",
+  },
 ];
 
 export const InternationalLinksOthers = [
@@ -218,6 +242,18 @@ export const InternationalLinksOthers = [
     en: "/word-counter",
     icon: "spellcheck",
     title: "wordCounter.title",
+    type: "Other",
+  },
+  {
+    en: "/morse-code-translator",
+    icon: "abc",
+    title: "morseCodeTranslator.title",
+    type: "Other",
+  },
+  {
+    en: "/binary-code-translator",
+    icon: "abc",
+    title: "binaryCodeTranslator.title",
     type: "Other",
   },
 ];
