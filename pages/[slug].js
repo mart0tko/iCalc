@@ -53,6 +53,7 @@ import BinaryCodeTranslator from "../components/other/BinaryCodeTranslator";
 import NatoPhoneticAlphabetTranslator from "../components/other/NatoPhoneticAlphabetTranslator";
 import CagrCalculator from "../components/Calculaters/CagrCalculator";
 import BounceRateCalculator from "../components/Calculaters/BounceRateCalculator";
+import BTUtoM3Converter from "../components/converters/BTUtoM3Converter";
 
 const pages = [
   ...InternationalLinks,
@@ -167,6 +168,8 @@ export default function About() {
         return <CagrCalculator />;
       case "bounce-rate-calculator":
         return <BounceRateCalculator />;
+      case "btu-to-m3-convertor":
+        return <BTUtoM3Converter />;
       default:
         return <Error statusCode={404} />;
     }

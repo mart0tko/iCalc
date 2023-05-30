@@ -178,6 +178,12 @@ export const InternationalLinksConvertors = [
     title: "mToFeetConverter.title",
     type: "Converter",
   },
+  {
+    en: "/btu-to-m3-convertor",
+    icon: "published_with_changes",
+    title: "btuToM3Converter.title",
+    type: "Converter",
+  },
 ];
 
 export const InternationalLinksGenerators = [

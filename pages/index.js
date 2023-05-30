@@ -13,6 +13,7 @@ import Head from "next/head";
 
 export default function Home() {
   const { locale } = useRouter();
+  debugger;
   const [calculators, setCalculators] = useState([
     ...InternationalLinks,
     ...InternationalLinksConvertors,
