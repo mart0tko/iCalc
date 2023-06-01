@@ -13,14 +13,9 @@
     "About": "About"
   },
   "percentDiffCalc": {
-    "title": "Percentage Difference Calculator",
+    "title": "ПРОЦЕНТ",
     "description": "Find the percent difference between two positive numbers greater than 0. It is usually calculated when you want to know the difference in percentage between two numbers.",
     "note": "NOTE: Percent Difference is not the same like "
-  },
-  "btuToM3Converter": {
-    "title": "BTU to M3 Converter",
-    "description": "The BTU (British Thermal Unit) to m³ (cubic meters) converter is a tool used to convert energy units from BTU to volume units in cubic meters. It is commonly used in applications related to natural gas consumption and energy measurement.\n\n To convert BTU to m³, you need to consider the specific energy content of the substance you are working with. The conversion factor depends on the type of substance and its calorific value. In the case of natural gas, the most common conversion factor is 1 BTU ≈ 0.0000283 m³. This factor is often used for residential and commercial applications involving natural gas. \n\n To use the converter, you simply input the BTU value you want to convert. The converter then multiplies the BTU value by the appropriate conversion factor to obtain the equivalent value in cubic meters. \n\n It's important to note that the conversion factor mentioned above is specific to natural gas and may vary slightly depending on the specific composition and quality of the gas being used. If you are working with a different substance or need a more accurate conversion factor, it's recommended to consult the specific calorific value and conversion factors provided for that substance. \n\n The BTU to m³ converter code provided earlier demonstrates a simple implementation in both Python and JavaScript, allowing you to easily perform the conversion in your programming projects. \n",
-    "btuToM3": "BTU to M3"
   },
   "percentChange": {
     "title": "Percent Change Calculator",
@@ -315,13 +310,6 @@
     "description": "The NATO Phonetical Alphabet Translator will translate your text in a NATO Phonetic Alphabet variant.",
     "input": "Paste your text here:"
   },
-  "btuToM2": {
-    "title": "BTU to square meter(m2)",
-    "description": "The table below will show you how much approximately BTU is needed for cooling and heating as per the square meter(m2) of the room. \n\n Please note that this table provides a rough estimation based on common guidelines and assumptions. The heating or cooling capacity required for a specific area can vary depending on various factors such as insulation, climate, ceiling height, and specific equipment efficiency. It is always recommended to consult with HVAC professionals or refer to equipment specifications for accurate calculations in your specific situation.",
-    "area": "Area (m2)",
-    "heating": "Heating Capacity (BTU/h)",
-    "cooling": "Cooling Capacity (BTU/h)"
-  },
 
   "common": {
     "calculate": "Calculate",
@@ -340,7 +328,6 @@
     "cm": "Cm",
     "m": "M",
     "mm": "Mm",
-    "m3": "m3",
     "km": "Km",
     "miles": "Miles",
     "feet": "Feet",
