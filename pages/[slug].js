@@ -64,9 +64,9 @@ const pages = [
   ...InternationalLinksGenerators,
   ...InternationalLinksOthers,
 ];
-export default function About() {
+export default function Slug() {
   const { t } = useTranslation();
-  const { asPath, locale } = useRouter();
+  const { asPath, locale, defaultLocale } = useRouter();
   const clearAsPath = asPath.replaceAll("/", "");
   const [title, setTitle] = useState("WannaCalc");
   const [description, setDescription] = useState("WannaCalc");
@@ -74,11 +74,13 @@ export default function About() {
   // Set meta title and description
   useEffect(() => {
     const clearPath = asPath.slice(0, -1);
-    const element = pages.find((element) => element[locale] === clearPath);
+    const element = pages.find((element) =>
+      element[locale] ? element[locale] : element[defaultLocale] === clearPath
+    );
     const newDescription = element.title.replace(".title", ".description");
     setTitle(element.title);
     setDescription(newDescription);
-  }, [asPath, locale]);
+  }, [asPath, locale, defaultLocale]);
 
   // TODO Make to match as per different languages
   const pageToLoad = () => {

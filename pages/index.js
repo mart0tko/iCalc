@@ -12,8 +12,7 @@ import Input from "../components/Input";
 import Head from "next/head";
 
 export default function Home() {
-  const { locale } = useRouter();
-  debugger;
+  const { locale, defaultLocale } = useRouter();
   const [calculators, setCalculators] = useState([
     ...InternationalLinks,
     ...InternationalLinksConvertors,
@@ -22,7 +21,6 @@ export default function Home() {
   ]);
 
   const calculatorsRef = useRef(calculators);
-
   const handleChange = (searchTerm) => {
     const filteredCalculators = calculatorsRef.current.filter(
       (value) => value.en.indexOf(searchTerm.trim().toLowerCase()) !== -1
@@ -86,9 +84,9 @@ export default function Home() {
         />
         {calculators.map((value, index) => (
           <CalculaterHomeLink
-            key={value[locale]}
+            key={value[locale] ? value[locale] : value[defaultLocale]}
             color={index % 2 == 0}
-            href={value[locale]}
+            href={value[locale] ? value[locale] : value[defaultLocale]}
             icon={value.icon}
             title={value.title}
             type={value.type}

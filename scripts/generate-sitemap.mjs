@@ -20,6 +20,14 @@ async function generate() {
     "!pages/404.js",
   ]);
 
+  // TODO make the generations something like languages.forEach(InternationalLinksConvertors.map((page) => {
+  //       return `
+  //       <url>
+  //           <loc>${`https://wannacalc.com${page["en"]}`}</loc>
+  //       </url>
+  //     `;
+  // }).join(""))
+  const languages = ["en", "bg"];
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

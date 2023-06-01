@@ -40,7 +40,7 @@ function generateColor(type, theme) {
 
 export default function CalculaterHomeLink({ href, icon, title, color, type }) {
   const { t } = useTranslation();
-  const { locale } = useRouter();
+  const { locale, defaultLocale } = useRouter();
   const [label, setLabel] = useState("");
   const theme = useTheme();
   const [labelColor, setLabelColor] = useState(theme.palette.grey.main);
@@ -54,7 +54,7 @@ export default function CalculaterHomeLink({ href, icon, title, color, type }) {
     <Link
       href={href}
       style={{ maxWidth: sizePaper, height: sizePaper }}
-      locale={locale}
+      locale={locale ? locale : defaultLocale}
     >
       <Paper
         variant="outlined"
