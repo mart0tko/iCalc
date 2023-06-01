@@ -83,7 +83,7 @@ export default function BTUtoKwConverter() {
                 fontSize: "1.5rem",
               }}
             >
-              {result} {t("common.m3")}
+              {result} {t("common.kw")}
             </Typography>
           </CopyToClipboardButton>
         </Container>
