@@ -190,6 +190,12 @@ export const InternationalLinksConvertors = [
     title: "btuToKwConverter.title",
     type: "Converter",
   },
+  {
+    en: "/watt-to-kilowatt-convertor",
+    icon: "published_with_changes",
+    title: "wattToKilowattConverter.title",
+    type: "Converter",
+  },
 ];
 
 export const InternationalLinksGenerators = [
