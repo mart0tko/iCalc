@@ -13,6 +13,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function FeetToInchesConverter() {
   const { t } = useTranslation("");
@@ -48,16 +50,8 @@ export default function FeetToInchesConverter() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("feetToInchesConverter.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("feetToInchesConverter.description")}
-      </Typography>
+      <Title>{t("feetToInchesConverter.title")}</Title>
+      <Description>{t("feetToInchesConverter.description")}</Description>
       <br />
       <RadioGroup
         defaultValue="feetToInch"

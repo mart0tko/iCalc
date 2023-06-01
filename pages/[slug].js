@@ -56,6 +56,7 @@ import BounceRateCalculator from "../components/Calculaters/BounceRateCalculator
 import BTUtoM3Converter from "../components/converters/BTUtoM3Converter";
 import BtuToM2 from "../components/other/BtuToM2";
 import BTUtoKwConverter from "../components/converters/BTUtoKwConverter";
+import WattToKilowattConverter from "../components/converters/WattToKilowattConverter";
 
 const pages = [
   ...InternationalLinks,
@@ -174,6 +175,8 @@ export default function About() {
         return <BTUtoM3Converter />;
       case "btu-to-kw-convertor":
         return <BTUtoKwConverter />;
+      case "watt-to-kilowatt-convertor":
+        return <WattToKilowattConverter />;
       case "btu-to-m2":
         return <BtuToM2 />;
       default:

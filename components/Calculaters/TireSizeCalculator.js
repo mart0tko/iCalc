@@ -6,6 +6,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
 import currency from "currency.js";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function TireSizeCalculator() {
   const { t } = useTranslation("");
@@ -40,16 +42,8 @@ export default function TireSizeCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("tireSizeCalculator.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("tireSizeCalculator.description")}
-      </Typography>
+      <Title>{t("tireSizeCalculator.title")}</Title>
+      <Description>{t("tireSizeCalculator.description")}</Description>
       <br />
       <Container
         sx={{

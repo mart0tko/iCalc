@@ -6,6 +6,8 @@ import { useTranslation } from "next-i18next";
 import { useTheme } from "@mui/material/styles";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function PercentageDifferance() {
   const theme = useTheme();
@@ -38,16 +40,8 @@ export default function PercentageDifferance() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("percentDiffCalc.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("percentDiffCalc.description")}
-      </Typography>
+      <Title>{t("percentDiffCalc.title")}</Title>
+      <Description>{t("percentDiffCalc.description")}</Description>
       <br />
       <Container
         sx={{

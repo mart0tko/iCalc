@@ -5,6 +5,8 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import currency from "currency.js";
 import CalcButtons from "../CalcButtons";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function ConversionRateCalculator() {
   const { t } = useTranslation("");
@@ -35,16 +37,8 @@ export default function ConversionRateCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("conversionRateCalc.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("conversionRateCalc.description")}
-      </Typography>
+      <Title>{t("conversionRateCalc.title")}</Title>
+      <Description>{t("conversionRateCalc.description")}</Description>
       <br />
       <Container
         sx={{

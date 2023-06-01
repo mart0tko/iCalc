@@ -8,6 +8,8 @@ import {
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
+import Description from "../Description";
+import Title from "../Title";
 
 function wordCount(text) {
   let words = text.trim().split(/\s+/);
@@ -32,16 +34,8 @@ export default function WordCounter() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("wordCounter.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("wordCounter.description")}
-      </Typography>
+      <Title>{t("wordCounter.title")}</Title>
+      <Description>{t("wordCounter.description")}</Description>
       <br />
       <Container
         sx={{

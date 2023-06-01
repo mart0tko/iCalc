@@ -5,6 +5,8 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 function calculateSIP(principal, monthlyInvestment, interestRate, duration) {
   // Convert interest rate from percentage to decimal
@@ -87,20 +89,8 @@ export default function SipCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("sipCalculator.title")}
-      </Typography>
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}
-      >
-        {t("sipCalculator.description")}
-      </Typography>
+      <Title>{t("sipCalculator.title")}</Title>
+      <Description>{t("sipCalculator.description")}</Description>
       <br />
       <Container
         sx={{

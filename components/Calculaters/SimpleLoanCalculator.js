@@ -6,6 +6,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import moment from "moment";
 import currency from "currency.js";
 import CalcButtons from "../CalcButtons";
+import Description from "../Description";
+import Title from "../Title";
 
 const loanAmountefaultValue = 100000;
 const loanTermDefaultValue = 60;
@@ -62,16 +64,8 @@ export default function SimpleLoanCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("simpleLoanCalc.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("simpleLoanCalc.description")}
-      </Typography>
+      <Title>{t("simpleLoanCalc.title")}</Title>
+      <Description>{t("simpleLoanCalc.description")}</Description>
       <br />
       <Container
         sx={{

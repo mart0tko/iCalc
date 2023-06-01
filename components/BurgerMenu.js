@@ -21,7 +21,7 @@ import { useTheme } from "@mui/material";
 export default function BurgerMenu() {
   const [anchorEl, setAnchorEl] = React.useState(false);
   const { t } = useTranslation();
-  const { locale } = useRouter();
+  const { locale, defaultLocale } = useRouter();
   const [openCalculators, setOpenCalculators] = React.useState(false);
   const [openConverters, setOpenConverters] = React.useState(false);
   const [openGenerators, setOpenGenerators] = React.useState(false);
@@ -83,8 +83,8 @@ export default function BurgerMenu() {
               {InternationalLinks.map((value, index) => (
                 <Link
                   key={value.title}
-                  href={value[locale]}
-                  locale={locale}
+                  href={value[locale ? locale : defaultLocale]}
+                  locale={locale ? locale : defaultLocale}
                   onClick={() => setAnchorEl(null)}
                 >
                   <ListItemButton
@@ -130,8 +130,8 @@ export default function BurgerMenu() {
               {InternationalLinksConvertors.map((value, index) => (
                 <Link
                   key={value.title}
-                  href={value[locale]}
-                  locale={locale}
+                  href={value[locale ? locale : defaultLocale]}
+                  locale={locale ? locale : defaultLocale}
                   onClick={() => setAnchorEl(null)}
                 >
                   <ListItemButton
@@ -177,8 +177,8 @@ export default function BurgerMenu() {
               {InternationalLinksGenerators.map((value, index) => (
                 <Link
                   key={value.title}
-                  href={value[locale]}
-                  locale={locale}
+                  href={value[locale ? locale : defaultLocale]}
+                  locale={locale ? locale : defaultLocale}
                   onClick={() => setAnchorEl(null)}
                 >
                   <ListItemButton
@@ -224,8 +224,8 @@ export default function BurgerMenu() {
               {InternationalLinksOthers.map((value, index) => (
                 <Link
                   key={value.title}
-                  href={value[locale]}
-                  locale={locale}
+                  href={value[locale ? locale : defaultLocale]}
+                  locale={locale ? locale : defaultLocale}
                   onClick={() => setAnchorEl(null)}
                 >
                   <ListItemButton

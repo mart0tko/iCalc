@@ -13,6 +13,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function CmToFeetConverter() {
   const { t } = useTranslation("");
@@ -48,16 +50,8 @@ export default function CmToFeetConverter() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("cmToFeetConverter.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("cmToFeetConverter.description")}
-      </Typography>
+      <Title>{t("cmToFeetConverter.title")}</Title>
+      <Description>{t("cmToFeetConverter.description")}</Description>
       <br />
       <RadioGroup
         defaultValue="cmToFeet"

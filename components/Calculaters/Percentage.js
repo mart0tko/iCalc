@@ -6,6 +6,8 @@ import { useTranslation } from "next-i18next";
 import { useTheme } from "@mui/material/styles";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function Percentage() {
   const theme = useTheme();
@@ -36,16 +38,8 @@ export default function Percentage() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("percentage.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("percentage.description")}
-      </Typography>
+      <Title>{t("percentage.title")}</Title>
+      <Description>{t("percentage.description")}</Description>
       <Typography variant="p" gutterBottom sx={{ fontSize: "1rem" }}>
         {t("percentage.example")}
       </Typography>

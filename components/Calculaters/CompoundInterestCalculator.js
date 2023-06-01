@@ -5,6 +5,8 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 function compoundInterest(
   principal,
@@ -69,20 +71,8 @@ export default function CompoundInterestCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("compoundInterestCalculator.title")}
-      </Typography>
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}
-      >
-        {t("compoundInterestCalculator.description")}
-      </Typography>
+      <Title>{t("compoundInterestCalculator.title")}</Title>
+      <Description>{t("compoundInterestCalculator.description")}</Description>
       <br />
       <Container
         sx={{

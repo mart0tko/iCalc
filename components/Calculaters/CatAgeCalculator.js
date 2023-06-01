@@ -5,6 +5,8 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function CatAgeCalculator() {
   const { t } = useTranslation("");
@@ -32,16 +34,8 @@ export default function CatAgeCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("catAgeCalculator.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("catAgeCalculator.description")}
-      </Typography>
+      <Title>{t("catAgeCalculator.title")}</Title>
+      <Description>{t("catAgeCalculator.description")}</Description>
       <br />
       <Container
         sx={{

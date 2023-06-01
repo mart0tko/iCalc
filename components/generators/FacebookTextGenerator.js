@@ -10,6 +10,8 @@ import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
+import Description from "../Description";
+import Title from "../Title";
 
 function generateFacebookFontText(text) {
   const facebookFontChars = {
@@ -99,20 +101,8 @@ export default function FacebookTextGenerator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("facebookTextGenerator.title")}
-      </Typography>
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}
-      >
-        {t("facebookTextGenerator.description")}
-      </Typography>
+      <Title>{t("facebookTextGenerator.title")}</Title>
+      <Description>{t("facebookTextGenerator.description")}</Description>
       <br />
       <Container
         sx={{

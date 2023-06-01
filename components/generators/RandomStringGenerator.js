@@ -10,6 +10,8 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 const charactersAll =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -76,16 +78,8 @@ export default function RandomStringGenerator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("randomStringGenerator.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("randomStringGenerator.description")}
-      </Typography>
+      <Title>{t("randomStringGenerator.title")}</Title>
+      <Description>{t("randomStringGenerator.description")}</Description>
       <br />
       <Container
         sx={{

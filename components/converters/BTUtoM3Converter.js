@@ -6,6 +6,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 function btuToM3(btu) {
   const conversionFactor = 0.0000283;
@@ -40,20 +42,8 @@ export default function BTUtoM3Converter() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("btuToM3Converter.title")}
-      </Typography>
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}
-      >
-        {t("btuToM3Converter.description")}
-      </Typography>
+      <Title>{t("btuToM3Converter.title")}</Title>
+      <Description>{t("btuToM3Converter.description")}</Description>
       <br />
       <Container
         sx={{
@@ -79,14 +69,16 @@ export default function BTUtoM3Converter() {
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
           <CopyToClipboardButton result={`${result} ${t("common.m3")}`}>
-            <Typography
-              sx={{
-                color: "success.dark",
-                fontSize: "1.5rem",
-              }}
-            >
-              {result} {t("common.m3")}
-            </Typography>
+            {result && (
+              <Typography
+                sx={{
+                  color: "success.dark",
+                  fontSize: "1.5rem",
+                }}
+              >
+                {result} {t("common.m3")}
+              </Typography>
+            )}
           </CopyToClipboardButton>
         </Container>
       </Container>

@@ -5,6 +5,8 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 function salaryToHourly(salary, hoursPerWeek) {
   let hoursPerYear = hoursPerWeek * 52; // assuming 2 weeks of vacation per year
@@ -43,16 +45,8 @@ export default function SalaryToHourlyCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("salaryToHourlyCalculator.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("salaryToHourlyCalculator.description")}
-      </Typography>
+      <Title>{t("salaryToHourlyCalculator.title")}</Title>
+      <Description>{t("salaryToHourlyCalculator.description")}</Description>
       <br />
       <Container
         sx={{

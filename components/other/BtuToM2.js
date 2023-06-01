@@ -10,6 +10,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Description from "../Description";
+import Title from "../Title";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -44,23 +46,10 @@ const rows = [
 
 export default function BtuToM2() {
   const { t } = useTranslation("");
-
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("btuToM2.title")}
-      </Typography>
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}
-      >
-        {t("btuToM2.description")}
-      </Typography>
+      <Title>{t("btuToM2.title")}</Title>
+      <Description>{t("btuToM2.description")}</Description>
       <br />
       <Container
         sx={{

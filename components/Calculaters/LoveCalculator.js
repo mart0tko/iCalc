@@ -5,6 +5,8 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 function LoveCalculator() {
   const { t } = useTranslation("");
@@ -65,16 +67,8 @@ function LoveCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("loveCalculator.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("loveCalculator.description")}
-      </Typography>
+      <Title>{t("loveCalculator.title")}</Title>
+      <Description>{t("loveCalculator.description")}</Description>
       <br />
       <Container
         sx={{

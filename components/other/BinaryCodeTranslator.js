@@ -4,6 +4,8 @@ import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
+import Description from "../Description";
+import Title from "../Title";
 
 function textToBinary(text) {
   let binary = "";
@@ -49,20 +51,8 @@ export default function BinaryCodeTranslator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("binaryCodeTranslator.title")}
-      </Typography>
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}
-      >
-        {t("binaryCodeTranslator.description")}
-      </Typography>
+      <Title>{t("binaryCodeTranslator.title")}</Title>
+      <Description>{t("binaryCodeTranslator.description")}</Description>
       <br />
       <Container
         sx={{

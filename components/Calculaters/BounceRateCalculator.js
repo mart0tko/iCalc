@@ -5,6 +5,8 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 function calculateBounceRate(bounces, entrances) {
   const bounceRate = (bounces / entrances) * 100;
@@ -41,20 +43,8 @@ export default function BounceRateCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("bounceRateCalculator.title")}
-      </Typography>
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}
-      >
-        {t("bounceRateCalculator.description")}
-      </Typography>
+      <Title>{t("bounceRateCalculator.title")}</Title>
+      <Description>{t("bounceRateCalculator.description")}</Description>
       <br />
       <Container
         sx={{

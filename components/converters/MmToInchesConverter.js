@@ -13,6 +13,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function MmToInchesConverter() {
   const { t } = useTranslation("");
@@ -48,16 +50,8 @@ export default function MmToInchesConverter() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("mmToInchesConverter.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("mmToInchesConverter.description")}
-      </Typography>
+      <Title>{t("mmToInchesConverter.title")}</Title>
+      <Description>{t("mmToInchesConverter.description")}</Description>
       <br />
       <RadioGroup
         defaultValue="mmToInch"

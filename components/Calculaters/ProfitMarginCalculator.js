@@ -7,6 +7,8 @@ import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import { useTheme } from "@mui/material/styles";
 import Input from "../Input";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function ProfitMarginCalculator() {
   const theme = useTheme();
@@ -58,16 +60,8 @@ export default function ProfitMarginCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("profitMarginCalc.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("profitMarginCalc.description")}
-      </Typography>
+      <Title>{t("profitMarginCalc.title")}</Title>
+      <Description>{t("profitMarginCalc.description")}</Description>
       <br />
       <Container
         sx={{

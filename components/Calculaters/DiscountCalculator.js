@@ -6,6 +6,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
 import currency from "currency.js";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function DiscountCalculator() {
   const { t } = useTranslation("");
@@ -38,16 +40,8 @@ export default function DiscountCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("discountCalculator.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("discountCalculator.description")}
-      </Typography>
+      <Title>{t("discountCalculator.title")}</Title>
+      <Description>{t("discountCalculator.description")}</Description>
       <br />
       <Container
         sx={{

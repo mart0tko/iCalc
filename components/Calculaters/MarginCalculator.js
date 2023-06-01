@@ -6,6 +6,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import currency from "currency.js";
 import { useTheme } from "@mui/material/styles";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function MarginCalculator() {
   const theme = useTheme();
@@ -57,16 +59,8 @@ export default function MarginCalculator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("marginCalc.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("marginCalc.description")}
-      </Typography>
+      <Title>{t("marginCalc.title")}</Title>
+      <Description>{t("marginCalc.description")}</Description>
       <br />
       <Container
         sx={{

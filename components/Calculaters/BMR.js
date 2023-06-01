@@ -11,6 +11,8 @@ import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function BMR() {
   const { t } = useTranslation("");
@@ -48,16 +50,8 @@ export default function BMR() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("bmr.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("bmr.description")}
-      </Typography>
+      <Title>{t("bmr.title")}</Title>
+      <Description>{t("bmr.description")}</Description>
       <br />
       <Container
         sx={{

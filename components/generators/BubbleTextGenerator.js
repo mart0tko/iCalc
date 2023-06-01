@@ -4,6 +4,8 @@ import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
+import Description from "../Description";
+import Title from "../Title";
 
 function generateBubbleText(text) {
   const bubbleLetters = {
@@ -68,20 +70,8 @@ export default function BubbleTextGenerator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("bubbleTextGenerator.title")}
-      </Typography>
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}
-      >
-        {t("bubbleTextGenerator.description")}
-      </Typography>
+      <Title>{t("bubbleTextGenerator.title")}</Title>
+      <Description>{t("bubbleTextGenerator.description")}</Description>
       <br />
       <Container
         sx={{

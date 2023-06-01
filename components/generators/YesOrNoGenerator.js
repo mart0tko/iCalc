@@ -2,6 +2,8 @@ import { Button, CircularProgress, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function YesOrNoGenerator() {
   const { t } = useTranslation("");
@@ -23,16 +25,8 @@ export default function YesOrNoGenerator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("yesOrNoGenerator.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("yesOrNoGenerator.description")}
-      </Typography>
+      <Title>{t("yesOrNoGenerator.title")}</Title>
+      <Description>{t("yesOrNoGenerator.description")}</Description>
       <br />
       <Container
         sx={{

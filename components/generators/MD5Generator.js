@@ -11,6 +11,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
 import CryptoJS from "crypto-js";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function MD5Generator() {
   const { t } = useTranslation("");
@@ -39,20 +41,8 @@ export default function MD5Generator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("md5Generator.title")}
-      </Typography>
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}
-      >
-        {t("md5Generator.description")}
-      </Typography>
+      <Title>{t("md5Generator.title")}</Title>
+      <Description>{t("md5Generator.description")}</Description>
       <br />
       <Container
         sx={{

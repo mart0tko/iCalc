@@ -5,6 +5,8 @@ import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import moment from "moment";
 import CalcButtons from "../CalcButtons";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function Age() {
   const { t } = useTranslation("");
@@ -49,16 +51,8 @@ export default function Age() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("ageCalc.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("ageCalc.description")}
-      </Typography>
+      <Title>{t("ageCalc.title")}</Title>
+      <Description>{t("ageCalc.description")}</Description>
       <br />
       <Container
         sx={{

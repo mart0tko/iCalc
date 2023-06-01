@@ -6,6 +6,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
 import generateRandomNumbers from "../../scripts/generate-random-number";
+import Description from "../Description";
+import Title from "../Title";
 
 export default function RandomNumberGenerator() {
   const { t } = useTranslation("");
@@ -35,16 +37,8 @@ export default function RandomNumberGenerator() {
 
   return (
     <ThreeColumnLayout>
-      <Typography
-        variant="h1"
-        gutterBottom
-        sx={{ fontSize: "2rem", lineHeight: "3rem" }}
-      >
-        {t("randomNumberGenerator.title")}
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ fontSize: "1rem" }}>
-        {t("randomNumberGenerator.description")}
-      </Typography>
+      <Title>{t("randomNumberGenerator.title")}</Title>
+      <Description>{t("randomNumberGenerator.description")}</Description>
       <br />
       <Container
         sx={{
