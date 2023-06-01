@@ -55,6 +55,7 @@ import CagrCalculator from "../components/Calculaters/CagrCalculator";
 import BounceRateCalculator from "../components/Calculaters/BounceRateCalculator";
 import BTUtoM3Converter from "../components/converters/BTUtoM3Converter";
 import BtuToM2 from "../components/other/BtuToM2";
+import BTUtoKwConverter from "../components/converters/BTUtoKwConverter";
 
 const pages = [
   ...InternationalLinks,
@@ -171,6 +172,8 @@ export default function About() {
         return <BounceRateCalculator />;
       case "btu-to-m3-convertor":
         return <BTUtoM3Converter />;
+      case "btu-to-kw-convertor":
+        return <BTUtoKwConverter />;
       case "btu-to-m2":
         return <BtuToM2 />;
       default:

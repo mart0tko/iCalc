@@ -22,6 +22,11 @@
     "description": "The BTU (British Thermal Unit) to m³ (cubic meters) converter is a tool used to convert energy units from BTU to volume units in cubic meters. It is commonly used in applications related to natural gas consumption and energy measurement.\n\n To convert BTU to m³, you need to consider the specific energy content of the substance you are working with. The conversion factor depends on the type of substance and its calorific value. In the case of natural gas, the most common conversion factor is 1 BTU ≈ 0.0000283 m³. This factor is often used for residential and commercial applications involving natural gas. \n\n To use the converter, you simply input the BTU value you want to convert. The converter then multiplies the BTU value by the appropriate conversion factor to obtain the equivalent value in cubic meters. \n\n It's important to note that the conversion factor mentioned above is specific to natural gas and may vary slightly depending on the specific composition and quality of the gas being used. If you are working with a different substance or need a more accurate conversion factor, it's recommended to consult the specific calorific value and conversion factors provided for that substance. \n\n The BTU to m³ converter code provided earlier demonstrates a simple implementation in both Python and JavaScript, allowing you to easily perform the conversion in your programming projects. \n",
     "btuToM3": "BTU to M3"
   },
+  "btuToKwConverter": {
+    "title": "BTU to KW Converter",
+    "description": "To convert BTU (British Thermal Units) to kilowatts (kW), you can use the following conversion formula:\n\n 1 BTU/h = 0.00029307107 kW\n\nThis conversion factor is based on the relationship between BTU and kilowatts. It means that 1 BTU per hour is approximately equal to 0.00029307107 kilowatts.",
+    "btuToKw": "BTU to KW"
+  },
   "percentChange": {
     "title": "Percent Change Calculator",
     "description": "The Percentage Change Calculator will calculate the change from one number to another and express it as an increase or decrease. Example: From 100$ to 200$ is a 100% increase (change), but from 200$ to 100% is 50% decrease.",
@@ -341,6 +346,7 @@
     "m": "M",
     "mm": "Mm",
     "m3": "m3",
+    "kw": "KW",
     "km": "Km",
     "miles": "Miles",
     "feet": "Feet",

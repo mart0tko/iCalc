@@ -184,6 +184,12 @@ export const InternationalLinksConvertors = [
     title: "btuToM3Converter.title",
     type: "Converter",
   },
+  {
+    en: "/btu-to-kw-convertor",
+    icon: "published_with_changes",
+    title: "btuToKwConverter.title",
+    type: "Converter",
+  },
 ];
 
 export const InternationalLinksGenerators = [
