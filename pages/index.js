@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import Input from "../components/Input";
 import Head from "next/head";
+import useDebounce from "../hooks/useDebounce";
 
 export default function Home() {
   const { locale, defaultLocale } = useRouter();
@@ -19,17 +20,18 @@ export default function Home() {
     ...InternationalLinksGenerators,
     ...InternationalLinksOthers,
   ]);
-
+  const [search, setSearch] = useState("");
   const calculatorsRef = useRef(calculators);
-  const handleChange = (searchTerm) => {
+  const debouncedSearch = useDebounce(search, 400);
+  useEffect(() => {
     const filteredCalculators = calculatorsRef.current.filter(
-      (value) => value.en.indexOf(searchTerm.trim().toLowerCase()) !== -1
+      (value) => value.en.indexOf(search.trim().toLowerCase()) !== -1
     );
 
     if (filteredCalculators.length) {
       setCalculators(filteredCalculators);
     }
-  };
+  }, [debouncedSearch]);
 
   return (
     <>
@@ -72,7 +74,8 @@ export default function Home() {
       >
         <Input
           label={"Search"}
-          onChange={(e) => handleChange(e.target.value)}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           // sx={{
           //   width: {
           //     xs: "calc(100% - 10%)",
@@ -90,6 +93,7 @@ export default function Home() {
             icon={value.icon}
             title={value.title}
             type={value.type}
+            component={value.en}
           />
         ))}
       </Box>
