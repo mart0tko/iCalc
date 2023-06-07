@@ -87,13 +87,12 @@ export default function Home() {
         />
         {calculators.map((value, index) => (
           <CalculaterHomeLink
-            key={value[locale] ? value[locale] : value[defaultLocale]}
+            key={value[defaultLocale]}
             color={index % 2 == 0}
-            href={value[locale] ? value[locale] : value[defaultLocale]}
+            href={value[defaultLocale]}
             icon={value.icon}
             title={value.title}
             type={value.type}
-            component={value.en}
           />
         ))}
       </Box>

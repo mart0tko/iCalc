@@ -67,7 +67,6 @@ const pages = [
 export default function Slug() {
   const { t } = useTranslation();
   const { asPath, locale, defaultLocale } = useRouter();
-  const clearAsPath = asPath.replaceAll("/", "");
   const [title, setTitle] = useState("WannaCalc");
   const [description, setDescription] = useState("WannaCalc");
 
@@ -81,105 +80,104 @@ export default function Slug() {
     setTitle(element.title);
     setDescription(newDescription);
   }, [asPath, locale, defaultLocale]);
-
   // TODO Make to match as per different languages
   const pageToLoad = () => {
-    switch (clearAsPath) {
-      case "percentage-difference-calculator":
+    switch (asPath) {
+      case "/percentage-difference-calculator/":
         return <PercentageDifferance />;
-      case "percentage-change-calculator":
+      case "/percentage-change-calculator/":
         return <PercentageChange />;
-      case "percentage-calculator":
+      case "/percentage-calculator/":
         return <Percentage />;
-      case "age-calculator":
+      case "/age-calculator/":
         return <Age />;
-      case "simple-loan-calculator":
+      case "/simple-loan-calculator/":
         return <SimpleLoanCalculator />;
-      case "conversion-rate-calculator":
+      case "/conversion-rate-calculator/":
         return <ConversionRateCalculator />;
-      case "profit-margin-calculator":
+      case "/profit-margin-calculator/":
         return <ProfitMarginCalculator />;
-      case "bmi-calculator":
+      case "/bmi-calculator/":
         return <BMI />;
-      case "bmr-calculator":
+      case "/bmr-calculator/":
         return <BMR />;
-      case "dog-age-calculator":
+      case "/dog-age-calculator/":
         return <DogAgeCalculator />;
-      case "cat-age-calculator":
+      case "/cat-age-calculator/":
         return <CatAgeCalculator />;
-      case "salary-to-hourly-calculator":
+      case "/salary-to-hourly-calculator/":
         return <SalaryToHourlyCalculator />;
-      case "tire-size-calculator":
+      case "/tire-size-calculator/":
         return <TireSizeCalculator />;
-      case "tip-calculator":
+      case "/tip-calculator/":
         return <TipCalculator />;
-      case "gratuity-calculator":
+      case "/gratuity-calculator/":
         return <GratuityCalculator />;
-      case "margin-calculator":
+      case "/margin-calculator/":
         return <MarginCalculator />;
-      case "discount-calculator":
+      case "/discount-calculator/":
         return <DiscountCalculator />;
-      case "compound-interest-calculator":
+      case "/compound-interest-calculator/":
         return <CompoundInterestCalculator />;
-      case "cm-to-inches-converter":
+      case "/cm-to-inches-converter/":
         return <CmToInchesConverter />;
-      case "mm-to-inches-converter":
+      case "/mm-to-inches-converter/":
         return <MmToInchesConverter />;
-      case "feet-to-inches-converter":
+      case "/feet-to-inches-converter/":
         return <FeetToInchesConverter />;
-      case "cm-to-feet-converter":
+      case "/cm-to-feet-converter/":
         return <CmToFeetConverter />;
-      case "miles-to-km-converter":
+      case "/miles-to-km-converter/":
         return <MilesToKmConverter />;
-      case "meter-to-feet-converter":
+      case "/meter-to-feet-converter/":
         return <MToFeetConverter />;
-      case "random-number-generator":
+      case "/random-number-generator/":
         return <RandomNumberGenerator />;
-      case "random-string-generator":
+      case "/random-string-generator/":
         return <RandomStringGenerator />;
-      case "random-password-generator":
+      case "/random-password-generator/":
         return <RandomPasswordGenerator />;
-      case "random-team-generator":
+      case "/random-team-generator/":
         return <RandomTeamGenerator />;
-      case "yes-or-no-generator":
+      case "/yes-or-no-generator/":
         return <YesOrNoGenerator />;
-      case "random-text-generator":
+      case "/random-text-generator/":
         return <RandomTextGenerator />;
-      case "love-calculator":
+      case "/ove-calculator/":
         return <LoveCalculator />;
-      case "fuel-cost-calculator":
+      case "/fuel-cost-calculator/":
         return <FuelCostCalculator />;
-      case "md5-generator":
+      case "/md5-generator/":
         return <MD5Generator />;
-      case "sip-calculator":
+      case "/sip-calculator/":
         return <SipCalculator />;
-      case "word-counter":
+      case "/word-counter/":
         return <WordCounter />;
-      case "mirror-text-generator":
+      case "/mirror-text-generator/":
         return <MirrorTextGenerator />;
-      case "bubble-text-generator":
+      case "/bubble-text-generator/":
         return <BubbleTextGenerator />;
-      case "zalgo-glitch-generator":
+      case "/zalgo-glitch-generator/":
         return <ZalgoGlitchGenerator />;
-      case "facebook-font-generator":
+      case "/facebook-font-generator/":
         return <FacebookTextGenerator />;
-      case "morse-code-translator":
+      case "/morse-code-translator/":
         return <MorseCodeTranslator />;
-      case "binary-code-translator":
+      case "/binary-code-translator/":
         return <BinaryCodeTranslator />;
-      case "nato-phonetical-alphabet-translator":
+      case "/nato-phonetical-alphabet-translator/":
         return <NatoPhoneticAlphabetTranslator />;
-      case "cagr-calculator":
+      case "/cagr-calculator/":
         return <CagrCalculator />;
-      case "bounce-rate-calculator":
+      case "/bounce-rate-calculator/":
         return <BounceRateCalculator />;
-      case "btu-to-m3-convertor":
+      case "/btu-to-m3-convertor/":
         return <BTUtoM3Converter />;
-      case "btu-to-kw-convertor":
+      case "/btu-to-kw-convertor/":
         return <BTUtoKwConverter />;
-      case "watt-to-kilowatt-convertor":
+      case "/watt-to-kilowatt-convertor/":
         return <WattToKilowattConverter />;
-      case "btu-to-m2":
+      case "/btu-to-m2/":
         return <BtuToM2 />;
       default:
         return <Error statusCode={404} />;
