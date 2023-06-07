@@ -12,8 +12,8 @@ function MyApp({ Component, pageProps }) {
       <GoogleAnalytics />
       <Header>
         <Component {...pageProps} />
+        <Analytics />
       </Header>
-      <Analytics />
       <Footer />
     </>
   );
