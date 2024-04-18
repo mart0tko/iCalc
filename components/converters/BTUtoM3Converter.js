@@ -10,7 +10,7 @@ import Description from "../Description";
 import Title from "../Title";
 
 function btuToM3(btu) {
-  const conversionFactor = 0.0000283;
+  const conversionFactor = 0.0000293;
   const cubicMeters = currency(btu, { precision: 2 }).multiply(
     conversionFactor
   ).value;
