@@ -60,7 +60,6 @@ export default function BTUtoM3Converter() {
           <Input
             type="number"
             label={t("btuToM3Converter.btuToM3")}
-            variant="standard"
             value={btu}
             onChange={(e) => setBTU(e.target.value)}
           />
