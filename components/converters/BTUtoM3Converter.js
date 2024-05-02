@@ -8,37 +8,39 @@ import currency from "currency.js";
 import Input from "../Input";
 import Description from "../Description";
 import Title from "../Title";
+import Link from "next/link";
+import { useTheme } from "@mui/material/styles";
 
 function btuToM3(btu) {
   const conversionFactor = 0.0000293;
-  const cubicMeters = currency(btu, { precision: 2 }).multiply(
+  const cubicMeters = currency(btu, { precision: 4 }).multiply(
     conversionFactor
   ).value;
   return cubicMeters;
 }
 
 export default function BTUtoM3Converter() {
+  const theme = useTheme();
   const { t } = useTranslation("");
   const [btu, setBTU] = useState(12000);
   const [result, setResult] = useState("");
 
-  useEffect(() => {
-    handleSubmit();
-  }, []);
+  
+  const handleChange = (newValue) => {   
+    const result = btuToM3(newValue);
 
-  const handleSubmit = () => {
-    if (!btu) {
-      return;
-    }
-
-    setResult("");
-    setResult(btuToM3(btu));
+    setBTU(newValue)
+    setResult(!!result ? result : "");
   };
-
+  
   const handleClear = () => {
     btu && setBTU("");
     result && setResult("");
   };
+
+  useEffect(() => {
+    handleChange(btu);
+  }, []);
 
   return (
     <ThreeColumnLayout>
@@ -61,7 +63,7 @@ export default function BTUtoM3Converter() {
             type="number"
             label={t("btuToM3Converter.btuToM3")}
             value={btu}
-            onChange={(e) => setBTU(e.target.value)}
+            onChange={(e) => handleChange(e.target.value)}
           />
         </Container>
         <br />
@@ -84,9 +86,26 @@ export default function BTUtoM3Converter() {
       <br />
       <CalcButtons
         handleClear={handleClear}
-        handleSubmit={handleSubmit}
+        withoutCalc={true}
         type="convert"
       />
+       <br />
+      <Typography sx={{ fontSize: "0.75rem" }}>
+        {t("percentage.related")}
+        <Link
+          href="/btu-to-kw-convertor"
+          style={{ color: theme.palette.primary.main }}
+        >
+          {t("btuToKwConverter.title")}
+        </Link>
+        {", "}
+        <Link
+          href="/btu-to-m2"
+          style={{ color: theme.palette.primary.main }}
+        >
+          {t("btuToM2.titleReversed")}
+        </Link>
+      </Typography>
     </ThreeColumnLayout>
   );
 }

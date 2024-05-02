@@ -7,13 +7,12 @@ import InternationalLinks, {
   InternationalLinksOthers,
 } from "../constants";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Input from "../components/Input";
 import Head from "next/head";
 
 export default function Home() {
   const { locale } = useRouter();
-  debugger;
   const [calculators, setCalculators] = useState([
     ...InternationalLinks,
     ...InternationalLinksConvertors,

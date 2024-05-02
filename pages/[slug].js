@@ -179,6 +179,8 @@ export default function About() {
         return <WattToKilowattConverter />;
       case "btu-to-m2":
         return <BtuToM2 />;
+      case "m2-to-btu":
+        return <BtuToM2 />;
       default:
         return <Error statusCode={404} />;
     }

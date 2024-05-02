@@ -6,6 +6,7 @@ export default function CalcButtons({
   handleSubmit,
   type,
   withoutReset,
+  withoutCalc
 }) {
   const { t } = useTranslation();
 
@@ -28,7 +29,7 @@ export default function CalcButtons({
           {t("common.reset")}
         </Button>
       )}
-      <Button
+      {!withoutCalc && <Button
         variant="contained"
         onClick={() => {
           //   gtag.event({
@@ -42,7 +43,7 @@ export default function CalcButtons({
         sx={{ margin: "1rem" }}
       >
         {t(`common.${type ?? "calculate"}`)}
-      </Button>
+      </Button>}
     </Container>
   );
 }

@@ -293,9 +293,15 @@ export const InternationalLinksOthers = [
     type: "Other",
   },
   {
-    en: "/btu-to-m2",
+    en: "/m2-to-btu",
     icon: "area_chart",
     title: "btuToM2.title",
+    type: "Other",
+  },
+  {
+    en: "/btu-to-m2",
+    icon: "area_chart",
+    title: "btuToM2.titleReversed",
     type: "Other",
   },
 ];

@@ -8,29 +8,30 @@ import currency from "currency.js";
 import Input from "../Input";
 import Description from "../Description";
 import Title from "../Title";
+import Link from "next/link";
+import { useTheme } from "@mui/material/styles";
 
 function btuToKw(btu) {
   var conversionFactor = 0.00029307107;
-  var kw = currency(btu, { precision: 2 }).multiply(conversionFactor).value;
+  var kw = currency(btu, { precision: 4 }).multiply(conversionFactor).value;
   return kw;
 }
 
 export default function BTUtoKwConverter() {
+  const theme = useTheme();
   const { t } = useTranslation("");
   const [btu, setBTU] = useState(50000);
   const [result, setResult] = useState("");
 
   useEffect(() => {
-    handleSubmit();
+    handleSubmit(btu);
   }, []);
 
-  const handleSubmit = () => {
-    if (!btu) {
-      return;
-    }
+  const handleSubmit = (newValue) => {
+    const result = btuToKw(newValue);
 
-    setResult("");
-    setResult(btuToKw(btu));
+    setBTU(newValue)
+    setResult(!!result ? result : "");
   };
 
   const handleClear = () => {
@@ -60,7 +61,7 @@ export default function BTUtoKwConverter() {
             label={t("btuToKwConverter.btuToKw")}
             variant="standard"
             value={btu}
-            onChange={(e) => setBTU(e.target.value)}
+            onChange={(e) => handleSubmit(e.target.value)}
           />
         </Container>
         <br />
@@ -83,9 +84,26 @@ export default function BTUtoKwConverter() {
       <br />
       <CalcButtons
         handleClear={handleClear}
-        handleSubmit={handleSubmit}
+        withoutCalc={true}
         type="convert"
       />
+      <br />
+      <Typography sx={{ fontSize: "0.75rem" }}>
+        {t("percentage.related")}
+        <Link
+          href="/btu-to-m3-convertor"
+          style={{ color: theme.palette.primary.main }}
+        >
+          {t("btuToM3Converter.title")}
+        </Link>
+        {", "}
+        <Link
+          href="/btu-to-m2"
+          style={{ color: theme.palette.primary.main }}
+        >
+          {t("btuToM2.titleReversed")}
+        </Link>
+      </Typography>
     </ThreeColumnLayout>
   );
 }
