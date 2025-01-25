@@ -21,6 +21,7 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2859263137844595" crossorigin="anonymous"></script>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         </Head>
