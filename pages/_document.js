@@ -1,4 +1,5 @@
 import Document, { Html, Main, NextScript, Head } from "next/document";
+import { GoogleTagManager } from '@next/third-parties/google'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -13,6 +14,7 @@ class MyDocument extends Document {
         lang={this.props.locale}
       >
         <Head>
+        <GoogleTagManager gtmId="GTM-NTTPB6LS" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -23,7 +25,7 @@ class MyDocument extends Document {
           />
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7683444095694539"
      crossorigin="anonymous"></script>
-     <meta name="google-adsense-account" content="ca-pub-7683444095694539"></meta>
+          <meta name="google-adsense-account" content="ca-pub-7683444095694539"></meta>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         </Head>
