@@ -7,15 +7,15 @@ import Title from "../Title";
 
 export default function YesOrNoGenerator() {
   const { t } = useTranslation("");
-  const [result, setResult] = useState("");
-  const [loading, setLoading] = useState("");
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     handleSubmit();
   }, []);
 
   const handleSubmit = () => {
-    setResult("");
+    setResult(null);
     setLoading(true);
     setTimeout(() => {
       setResult(Math.round(Math.random()));
@@ -43,7 +43,9 @@ export default function YesOrNoGenerator() {
       >
         <Container sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
           <Button variant="contained" onClick={handleSubmit}>
-            {t("yesOrNoGenerator.button")}
+            {result === null
+              ? t("common.generate")
+              : t("yesOrNoGenerator.button")}
           </Button>
         </Container>
         <br />
@@ -56,7 +58,7 @@ export default function YesOrNoGenerator() {
             alignItems: "center",
           }}
         >
-          {!loading && (
+          {!loading && result !== null && (
             <>
               <Typography sx={{}}>{t("common.result")}</Typography>
               <Typography

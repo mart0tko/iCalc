@@ -19,7 +19,8 @@ export default function WattToKilowattConverter() {
   }, []);
 
   const handleSubmit = () => {
-    if (!watts) {
+    if (watts === "" || !Number.isFinite(Number(watts))) {
+      setResult("");
       return;
     }
 
@@ -29,8 +30,8 @@ export default function WattToKilowattConverter() {
   };
 
   const handleClear = () => {
-    watts && setWatts(10000);
-    result && setResult("");
+    setWatts("");
+    setResult("");
   };
 
   return (
@@ -61,8 +62,10 @@ export default function WattToKilowattConverter() {
         <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={`${result} ${t("common.kW")}`}>
-            {result && (
+          <CopyToClipboardButton
+            result={result === "" ? "" : `${result} ${t("common.kW")}`}
+          >
+            {result !== "" && (
               <Typography
                 sx={{
                   color: "success.dark",

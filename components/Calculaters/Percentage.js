@@ -1,4 +1,4 @@
-import { Container, TextField, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
@@ -8,6 +8,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Description from "../Description";
 import Title from "../Title";
+import Input from "../Input";
+import { percentage } from "../../lib/calculations";
 
 export default function Percentage() {
   const theme = useTheme();
@@ -15,6 +17,7 @@ export default function Percentage() {
   const [valueOne, setValueOne] = useState(1);
   const [valueTwo, setValueTwo] = useState(12);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
@@ -24,16 +27,20 @@ export default function Percentage() {
   }, []);
 
   const handleSubmit = () => {
-    setResult("");
-    const val1 = +valueTwo * +valueOne;
-    const res = val1 / 100;
-    setResult(res.toFixed(5));
+    try {
+      setError("");
+      setResult(percentage(valueOne, valueTwo).toFixed(5));
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
     valueOne && setValueOne("");
     valueTwo && setValueTwo("");
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -56,14 +63,14 @@ export default function Percentage() {
         }}
       >
         <Container sx={{ display: "flex", flexDirection: "column" }}>
-          <TextField
+          <Input
             type="number"
             label={t("percentage.valueOne")}
             variant="standard"
             value={valueOne}
             onChange={(e) => handleChange(e, setValueOne)}
           />
-          <TextField
+          <Input
             type="number"
             label={t("percentage.valueTwo")}
             variant="standard"
@@ -103,6 +110,7 @@ export default function Percentage() {
           </Typography>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

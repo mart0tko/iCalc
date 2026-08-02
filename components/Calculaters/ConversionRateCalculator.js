@@ -1,18 +1,20 @@
-import { Button, Container, TextField, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
-import currency from "currency.js";
 import CalcButtons from "../CalcButtons";
 import Description from "../Description";
 import Title from "../Title";
+import Input from "../Input";
+import { calculateRate } from "../../lib/calculations";
 
 export default function ConversionRateCalculator() {
   const { t } = useTranslation("");
   const [valueOne, setValueOne] = useState(50);
   const [valueTwo, setValueTwo] = useState(1000);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (event, callback) => {
     callback(event.target.value);
@@ -23,16 +25,20 @@ export default function ConversionRateCalculator() {
   }, []);
 
   const handleSubmit = () => {
-    setResult("");
-    const val1 = currency(+valueOne, { precision: 4 }).divide(+valueTwo).value;
-    const res = currency(val1).multiply(100).value;
-    setResult(res.toFixed(2));
+    try {
+      setError("");
+      setResult(calculateRate(valueOne, valueTwo, "Visitors").toFixed(2));
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
     valueOne && setValueOne("");
     valueTwo && setValueTwo("");
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -52,14 +58,14 @@ export default function ConversionRateCalculator() {
         }}
       >
         <Container sx={{ display: "flex", flexDirection: "column" }}>
-          <TextField
+          <Input
             type="number"
             label={t("conversionRateCalc.valueOne")}
             variant="standard"
             value={valueOne}
             onChange={(e) => handleChange(e, setValueOne)}
           />
-          <TextField
+          <Input
             type="number"
             label={t("conversionRateCalc.valueTwo")}
             variant="standard"
@@ -82,6 +88,7 @@ export default function ConversionRateCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

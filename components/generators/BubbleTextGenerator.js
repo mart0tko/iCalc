@@ -89,8 +89,7 @@ export default function BubbleTextGenerator() {
           <TextareaAutosize
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            sx={{ widht: "100%" }}
-            style={{ height: "5rem" }}
+            style={{ width: "100%", minHeight: "7rem", padding: "1rem" }}
           />
         </Container>
         <br />

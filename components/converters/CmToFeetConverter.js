@@ -64,9 +64,9 @@ export default function CmToFeetConverter() {
           label={t("cmToFeetConverter.cmToFeet")}
         />
         <FormControlLabel
-          value="inchToCm"
+          value="feetToCm"
           control={<Radio />}
-          label={t("cmToFeetConverter.cmToFeet")}
+          label={t("cmToFeetConverter.feetToCm")}
         />
       </RadioGroup>
       <br />
@@ -87,7 +87,7 @@ export default function CmToFeetConverter() {
             label={
               direction === "cmToFeet"
                 ? t("cmToFeetConverter.cmToFeet")
-                : t("cmToFeetConverter.inchToCm")
+                : t("cmToFeetConverter.feetToCm")
             }
             variant="standard"
             value={cm}
@@ -100,7 +100,7 @@ export default function CmToFeetConverter() {
           <CopyToClipboardButton
             result={`${result} ${
               result && direction === "cmToFeet"
-                ? t("common.inches")
+                ? t("common.feet")
                 : t("common.cm")
             }`}
           >

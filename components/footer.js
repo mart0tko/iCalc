@@ -1,101 +1,64 @@
-import { Link, Paper, Typography } from "@mui/material";
-import { Icon } from "@mui/material";
+import { Box, Container, Icon, Stack, Typography } from "@mui/material";
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <Paper
-      sx={{
-        width: "100%",
-        bottom: 0,
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
-        fontSize: "1rem",
-        backgroundColor: "primary.light",
-      }}
+    <Box
       component="footer"
-      variant="outlined"
+      sx={{
+        borderTop: "1px solid",
+        borderColor: "divider",
+        bgcolor: "background.paper",
+      }}
     >
-      <div
-        style={{
+      <Container
+        maxWidth="lg"
+        sx={{
+          py: 3,
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "0.25rem 0",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: { xs: "flex-start", md: "center" },
+          justifyContent: "space-between",
+          gap: 2,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "canter",
-          }}
+        <Box>
+          <Typography sx={{ fontWeight: 800 }}>WannaCalc</Typography>
+          <Typography variant="body2" color="text.secondary">
+            Practical calculators and tools, free to use.
+          </Typography>
+        </Box>
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={{ xs: 1, sm: 2.5 }}
+          component="nav"
+          aria-label="Footer navigation"
+          sx={{ "& a": { color: "text.secondary", fontSize: ".9rem" } }}
         >
-          <Link
-            href="/privacy-policy"
-            sx={{
-              color: "initial",
-              textDecorationColor: "initial",
-              cursor: "pointer",
-            }}
-          >
-            Privacy Policy
-          </Link>
-          <span style={{ marginLeft: "1rem", marginRight: "1rem" }}>|</span>
-          <Link
-            href="/terms-of-use"
-            sx={{
-              color: "initial",
-              textDecorationColor: "initial",
-              cursor: "pointer",
-            }}
-          >
-            Terms of Use
-          </Link>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flex: 1,
-            justifyContent: "center",
-          }}
-        >
-          <Link
+          <Link href="/privacy-policy">Privacy Policy</Link>
+          <Link href="/terms-of-use">Terms of Use</Link>
+          <Box
+            component="a"
             href="https://www.facebook.com/profile.php?id=100090344551476"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow WannaCalc on Facebook"
             sx={{
-              display: "flex",
+              display: "inline-flex",
               alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center ",
-              color: "black",
+              gap: 0.5,
             }}
           >
-            <Icon
-              sx={{ mb: 1 }}
-              style={{
-                fontSize: "25px",
-                marginRight: "0.5rem",
-                marginBottom: 0,
-              }}
-            >
+            <Icon sx={{ fontSize: 18 }} aria-hidden="true">
               facebook
             </Icon>
             Follow Us
-          </Link>
-        </div>
-      </div>
-      <Typography
-        variant="caption"
-        sx={{
-          marginRight: "1rem",
-          borderTop: "1px solid dotted",
-          color: "black",
-        }}
-      >
-        © Copyright 2023 WannaCalc. All Rights Reserved.
-      </Typography>
-    </Paper>
+          </Box>
+        </Stack>
+        <Typography variant="caption" color="text.secondary">
+          © {new Date().getFullYear()} WannaCalc
+        </Typography>
+      </Container>
+    </Box>
   );
 }

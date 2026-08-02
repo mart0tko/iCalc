@@ -1,33 +1,19 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
-import currency from "currency.js";
 import Description from "../Description";
 import Title from "../Title";
+import { calculateFuelCost } from "../../lib/calculations";
 
 const initialValues = {
   distance: 200,
   fuelEfficiency: 12,
   fuelPrice: 1.5,
 };
-
-function calculateFuelCost(distance, fuelEfficiency, fuelPrice) {
-  if (distance <= 0 || fuelEfficiency <= 0 || fuelPrice <= 0) {
-    return "Invalid input. Please enter positive values.";
-  }
-
-  const fuelNeeded = currency(distance, { precision: 2 }).divide(
-    fuelEfficiency
-  ).value;
-  const totalCost = currency(fuelNeeded, { precision: 2 }).multiply(
-    fuelPrice
-  ).value;
-  return totalCost.toFixed(2);
-}
 
 export default function FuelCostCalculator() {
   const { t } = useTranslation("");
@@ -37,6 +23,7 @@ export default function FuelCostCalculator() {
   );
   const [fuelPrice, setFuelPrice] = useState(initialValues.fuelPrice);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -47,9 +34,15 @@ export default function FuelCostCalculator() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    const res = calculateFuelCost(distance, fuelEfficiency, fuelPrice);
-    setResult(res);
+    try {
+      setError("");
+      setResult(
+        calculateFuelCost(distance, fuelEfficiency, fuelPrice).toFixed(2)
+      );
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
@@ -57,6 +50,7 @@ export default function FuelCostCalculator() {
     fuelEfficiency && setFuelEfficiency(initialValues.fuelEfficiency);
     fuelPrice && setFuelPrice(initialValues.fuelPrice);
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -81,6 +75,7 @@ export default function FuelCostCalculator() {
             label={t("fuelCostCalculator.distance")}
             variant="standard"
             value={distance}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setDistance)}
           />
           <br />
@@ -89,6 +84,7 @@ export default function FuelCostCalculator() {
             label={t("fuelCostCalculator.fuelEfficiency")}
             variant="standard"
             value={fuelEfficiency}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setFuelEfficiency)}
           />
           <br />
@@ -97,6 +93,7 @@ export default function FuelCostCalculator() {
             label={t("fuelCostCalculator.fuelPrice")}
             variant="standard"
             value={fuelPrice}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setFuelPrice)}
           />
         </Container>
@@ -116,6 +113,7 @@ export default function FuelCostCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

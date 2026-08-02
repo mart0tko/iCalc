@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -7,35 +7,7 @@ import CalcButtons from "../CalcButtons";
 import Input from "../Input";
 import Description from "../Description";
 import Title from "../Title";
-
-function calculateSIP(principal, monthlyInvestment, interestRate, duration) {
-  // Convert interest rate from percentage to decimal
-  interestRate = interestRate / 100;
-
-  // Convert duration from years to months
-  duration = duration * 12;
-
-  let futureValue = 0;
-  for (let i = 0; i < duration; i++) {
-    futureValue += monthlyInvestment;
-    futureValue *= 1 + interestRate / 12;
-  }
-
-  // Round the future value to 2 decimal places
-  futureValue = Math.round(futureValue * 100) / 100;
-
-  // Calculate the total investment amount
-  const totalInvestment = principal + monthlyInvestment * duration;
-
-  // Calculate the total returns
-  const totalReturns = futureValue - totalInvestment;
-
-  return {
-    futureValue: futureValue.toFixed(2),
-    totalInvestment: totalInvestment.toFixed(2),
-    totalReturns: totalReturns.toFixed(2),
-  };
-}
+import { calculateSip } from "../../lib/calculations";
 
 const initialValues = {
   principal: 10000,
@@ -59,6 +31,7 @@ export default function SipCalculator() {
   const [interestRate, setInterestRate] = useState(initialValues.interestRate);
   const [duration, setDuration] = useState(initialValues.duration);
   const [result, setResult] = useState(emptyResult);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -69,14 +42,23 @@ export default function SipCalculator() {
   };
 
   const handleSubmit = () => {
-    setResult(emptyResult);
-    const res = calculateSIP(
-      principal,
-      monthlyInvestment,
-      interestRate,
-      duration
-    );
-    setResult(res);
+    try {
+      setError("");
+      const calculation = calculateSip(
+        principal,
+        monthlyInvestment,
+        interestRate,
+        duration
+      );
+      setResult({
+        futureValue: calculation.futureValue.toFixed(2),
+        totalInvestment: calculation.totalInvestment.toFixed(2),
+        totalReturns: calculation.totalReturns.toFixed(2),
+      });
+    } catch (calculationError) {
+      setResult(emptyResult);
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
@@ -85,6 +67,7 @@ export default function SipCalculator() {
     interestRate && setInterestRate(initialValues.interestRate);
     duration && setDuration(initialValues.duration);
     setResult(emptyResult);
+    setError("");
   };
 
   return (
@@ -109,7 +92,7 @@ export default function SipCalculator() {
             label={t("sipCalculator.initialAmount")}
             variant="standard"
             value={principal}
-            maxLength="5"
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setPrincipal)}
           />
           <br />
@@ -118,7 +101,7 @@ export default function SipCalculator() {
             label={t("sipCalculator.monthlyInvestment")}
             variant="standard"
             value={monthlyInvestment}
-            maxLength="5"
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setMonthlyInvestment)}
           />
           <br />
@@ -136,7 +119,7 @@ export default function SipCalculator() {
             label={t("sipCalculator.duration")}
             variant="standard"
             value={duration}
-            maxLength="5"
+            inputProps={{ min: 0.1, step: "any" }}
             onChange={(e) => handleChange(e, setDuration)}
           />
         </Container>
@@ -178,6 +161,7 @@ export default function SipCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

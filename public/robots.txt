@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.wannacalc.com/sitemap.xml
+Sitemap: https://wannacalc.com/sitemap.xml

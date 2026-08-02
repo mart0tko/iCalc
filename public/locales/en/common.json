@@ -51,8 +51,8 @@
   "bmi": {
     "title": "Body Mass Index Calculator",
     "description": "BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. It is widely used as a general indicator of whether a person has a healthy body weight for their height.",
-    "valueOne": "Weight",
-    "valueTwo": "Height"
+    "valueOne": "Weight (kg)",
+    "valueTwo": "Height (m)"
   },
   "tipCalculator": {
     "title": "Tip Calculator",
@@ -100,8 +100,8 @@
     "age": "Age",
     "male": "Male",
     "female": "Female",
-    "weight": "Weight",
-    "height": "Height",
+    "weight": "Weight (kg)",
+    "height": "Height (cm)",
     "result": "Calories/day"
   },
   "ageCalc": {
@@ -125,7 +125,7 @@
     "loanTerm": "Loan Term:",
     "months": "Months",
     "interestRate": "Interest Rate:",
-    "resultMontly": "Total Montly Paid: ",
+    "resultMontly": "Monthly payment: ",
     "resultTotal": "Total Paid: ",
     "resultTotalInterest": "Total Interest Paid: "
   },
@@ -198,16 +198,16 @@
     "futureValue": "Future Value:"
   },
   "cmToFeetConverter": {
-    "title": "Cm to Feets Converter",
-    "description": "To calculate Cm to Feets you should divide by 2.54 and then divide by 12. Example: 25cm are 0.82 feets.",
-    "cmToFeet": "Cm to Feets",
-    "feetToCm": "Feets to Cm"
+    "title": "Cm to Feet Converter",
+    "description": "To convert centimeters to feet, divide by 2.54 and then by 12. Example: 25 cm is about 0.82 feet.",
+    "cmToFeet": "Cm to Feet",
+    "feetToCm": "Feet to Cm"
   },
   "mToFeetConverter": {
-    "title": "Meters to Feets Converter",
-    "description": "To calculate Meters to Feets you should multiply by 3.28. Example: 10m are 32.8 feets.",
-    "mToFeet": "M to Feets",
-    "feetToM": "Feets to M"
+    "title": "Meters to Feet Converter",
+    "description": "To convert meters to feet, multiply by 3.28084. Example: 10 m is about 32.81 feet.",
+    "mToFeet": "Meters to Feet",
+    "feetToM": "Feet to Meters"
   },
   "cmToInchesConverter": {
     "title": "Cm to Inches Converter",
@@ -229,7 +229,7 @@
   },
   "milesToKmConverter": {
     "title": "Miles to Km Converter",
-    "description": "To calculate Miles to Km you should multiply kilometers by 1.609344. Example: 10 kilometers are ~6.21 miles.",
+    "description": "To convert miles to kilometers, multiply miles by 1.609344. Example: 10 miles is about 16.09 kilometers.",
     "milesToKm": "Miles to Km",
     "kmToMiles": "Km to Miles"
   },
@@ -256,7 +256,7 @@
   },
   "randomTeamGenerator": {
     "title": "Random Team Generator",
-    "description": "Random Team Generator will generate a random teams with the given names and number of teams.",
+    "description": "Random Team Generator creates balanced random teams from the names and number of teams provided.",
     "teamSize": "Number of teams",
     "addTeamMember": "Add Team Member",
     "enterTeamMemberName": "Enter Team Member Name"
@@ -332,6 +332,7 @@
     "heating": "Heating Capacity (BTU/h)",
     "cooling": "Cooling Capacity (BTU/h)",
     "description": "Calculate the heating and cooling BTU needed for a room based on its area. Enter the area in square meters below.",
+    "descriptionReversed": "Estimate the room area that a given heating or cooling capacity can cover.",
     "descriptionExample": "For example, if your room is 50 square meters, enter 50 in the field.",
     "descriptionNote": "Note: This is a rough estimate. Actual heating and cooling requirements may vary based on factors such as insulation, climate, and room usage."
   },
@@ -366,12 +367,13 @@
     "goBackHome": "Go back home",
     "increase": "Increase",
     "decrease": "Decrease",
+    "noChange": "No change",
     "valueOne": "First Value",
     "valueTwo": "Second Value",
     "search": "Search",
     "copiedToClibboard": "Copied to clibboard",
     "copyToClibboard": "Copy to clibboard",
-    "copyright": "© Copyright 2023 WannaCalc. All Rights Reserved.",
+    "copyright": "© 2026 WannaCalc. All Rights Reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of Use",
     "positiveNumbersNote": "Please use only positive values!"

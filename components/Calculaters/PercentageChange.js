@@ -1,4 +1,4 @@
-import { Container, TextField, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
@@ -8,6 +8,8 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Description from "../Description";
 import Title from "../Title";
+import Input from "../Input";
+import { percentageChange } from "../../lib/calculations";
 
 export default function PercentageChange() {
   const theme = useTheme();
@@ -16,6 +18,7 @@ export default function PercentageChange() {
   const [valueTwo, setValueTwo] = useState(200);
   const [result, setResult] = useState("");
   const [isNegative, setIsNegative] = useState(false);
+  const [error, setError] = useState("");
   const handleChange = (event, callback) => {
     callback(event.target.value);
   };
@@ -25,12 +28,15 @@ export default function PercentageChange() {
   }, []);
 
   const handleSubmit = () => {
-    setResult("");
-    const val1 = +valueTwo - +valueOne;
-    const val2 = +valueOne;
-    const res = (val1 / val2) * 100;
-    setResult(res.toFixed(2));
-    setIsNegative(res < 0);
+    try {
+      setError("");
+      const calculation = percentageChange(valueOne, valueTwo);
+      setResult(calculation.toFixed(2));
+      setIsNegative(calculation < 0);
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
@@ -38,6 +44,7 @@ export default function PercentageChange() {
     valueTwo && setValueTwo("");
     result && setResult("");
     setIsNegative(null);
+    setError("");
   };
 
   return (
@@ -57,14 +64,14 @@ export default function PercentageChange() {
         }}
       >
         <Container sx={{ display: "flex", flexDirection: "column" }}>
-          <TextField
+          <Input
             type="number"
             label={t("common.valueOne")}
             variant="standard"
             value={valueOne}
             onChange={(e) => handleChange(e, setValueOne)}
           />
-          <TextField
+          <Input
             type="number"
             label={t("common.valueTwo")}
             variant="standard"
@@ -79,7 +86,9 @@ export default function PercentageChange() {
             <Typography sx={{ color: "success.dark", fontSize: "1.5rem" }}>
               {result} {result ? "%" : null}{" "}
               {result
-                ? !!isNegative
+                ? Number(result) === 0
+                  ? t("common.noChange")
+                  : isNegative
                   ? t("common.decrease")
                   : t("common.increase")
                 : null}
@@ -104,6 +113,7 @@ export default function PercentageChange() {
           </Typography>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

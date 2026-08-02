@@ -1,9 +1,9 @@
 import {
+  Alert,
   Container,
   FormControlLabel,
   Radio,
   RadioGroup,
-  TextField,
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -13,14 +13,17 @@ import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Description from "../Description";
 import Title from "../Title";
+import Input from "../Input";
+import { calculateBmr } from "../../lib/calculations";
 
 export default function BMR() {
   const { t } = useTranslation("");
   const [age, setAge] = useState(25);
   const [weight, setWeight] = useState(60);
-  const [height, setHeight] = useState(1.85);
+  const [height, setHeight] = useState(185);
   const [gender, setGender] = useState("female");
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -30,22 +33,23 @@ export default function BMR() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    let bmr;
-    if (gender === "male") {
-      bmr = 66 + 13.7 * weight + 5 * height - 6.8 * age;
-    } else if (gender === "female") {
-      bmr = 655 + 9.6 * weight + 1.8 * height - 4.7 * age;
+    try {
+      setError("");
+      const bmr = calculateBmr({ age, weightKg: weight, heightCm: height, gender });
+      setResult(bmr.toFixed(2));
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
     }
-    setResult(bmr.toFixed(2));
   };
 
   const handleClear = () => {
-    gender && setGender("");
+    setGender("female");
     age && setAge("");
     weight && setWeight("");
     height && setHeight("");
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -65,11 +69,12 @@ export default function BMR() {
         }}
       >
         <Container sx={{ display: "flex", flexDirection: "column" }}>
-          <TextField
+          <Input
             type="number"
             label={t("bmr.age")}
             variant="standard"
             value={age}
+            inputProps={{ min: 1, max: 120 }}
             onChange={(e) => handleChange(e, setAge)}
           />
           <RadioGroup
@@ -90,18 +95,20 @@ export default function BMR() {
               label={t("bmr.male")}
             />
           </RadioGroup>
-          <TextField
+          <Input
             type="number"
             label={t("bmr.weight")}
             variant="standard"
             value={weight}
+            inputProps={{ min: 1, step: "any" }}
             onChange={(e) => handleChange(e, setWeight)}
           />
-          <TextField
+          <Input
             type="number"
             label={t("bmr.height")}
             variant="standard"
             value={height}
+            inputProps={{ min: 30, max: 300, step: "any" }}
             onChange={(e) => handleChange(e, setHeight)}
           />
         </Container>
@@ -120,6 +127,7 @@ export default function BMR() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

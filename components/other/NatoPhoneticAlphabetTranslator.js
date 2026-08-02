@@ -34,19 +34,27 @@ const natoAlphabet = {
   X: "X-ray",
   Y: "Yankee",
   Z: "Zulu",
+  0: "Zero",
+  1: "One",
+  2: "Two",
+  3: "Three",
+  4: "Four",
+  5: "Five",
+  6: "Six",
+  7: "Seven",
+  8: "Eight",
+  9: "Nine",
 };
 
 function translateToNATOAlphabet(word) {
-  const uppercaseWord = word.toUpperCase();
-  let translatedWord = "";
-  for (let i = 0; i < uppercaseWord.length; i++) {
-    const character = uppercaseWord[i];
-    const natoWord = natoAlphabet[character];
-    if (natoWord) {
-      translatedWord += natoWord + " ";
-    }
-  }
-  return translatedWord.trim();
+  return word
+    .toUpperCase()
+    .split("")
+    .map((character) => {
+      if (/\s/.test(character)) return "/";
+      return natoAlphabet[character] || character;
+    })
+    .join(" ");
 }
 
 export default function NatoPhoneticAlphabetTranslator() {
@@ -94,8 +102,7 @@ export default function NatoPhoneticAlphabetTranslator() {
           <TextareaAutosize
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            sx={{ widht: "100%" }}
-            style={{ height: "5rem" }}
+            style={{ width: "100%", minHeight: "7rem", padding: "1rem" }}
           />
         </Container>
         <br />
@@ -118,7 +125,6 @@ export default function NatoPhoneticAlphabetTranslator() {
         handleClear={handleClear}
         handleSubmit={handleSubmit}
         type="generate"
-        withoutReset={true}
       />
     </ThreeColumnLayout>
   );

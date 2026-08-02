@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# WannaCalc
 
-## Getting Started
+WannaCalc is a responsive collection of free calculators, converters,
+generators, and text utilities built with Next.js and Material UI.
 
-First, run the development server:
+## Local development
+
+Requires Node.js 18 or newer.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Verification
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```bash
+npm run lint       # Next.js and React lint checks
+npm run test       # Formula and utility unit tests
+npm run test:e2e   # Chromium smoke tests for every registered tool
+npm run build      # Production build
+npm run sitemap    # Regenerate public/sitemap.xml
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+`npm run verify` runs lint, unit tests, and the production build. Browser tests
+require Chromium once per machine:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npx playwright install chromium
+```
 
-## Learn More
+## Adding a tool
 
-To learn more about Next.js, take a look at the following resources:
+1. Add the component under the appropriate `components` category.
+2. Register its route and metadata in `constants.js`.
+3. Add the component to `componentsBySlug` in `pages/[slug].js`.
+4. Add English copy to `public/locales/en/common.json`.
+5. Run the full verification commands and regenerate the sitemap.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Release checklist
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Confirm the canonical production domain remains `https://wannacalc.com`.
+2. Run `npm ci`, `npm run sitemap`, and `npm run verify`.
+3. Run `npm run test:e2e` and confirm every registered route passes.
+4. Review the home page and representative tools at mobile and desktop widths.
+5. Confirm the Azure Static Web Apps deployment secret is available.
+6. Merge or push the release commit to `main` to trigger the existing Azure
+   Static Web Apps workflow.
+7. After deployment, verify the home page, one calculator, one converter,
+   analytics, ads, `robots.txt`, and `sitemap.xml`.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Publishing is intentionally handled outside the application code.

@@ -1,19 +1,20 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
-import currency from "currency.js";
 import Description from "../Description";
 import Title from "../Title";
+import { calculateBmi } from "../../lib/calculations";
 
 export default function BMI() {
   const { t } = useTranslation("");
   const [valueOne, setValueOne] = useState(50);
   const [valueTwo, setValueTwo] = useState(1.85);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -24,19 +25,20 @@ export default function BMI() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    const weight = +valueOne;
-    const height = currency(valueTwo, { precision: 2 }).multiply(
-      valueTwo
-    ).value;
-    const res = currency(weight, { precision: 2 }).divide(height).value;
-    setResult(res.toFixed(2));
+    try {
+      setError("");
+      setResult(calculateBmi(valueOne, valueTwo).toFixed(2));
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
     valueOne && setValueOne("");
     valueTwo && setValueTwo("");
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -61,6 +63,7 @@ export default function BMI() {
             label={t("bmi.valueOne")}
             variant="standard"
             value={valueOne}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setValueOne)}
           />
           <Input
@@ -68,6 +71,7 @@ export default function BMI() {
             label={t("bmi.valueTwo")}
             variant="standard"
             value={valueTwo}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setValueTwo)}
           />
         </Container>
@@ -86,6 +90,7 @@ export default function BMI() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

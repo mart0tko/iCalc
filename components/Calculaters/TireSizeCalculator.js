@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -15,6 +15,7 @@ export default function TireSizeCalculator() {
   const [aspectRatio, setAspectRatio] = useState(55);
   const [wheelDiameter, setWheelDiameter] = useState(16);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -24,13 +25,19 @@ export default function TireSizeCalculator() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    const res = currency(+width, { precision: 1 })
-      .multiply(+aspectRatio)
+    const values = [width, aspectRatio, wheelDiameter].map(Number);
+    if (values.some((value) => !Number.isFinite(value) || value <= 0)) {
+      setResult("");
+      setError("Width, aspect ratio, and wheel diameter must be positive.");
+      return;
+    }
+    setError("");
+    const res = currency(values[0], { precision: 2 })
+      .multiply(values[1])
       .divide(2540)
       .multiply(2)
-      .add(+wheelDiameter).value;
-    setResult(res);
+      .add(values[2]).value;
+    setResult(res.toFixed(2));
   };
 
   const handleClear = () => {
@@ -38,6 +45,7 @@ export default function TireSizeCalculator() {
     aspectRatio && setAspectRatio("");
     wheelDiameter && setWheelDiameter("");
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -62,6 +70,7 @@ export default function TireSizeCalculator() {
             label={t("tireSizeCalculator.width")}
             variant="standard"
             value={width}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setWidth)}
           />
           <Input
@@ -69,6 +78,7 @@ export default function TireSizeCalculator() {
             label={t("tireSizeCalculator.aspectRatio")}
             variant="standard"
             value={aspectRatio}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setAspectRatio)}
           />
           <Input
@@ -76,6 +86,7 @@ export default function TireSizeCalculator() {
             label={t("tireSizeCalculator.wheelDiameter")}
             variant="standard"
             value={wheelDiameter}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setWheelDiameter)}
           />
         </Container>
@@ -94,6 +105,7 @@ export default function TireSizeCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

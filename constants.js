@@ -1,4 +1,4 @@
-const InternationalLinks = [
+export const InternationalLinks = [
   {
     en: "/percentage-calculator",
     icon: "percent",
@@ -305,3 +305,47 @@ export const InternationalLinksOthers = [
     type: "Other",
   },
 ];
+
+export const toolGroups = [
+  {
+    id: "calculators",
+    label: "Calculators",
+    description: "Everyday, financial, health, and business calculations.",
+    icon: "calculate",
+    tools: InternationalLinks,
+  },
+  {
+    id: "converters",
+    label: "Converters",
+    description: "Quick, accurate conversions for common units.",
+    icon: "swap_horiz",
+    tools: InternationalLinksConvertors,
+  },
+  {
+    id: "generators",
+    label: "Generators",
+    description: "Create random values, secure strings, and styled text.",
+    icon: "auto_awesome",
+    tools: InternationalLinksGenerators,
+  },
+  {
+    id: "utilities",
+    label: "Utilities",
+    description: "Count, translate, and transform text and measurements.",
+    icon: "handyman",
+    tools: InternationalLinksOthers,
+  },
+];
+
+export const toolCatalog = toolGroups.flatMap((group) =>
+  group.tools.map((tool) => ({
+    ...tool,
+    category: group.id,
+    categoryLabel: group.label,
+    slug: tool.en.replace(/^\//, ""),
+  }))
+);
+
+export function findToolBySlug(slug) {
+  return toolCatalog.find((tool) => tool.slug === slug);
+}

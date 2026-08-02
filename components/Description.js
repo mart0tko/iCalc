@@ -4,9 +4,16 @@ import { Typography } from "@mui/material";
 export default function Description({ children }) {
   return (
     <Typography
-      variant="h3"
-      gutterBottom
-      sx={{ fontSize: "1rem", whiteSpace: "pre-wrap" }}
+      component="p"
+      variant="body1"
+      color="text.secondary"
+      sx={{
+        maxWidth: 660,
+        mb: 3,
+        fontSize: { xs: ".95rem", sm: "1.05rem" },
+        lineHeight: 1.7,
+        whiteSpace: "pre-wrap",
+      }}
     >
       {children}
     </Typography>

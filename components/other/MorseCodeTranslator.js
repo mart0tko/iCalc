@@ -1,7 +1,8 @@
 import {
-  Checkbox,
   Container,
   FormControlLabel,
+  Radio,
+  RadioGroup,
   TextareaAutosize,
   Typography,
 } from "@mui/material";
@@ -85,24 +86,21 @@ function textToMorseCode(text) {
 }
 
 function morseCodeToText(morseCode) {
-  const morseCodeArray = morseCode.split(" ");
-  let text = "";
-  for (let i = 0; i < morseCodeArray.length; i++) {
-    const morseChar = morseCodeArray[i];
-    for (const [key, value] of Object.entries(morseCodeMap)) {
-      if (value === morseChar) {
-        text += key;
-        break;
-      }
-    }
-  }
-  return text;
+  const reverseMap = Object.fromEntries(
+    Object.entries(morseCodeMap).map(([character, code]) => [code, character])
+  );
+  return morseCode
+    .trim()
+    .split(/\s+/)
+    .map((code) => reverseMap[code] || "")
+    .join("");
 }
 
 export default function MorseCodeTranslator() {
   const { t } = useTranslation("");
   const [input, setInput] = useState("Example text");
   const [result, setResult] = useState("");
+  const [direction, setDirection] = useState("encode");
 
   useEffect(() => {
     handleSubmit();
@@ -110,7 +108,8 @@ export default function MorseCodeTranslator() {
 
   const handleSubmit = () => {
     setResult("");
-    const res = textToMorseCode(input);
+    const res =
+      direction === "encode" ? textToMorseCode(input) : morseCodeToText(input);
     setResult(res);
   };
 
@@ -119,10 +118,36 @@ export default function MorseCodeTranslator() {
     result && setResult("");
   };
 
+  const changeDirection = (event) => {
+    const nextDirection = event.target.value;
+    setDirection(nextDirection);
+    setInput(
+      nextDirection === "encode" ? "Example text" : ". -..- .- -- .--. .-.. ."
+    );
+    setResult("");
+  };
+
   return (
     <ThreeColumnLayout>
       <Title>{t("morseCodeTranslator.title")}</Title>
       <Description>{t("morseCodeTranslator.description")}</Description>
+      <RadioGroup
+        row
+        value={direction}
+        onChange={changeDirection}
+        aria-label="Translation direction"
+      >
+        <FormControlLabel
+          value="encode"
+          control={<Radio />}
+          label="Text to Morse"
+        />
+        <FormControlLabel
+          value="decode"
+          control={<Radio />}
+          label="Morse to text"
+        />
+      </RadioGroup>
       <br />
       <Container
         sx={{
@@ -140,8 +165,7 @@ export default function MorseCodeTranslator() {
           <TextareaAutosize
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            sx={{ widht: "100%" }}
-            style={{ height: "5rem" }}
+            style={{ width: "100%", minHeight: "7rem", padding: "1rem" }}
           />
         </Container>
         <br />
@@ -163,8 +187,7 @@ export default function MorseCodeTranslator() {
       <CalcButtons
         handleClear={handleClear}
         handleSubmit={handleSubmit}
-        type="generate"
-        withoutReset={true}
+        type="convert"
       />
     </ThreeColumnLayout>
   );

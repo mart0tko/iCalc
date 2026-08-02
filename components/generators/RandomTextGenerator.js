@@ -1,4 +1,5 @@
 import {
+  Alert,
   Checkbox,
   Container,
   FormControlLabel,
@@ -33,6 +34,7 @@ export default function RandomTextGenerator() {
   const [wordLength, setWordLength] = useState(5);
   const [numWords, setNumWords] = useState(20);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -44,14 +46,30 @@ export default function RandomTextGenerator() {
 
   const handleSubmit = () => {
     setResult("");
-    const result = generateRandomWords(numWords, wordLength);
+    const validWordLength = Number(wordLength);
+    const validNumWords = Number(numWords);
+    if (
+      !Number.isInteger(validWordLength) ||
+      validWordLength < 1 ||
+      validWordLength > 15 ||
+      !Number.isInteger(validNumWords) ||
+      validNumWords < 1 ||
+      validNumWords > 1000
+    ) {
+      setError("Use 1–15 characters per word and generate 1–1000 words.");
+      return;
+    }
+    setError("");
+    const result = generateRandomWords(validNumWords, validWordLength);
 
     setResult(result);
   };
 
   const handleClear = () => {
     wordLength && setWordLength(5);
+    setNumWords(20);
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -76,7 +94,7 @@ export default function RandomTextGenerator() {
             label={t("randomTextGenerator.wordLength")}
             variant="standard"
             value={wordLength}
-            maxLength="15"
+            inputProps={{ min: 1, max: 15, step: 1 }}
             onChange={(e) => handleChange(e, setWordLength)}
           />
           <Input
@@ -84,7 +102,7 @@ export default function RandomTextGenerator() {
             label={t("randomTextGenerator.numWords")}
             variant="standard"
             value={numWords}
-            maxLength="1000"
+            inputProps={{ min: 1, max: 1000, step: 1 }}
             onChange={(e) => handleChange(e, setNumWords)}
           />
         </Container>
@@ -103,6 +121,7 @@ export default function RandomTextGenerator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons
         handleClear={handleClear}

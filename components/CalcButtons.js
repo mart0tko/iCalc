@@ -1,49 +1,41 @@
 import { useTranslation } from "next-i18next";
-import { Button, Container } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 
 export default function CalcButtons({
   handleClear,
   handleSubmit,
   type,
   withoutReset,
-  withoutCalc
+  withoutCalc,
 }) {
   const { t } = useTranslation();
 
   return (
-    <Container sx={{ padding: "1rem" }}>
+    <Stack
+      direction={{ xs: "column-reverse", sm: "row" }}
+      spacing={1.25}
+      sx={{ width: "100%", py: 2, justifyContent: "center" }}
+    >
       {!withoutReset && (
         <Button
-          variant="contained"
-          onClick={() => {
-            //   gtag.event({
-            //     action: "click",
-            //     category: "button click",
-            //     label: "calculate",
-            //     value: "calculate button click",
-            //   });
-            handleClear();
-          }}
-          sx={{ backgroundColor: "secondary.dark", margin: "1rem" }}
+          type="button"
+          variant="outlined"
+          color="inherit"
+          onClick={handleClear}
         >
           {t("common.reset")}
         </Button>
       )}
-      {!withoutCalc && <Button
-        variant="contained"
-        onClick={() => {
-          //   gtag.event({
-          //     action: "click",
-          //     category: "button click",
-          //     label: "calculate",
-          //     value: "calculate button click",
-          //   });
-          handleSubmit();
-        }}
-        sx={{ margin: "1rem" }}
-      >
-        {t(`common.${type ?? "calculate"}`)}
-      </Button>}
-    </Container>
+      {!withoutCalc && (
+        <Button
+          type="button"
+          variant="contained"
+          onClick={handleSubmit}
+          startIcon={<span className="material-icons">calculate</span>}
+        >
+          {t(`common.${type ?? "calculate"}`)}
+        </Button>
+      )}
+    </Stack>
   );
 }

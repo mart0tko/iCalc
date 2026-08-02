@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -7,11 +7,7 @@ import CalcButtons from "../CalcButtons";
 import Input from "../Input";
 import Description from "../Description";
 import Title from "../Title";
-
-function calculateBounceRate(bounces, entrances) {
-  const bounceRate = (bounces / entrances) * 100;
-  return bounceRate.toFixed(2); // Round to 2 decimal places
-}
+import { calculateRate } from "../../lib/calculations";
 
 const defaultValues = { bounces: 500, entrances: 2000 };
 
@@ -20,6 +16,7 @@ export default function BounceRateCalculator() {
   const [bounces, setBounces] = useState(defaultValues.bounces);
   const [entrances, setEntrances] = useState(defaultValues.entrances);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -30,15 +27,23 @@ export default function BounceRateCalculator() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    const res = calculateBounceRate(bounces, entrances);
-    setResult(res);
+    try {
+      if (Number(bounces) > Number(entrances)) {
+        throw new RangeError("Bounces cannot exceed entrances.");
+      }
+      setError("");
+      setResult(calculateRate(bounces, entrances, "Entrances").toFixed(2));
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
     bounces && setBounces(defaultValues.bounces);
     entrances && setEntrances(defaultValues.entrances);
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -92,6 +97,7 @@ export default function BounceRateCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

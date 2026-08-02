@@ -1,4 +1,12 @@
-import { Container, TextareaAutosize, Typography } from "@mui/material";
+import {
+  Alert,
+  Container,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  TextareaAutosize,
+  Typography,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -18,7 +26,10 @@ function textToBinary(text) {
 }
 
 function binaryToText(binary) {
-  const binaryArray = binary.split(" ");
+  const binaryArray = binary.trim().split(/\s+/);
+  if (binaryArray.some((value) => !/^[01]{1,16}$/.test(value))) {
+    throw new RangeError("Enter binary values containing only 0 and 1.");
+  }
   let text = "";
   for (let i = 0; i < binaryArray.length; i++) {
     const binaryCode = binaryArray[i];
@@ -33,26 +44,60 @@ export default function BinaryCodeTranslator() {
   const { t } = useTranslation("");
   const [input, setInput] = useState("Example text");
   const [result, setResult] = useState("");
+  const [direction, setDirection] = useState("encode");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
   }, []);
 
   const handleSubmit = () => {
-    setResult("");
-    const res = textToBinary(input);
-    setResult(res);
+    try {
+      setError("");
+      setResult(
+        direction === "encode" ? textToBinary(input) : binaryToText(input)
+      );
+    } catch (translationError) {
+      setResult("");
+      setError(translationError.message);
+    }
   };
 
   const handleClear = () => {
     input && setInput("");
     result && setResult("");
+    setError("");
+  };
+
+  const changeDirection = (event) => {
+    const nextDirection = event.target.value;
+    setDirection(nextDirection);
+    setInput(nextDirection === "encode" ? "Example text" : "01000001 01000010");
+    setResult("");
+    setError("");
   };
 
   return (
     <ThreeColumnLayout>
       <Title>{t("binaryCodeTranslator.title")}</Title>
       <Description>{t("binaryCodeTranslator.description")}</Description>
+      <RadioGroup
+        row
+        value={direction}
+        onChange={changeDirection}
+        aria-label="Translation direction"
+      >
+        <FormControlLabel
+          value="encode"
+          control={<Radio />}
+          label="Text to binary"
+        />
+        <FormControlLabel
+          value="decode"
+          control={<Radio />}
+          label="Binary to text"
+        />
+      </RadioGroup>
       <br />
       <Container
         sx={{
@@ -70,8 +115,7 @@ export default function BinaryCodeTranslator() {
           <TextareaAutosize
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            sx={{ widht: "100%" }}
-            style={{ height: "5rem" }}
+            style={{ width: "100%", minHeight: "7rem", padding: "1rem" }}
           />
         </Container>
         <br />
@@ -89,12 +133,12 @@ export default function BinaryCodeTranslator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons
         handleClear={handleClear}
         handleSubmit={handleSubmit}
-        type="generate"
-        withoutReset={true}
+        type="convert"
       />
     </ThreeColumnLayout>
   );

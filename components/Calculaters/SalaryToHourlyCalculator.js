@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -7,12 +7,7 @@ import CalcButtons from "../CalcButtons";
 import Input from "../Input";
 import Description from "../Description";
 import Title from "../Title";
-
-function salaryToHourly(salary, hoursPerWeek) {
-  let hoursPerYear = hoursPerWeek * 52; // assuming 2 weeks of vacation per year
-  let hourlyRate = salary / hoursPerYear;
-  return hourlyRate.toFixed(2);
-}
+import { calculateSalaryRates } from "../../lib/calculations";
 
 export default function SalaryToHourlyCalculator() {
   const { t } = useTranslation("");
@@ -20,6 +15,7 @@ export default function SalaryToHourlyCalculator() {
   const [hoursPerWeek, setHoursPerWeek] = useState(40);
   const [result, setResult] = useState("");
   const [resultPerWeek, setResultPerWeek] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -30,10 +26,16 @@ export default function SalaryToHourlyCalculator() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    const res = salaryToHourly(salary, hoursPerWeek);
-    setResult(res);
-    setResultPerWeek((res * 5).toFixed(2));
+    try {
+      setError("");
+      const rates = calculateSalaryRates(salary, hoursPerWeek);
+      setResult(rates.hourly.toFixed(2));
+      setResultPerWeek(rates.weekly.toFixed(2));
+    } catch (calculationError) {
+      setResult("");
+      setResultPerWeek("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
@@ -41,6 +43,7 @@ export default function SalaryToHourlyCalculator() {
     salary && setSalary(50000);
     result && setResult("");
     resultPerWeek && setResultPerWeek("");
+    setError("");
   };
 
   return (
@@ -72,6 +75,7 @@ export default function SalaryToHourlyCalculator() {
             label={t("salaryToHourlyCalculator.hoursPerWeek")}
             variant="standard"
             value={hoursPerWeek}
+            inputProps={{ min: 1, max: 168, step: "any" }}
             onChange={(e) => handleChange(e, setHoursPerWeek)}
           />
         </Container>
@@ -100,6 +104,7 @@ export default function SalaryToHourlyCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

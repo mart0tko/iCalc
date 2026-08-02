@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -7,11 +7,13 @@ import CalcButtons from "../CalcButtons";
 import Input from "../Input";
 import Description from "../Description";
 import Title from "../Title";
+import { calculateCatAge } from "../../lib/calculations";
 
 export default function CatAgeCalculator() {
   const { t } = useTranslation("");
   const [age, setAge] = useState(5);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -22,14 +24,19 @@ export default function CatAgeCalculator() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    const res = (age - 2) * 4 + 21;
-    setResult(res.toFixed(0));
+    try {
+      setError("");
+      setResult(calculateCatAge(age).toFixed(0));
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
     age && setAge("");
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -54,7 +61,7 @@ export default function CatAgeCalculator() {
             label={t("catAgeCalculator.age")}
             variant="standard"
             value={age}
-            maxLength="5"
+            inputProps={{ min: 0.1, step: "any" }}
             onChange={(e) => handleChange(e, setAge)}
           />
         </Container>
@@ -73,6 +80,7 @@ export default function CatAgeCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

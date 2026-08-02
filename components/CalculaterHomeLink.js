@@ -1,12 +1,7 @@
 import { useTranslation } from "next-i18next";
-import Paper from "@mui/material/Paper";
 import Link from "next/link";
-import { Icon, useTheme } from "@mui/material";
+import { Box, Chip, Icon, Paper, Typography } from "@mui/material";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-
-const sizePaper = 128;
-const paddingTop = 2;
 
 function generateText(type) {
   switch (type) {
@@ -23,77 +18,79 @@ function generateText(type) {
   }
 }
 
-function generateColor(type, theme) {
+function generateColor(type) {
   switch (type) {
     case "calculator":
-      return theme.palette.secondary.main;
+      return "primary";
     case "Converter":
-      return theme.palette.warning.main;
+      return "secondary";
     case "Generator":
-      return theme.palette.error.main;
+      return "warning";
     case "Other":
-      return theme.palette.grey[800];
+      return "default";
     default:
-      return theme.palette.grey[800];
+      return "default";
   }
 }
 
-export default function CalculaterHomeLink({ href, icon, title, color, type }) {
+export default function CalculaterHomeLink({ href, icon, title, type }) {
   const { t } = useTranslation();
   const { locale } = useRouter();
-  const [label, setLabel] = useState("");
-  const theme = useTheme();
-  const [labelColor, setLabelColor] = useState(theme.palette.grey.main);
-
-  useEffect(() => {
-    setLabel(t(generateText(type)));
-    setLabelColor(generateColor(type, theme));
-  }, []);
 
   return (
     <Link
       href={href}
-      style={{ maxWidth: sizePaper, height: sizePaper }}
+      style={{ display: "block", height: "100%" }}
       locale={locale}
     >
       <Paper
-        variant="outlined"
-        hrefLang="en"
+        component="article"
+        elevation={0}
         sx={{
-          cursor: "pointer",
-          backgroundColor: color ? "primary.light" : "primary.dark",
-          color: "#fff",
+          height: "100%",
+          minHeight: 182,
+          p: 2.5,
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          maxWidth: sizePaper,
-          height: sizePaper,
-          textAlign: "center",
-          lineHeight: 1.2,
-          position: "relative",
-          paddingTop: paddingTop,
+          alignItems: "flex-start",
+          border: "1px solid",
+          borderColor: "divider",
+          borderRadius: 3,
+          transition: "transform .2s ease, border-color .2s ease, box-shadow .2s ease",
+          "&:hover": {
+            transform: "translateY(-4px)",
+            borderColor: "primary.main",
+            boxShadow: "0 16px 40px rgba(23,32,51,.1)",
+          },
         }}
       >
-        <span
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            textAlign: "center",
-            width: "100%",
-            borderBottomWidth: "1px",
-            borderBottomStyle: "solid",
-            borderColor: theme.palette.primary.main,
-            backgroundColor: labelColor,
+        <Box
+          sx={{
+            width: 44,
+            height: 44,
+            display: "grid",
+            placeItems: "center",
+            color: "primary.main",
+            bgcolor: "primary.light",
+            borderRadius: 2,
+            mb: 2,
           }}
         >
-          {label}
-        </span>
-        <Icon sx={{ mb: 1 }} style={{ fontSize: "25px" }}>
-          {icon}
-        </Icon>
-        {t(title)}
+          <Icon aria-hidden="true">{icon}</Icon>
+        </Box>
+        <Typography
+          component="h3"
+          sx={{ fontWeight: 750, lineHeight: 1.35, mb: 1, flexGrow: 1 }}
+        >
+          {t(title)}
+        </Typography>
+        <Chip
+          label={t(generateText(type))}
+          color={generateColor(type)}
+          size="small"
+          variant="outlined"
+          sx={{ fontWeight: 650 }}
+        />
       </Paper>
     </Link>
   );

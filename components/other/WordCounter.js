@@ -12,6 +12,7 @@ import Description from "../Description";
 import Title from "../Title";
 
 function wordCount(text) {
+  if (!text.trim()) return 0;
   let words = text.trim().split(/\s+/);
   return words.length;
 }
@@ -54,9 +55,11 @@ export default function WordCounter() {
           <Typography sx={{}}>{t("wordCounter.text")}</Typography>
           <TextareaAutosize
             value={input}
-            onChange={(e) => setInput(e.target.value)}
-            sx={{ widht: "100%" }}
-            style={{ height: "5rem" }}
+            onChange={(e) => {
+              setInput(e.target.value);
+              setResult(wordCount(e.target.value));
+            }}
+            style={{ width: "100%", minHeight: "8rem", padding: "1rem" }}
           />
         </Container>
         <br />

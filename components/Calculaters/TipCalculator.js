@@ -1,19 +1,20 @@
-import { Container, TextField, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
 import Input from "../Input";
-import currency from "currency.js";
 import Description from "../Description";
 import Title from "../Title";
+import { calculateTip } from "../../lib/calculations";
 
 export default function TipCalculator() {
   const { t } = useTranslation("");
   const [valueOne, setValueOne] = useState(100);
   const [valueTwo, setValueTwo] = useState(15);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -24,17 +25,20 @@ export default function TipCalculator() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    const res = currency(+valueOne, { precision: 2 })
-      .multiply(+valueTwo)
-      .divide(100).value;
-    setResult(res.toFixed(2));
+    try {
+      setError("");
+      setResult(calculateTip(valueOne, valueTwo).tip.toFixed(2));
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
     valueOne && setValueOne("");
     valueTwo && setValueTwo("");
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -84,6 +88,7 @@ export default function TipCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>
