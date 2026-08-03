@@ -1,143 +1,117 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Fade from "@mui/material/Fade";
 import Link from "next/link";
-import Image from "next/image";
-import { grey } from "@mui/material/colors";
-import LogoImage from "../public/white_icon_transparent_background.png";
 import { useRouter } from "next/router";
-import { CircularProgress } from "@mui/material";
+import { Button, CircularProgress, Icon, Stack } from "@mui/material";
 import BurgerMenu from "./BurgerMenu";
 
-function ScrollTop(props) {
-  const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
-  const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
-    disableHysteresis: true,
-    threshold: 100,
-  });
-
-  const handleClick = (event) => {
-    const anchor = (event.target.ownerDocument || document).querySelector(
-      "#back-to-top-anchor"
-    );
-
-    if (anchor) {
-      anchor.scrollIntoView({
-        block: "center",
-      });
-    }
-  };
-
-  return (
-    <Fade in={trigger}>
-      <Box
-        onClick={handleClick}
-        role="presentation"
-        sx={{ position: "fixed", bottom: 16, right: 16 }}
-      >
-        {children}
-      </Box>
-    </Fade>
-  );
-}
-
-ScrollTop.propTypes = {
-  children: PropTypes.element.isRequired,
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
+const navItems = [
+  { label: "Calculators", href: "/#calculators" },
+  { label: "Converters", href: "/#converters" },
+  { label: "Generators", href: "/#generators" },
+];
 
 export default function Header(props) {
   const { route } = useRouter();
+
   return (
-    <React.Fragment>
-      <AppBar position="sticky" sx={{ pl: 0 }}>
-        <Toolbar
-          sx={{
-            justifyContent: { xs: "center", sm: "center", md: "flex-start" },
-          }}
-        >
+    <>
+      <AppBar
+        position="sticky"
+        color="transparent"
+        elevation={0}
+        sx={{
+          borderBottom: "1px solid",
+          borderColor: "divider",
+          bgcolor: "rgba(255,255,255,.9)",
+          backdropFilter: "blur(16px)",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Toolbar disableGutters sx={{ minHeight: { xs: 68, md: 76 } }}>
           <Link
             href="/"
-            style={{ display: "flex", flexGrow: 1, alignItems: "center" }}
+              aria-label="WannaCalc home"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                color: "inherit",
+              }}
           >
-            <Image
-              src={LogoImage}
-              alt="logo"
-              style={{ width: "60px", height: "auto" }}
-            />
+              <Box
+                sx={{
+                  width: 40,
+                  height: 40,
+                  display: "grid",
+                  placeItems: "center",
+                  bgcolor: "primary.main",
+                  color: "primary.contrastText",
+                  borderRadius: "12px",
+                  boxShadow: "0 8px 24px rgba(37,99,235,.24)",
+                }}
+              >
+                <Icon aria-hidden="true">calculate</Icon>
+              </Box>
             <Typography
-              variant={route === "/" ? "h1" : "p"}
+                component={route === "/" ? "span" : "span"}
               noWrap
               sx={{
-                fontFamily: "Roboto, Halvetica, monospace",
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-                fontSize: { xs: "2rem", sm: "2.5rem", md: "2.5rem" },
-                fontWeight: 400,
+                  fontSize: { xs: "1.25rem", sm: "1.4rem" },
+                  fontWeight: 800,
+                  letterSpacing: "-.035em",
               }}
             >
               WannaCalc
             </Typography>
           </Link>
+            <Stack
+              component="nav"
+              aria-label="Primary navigation"
+              direction="row"
+              spacing={0.5}
+              sx={{ ml: "auto", display: { xs: "none", md: "flex" } }}
+            >
+              {navItems.map((item) => (
+                <Button
+                  key={item.label}
+                  component={Link}
+                  href={item.href}
+                  color="inherit"
+                  sx={{ color: "text.secondary" }}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </Stack>
+            <Box sx={{ ml: { xs: "auto", md: 1 } }}>
           <BurgerMenu />
-        </Toolbar>
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
-      <Container
+      <Box
+        component="main"
+        id="main-content"
         sx={{
-          backgroundColor: grey[100],
-          minHeight: "calc(100vh - 121px)",
-          marginLeft: 0,
-          marginRight: 0,
-          minWidth: "100%",
-          paddingLeft: "0 !important",
-          paddingRight: "0 !important",
-          paddingBottom: "1rem",
+          minHeight: "calc(100vh - 176px)",
+          pb: { xs: 5, md: 8 },
         }}
       >
-        {route === "/" && (
-          <Toolbar
-            id="back-to-top-anchor"
-            sx={{
-              backgroundColor: "primary.light",
-              textAlign: "center",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "white",
-              padding: "2rem",
-            }}
-          >
-            <Typography variant="h2" sx={{ margin: 0, fontSize: "2.125rem" }}>
-              Free Online Calculators
-            </Typography>
-          </Toolbar>
-        )}
-        <React.Suspense fallback={<CircularProgress />}>
-          <Box>{props.children}</Box>
+        <React.Suspense
+          fallback={
+            <Box sx={{ display: "grid", minHeight: 300, placeItems: "center" }}>
+              <CircularProgress aria-label="Loading page" />
+            </Box>
+          }
+        >
+          {props.children}
         </React.Suspense>
-      </Container>
-      {/* <ScrollTop {...props}>
-        <Fab size="small" aria-label="scroll back to top">
-          TODO fix it when there is enough content
-          <Icon sx={{ mr: 1 }} style={{ fontSize: "50px" }}>
-            arrow
-          </Icon>
-        </Fab>
-      </ScrollTop> */}
-    </React.Fragment>
+      </Box>
+    </>
   );
 }

@@ -1,13 +1,12 @@
-import { Button, Container, Slider, Typography } from "@mui/material";
+import { Alert, Container, Slider, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
-import moment from "moment";
-import currency from "currency.js";
 import CalcButtons from "../CalcButtons";
 import Description from "../Description";
 import Title from "../Title";
+import { calculateLoan } from "../../lib/calculations";
 
 const loanAmountefaultValue = 100000;
 const loanTermDefaultValue = 60;
@@ -21,6 +20,7 @@ export default function SimpleLoanCalculator() {
   const [resultMontly, setResultMontly] = useState("");
   const [resultTotal, setResultTotal] = useState("");
   const [resultTotalInterest, setResultTotalInterest] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (event, callback) => {
     callback(event.target.value);
@@ -31,35 +31,28 @@ export default function SimpleLoanCalculator() {
   }, []);
 
   const handleSubmit = () => {
-    setResultMontly("");
-    setResultTotal("");
-    setResultTotalInterest("");
-    const i = currency(+valueThree, { precision: 10 })
-      .divide(100)
-      .divide(12).value;
-    let down = currency(i, { precision: 10 }).add(1).value;
-    down = currency(Math.pow(down, +valueTwo), { precision: 10 }).subtract(
-      1
-    ).value;
-    let up = currency(i, { precision: 10 }).add(1).value;
-    up = currency(Math.pow(up, valueTwo), { precision: 10 }).value;
-    const upFinal = currency(+valueOne).multiply(i).multiply(up).value;
-    const resMontly = currency(upFinal, { precision: 2 }).divide(down).value;
-    const resTotal = currency(resMontly, { precision: 2 }).multiply(
-      +valueTwo
-    ).value;
-    const resTotalInterest = currency(resTotal, { precision: 2 }).subtract(
-      +valueOne
-    ).value;
-    setResultMontly(resMontly);
-    setResultTotal(resTotal);
-    setResultTotalInterest(resTotalInterest);
+    try {
+      setError("");
+      const calculation = calculateLoan(valueOne, valueThree, valueTwo);
+      setResultMontly(calculation.monthlyPayment.toFixed(2));
+      setResultTotal(calculation.totalPayment.toFixed(2));
+      setResultTotalInterest(calculation.totalInterest.toFixed(2));
+    } catch (calculationError) {
+      setResultMontly("");
+      setResultTotal("");
+      setResultTotalInterest("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
+    setValueOne(loanAmountefaultValue);
+    setValueTwo(loanTermDefaultValue);
+    setValueThree(interestDefaultValue);
     resultMontly && setResultMontly("");
     resultTotal && setResultTotal("");
     resultTotalInterest && setResultTotalInterest("");
+    setError("");
   };
 
   return (
@@ -106,7 +99,7 @@ export default function SimpleLoanCalculator() {
           </Typography>
           <Slider
             value={valueThree}
-            min={1}
+            min={0}
             step={0.1}
             max={100}
             onChange={(e) => handleChange(e, setValueThree)}
@@ -150,6 +143,7 @@ export default function SimpleLoanCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

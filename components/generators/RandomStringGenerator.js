@@ -1,4 +1,5 @@
 import {
+  Alert,
   Checkbox,
   Container,
   FormControlLabel,
@@ -40,6 +41,7 @@ export default function RandomStringGenerator() {
   const [length, setLength] = useState(10);
   const [checkboxes, setCheckboxes] = useState(defaultCheckboxValue);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -51,21 +53,27 @@ export default function RandomStringGenerator() {
 
   const handleSubmit = () => {
     setResult("");
+    const requestedLength = Number(length);
+    if (!Number.isInteger(requestedLength) || requestedLength < 1 || requestedLength > 256) {
+      setError("Length must be a whole number between 1 and 256.");
+      return;
+    }
+    setError("");
     let result;
     if (checkboxes.withCapitalLetters && checkboxes.withNumbers) {
-      result = generateString(length, charactersAll);
+      result = generateString(requestedLength, charactersAll);
     }
 
     if (!checkboxes.withCapitalLetters && checkboxes.withNumbers) {
-      result = generateString(length, charactersWithNumbers);
+      result = generateString(requestedLength, charactersWithNumbers);
     }
 
     if (checkboxes.withCapitalLetters && !checkboxes.withNumbers) {
-      result = generateString(length, charactersWithCapitalLetters);
+      result = generateString(requestedLength, charactersWithCapitalLetters);
     }
 
     if (!checkboxes.withCapitalLetters && !checkboxes.withNumbers) {
-      result = generateString(length, charactersSmallLetters);
+      result = generateString(requestedLength, charactersSmallLetters);
     }
 
     setResult(result);
@@ -74,6 +82,7 @@ export default function RandomStringGenerator() {
   const handleClear = () => {
     length && setLength(10);
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -98,13 +107,13 @@ export default function RandomStringGenerator() {
             label={t("randomStringGenerator.length")}
             variant="standard"
             value={length}
+            inputProps={{ min: 1, max: 256, step: 1 }}
             onChange={(e) => handleChange(e, setLength)}
           />
           <FormControlLabel
             control={
               <Checkbox
-                value={checkboxes.withNumbers}
-                defaultChecked
+                checked={checkboxes.withNumbers}
                 onChange={(e) =>
                   setCheckboxes({
                     ...checkboxes,
@@ -118,8 +127,7 @@ export default function RandomStringGenerator() {
           <FormControlLabel
             control={
               <Checkbox
-                value={checkboxes.withCapitalLetters}
-                defaultChecked
+                checked={checkboxes.withCapitalLetters}
                 onChange={(e) =>
                   setCheckboxes({
                     ...checkboxes,
@@ -146,6 +154,7 @@ export default function RandomStringGenerator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons
         handleClear={handleClear}

@@ -57,7 +57,7 @@ export default function MD5Generator() {
       >
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Input
-            type="string"
+            type="text"
             label={t("md5Generator.input")}
             variant="standard"
             value={input}
@@ -84,7 +84,6 @@ export default function MD5Generator() {
         handleClear={handleClear}
         handleSubmit={handleSubmit}
         type="generate"
-        withoutReset={true}
       />
     </ThreeColumnLayout>
   );

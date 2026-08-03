@@ -28,10 +28,15 @@ export default function BTUtoKwConverter() {
   }, []);
 
   const handleSubmit = (newValue) => {
-    const result = btuToKw(newValue);
+    if (newValue === "") {
+      setBTU("");
+      setResult("");
+      return;
+    }
+    const converted = btuToKw(Number(newValue));
 
-    setBTU(newValue)
-    setResult(!!result ? result : "");
+    setBTU(newValue);
+    setResult(Number.isFinite(converted) ? converted : "");
   };
 
   const handleClear = () => {
@@ -67,8 +72,10 @@ export default function BTUtoKwConverter() {
         <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={`${result} ${t("common.kw")}`}>
-            {result && (
+          <CopyToClipboardButton
+            result={result === "" ? "" : `${result} ${t("common.kw")}`}
+          >
+            {result !== "" && (
               <Typography
                 sx={{
                   color: "success.dark",
@@ -97,10 +104,7 @@ export default function BTUtoKwConverter() {
           {t("btuToM3Converter.title")}
         </Link>
         {", "}
-        <Link
-          href="/btu-to-m2"
-          style={{ color: theme.palette.primary.main }}
-        >
+        <Link href="/btu-to-m2" style={{ color: theme.palette.primary.main }}>
           {t("btuToM2.titleReversed")}
         </Link>
       </Typography>

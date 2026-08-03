@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -7,12 +7,7 @@ import CalcButtons from "../CalcButtons";
 import Input from "../Input";
 import Description from "../Description";
 import Title from "../Title";
-
-function calculateCAGR(initialValue, finalValue, numYears) {
-  const growthRate = (finalValue / initialValue) ** (1 / numYears);
-  const cagr = (growthRate - 1) * 100;
-  return cagr.toFixed(2); // Round to 2 decimal places
-}
+import { calculateCagr } from "../../lib/calculations";
 
 const defaultValues = {
   initialInvestment: 10000,
@@ -28,6 +23,7 @@ export default function CagrCalculator() {
   const [finalValue, setFinalValue] = useState(defaultValues.finalValue);
   const [numYears, setNumYears] = useState(defaultValues.numYears);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -38,23 +34,21 @@ export default function CagrCalculator() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    const res = calculateCAGR(initialValue, finalValue, numYears);
-    setResult(res);
+    try {
+      setError("");
+      setResult(calculateCagr(initialValue, finalValue, numYears).toFixed(2));
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
     initialValue && setInitialValue(defaultValues.initialInvestment);
     finalValue && setFinalValue(defaultValues.finalValue);
     numYears && setNumYears(defaultValues.numYears);
-    result &&
-      setResult(
-        calculateCAGR(
-          defaultValues.initialInvestment,
-          defaultValues.finalValue,
-          defaultValues.numYears
-        )
-      );
+    setResult("");
+    setError("");
   };
 
   return (
@@ -79,6 +73,7 @@ export default function CagrCalculator() {
             label={t("cagrCalculator.initialValue")}
             variant="standard"
             value={initialValue}
+            inputProps={{ min: 0.01, step: "any" }}
             onChange={(e) => handleChange(e, setInitialValue)}
           />
           <br />
@@ -87,6 +82,7 @@ export default function CagrCalculator() {
             label={t("cagrCalculator.finalValue")}
             variant="standard"
             value={finalValue}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setFinalValue)}
           />
           <br />
@@ -95,6 +91,7 @@ export default function CagrCalculator() {
             label={t("cagrCalculator.numYears")}
             variant="standard"
             value={numYears}
+            inputProps={{ min: 0.01, step: "any" }}
             onChange={(e) => handleChange(e, setNumYears)}
           />
         </Container>
@@ -113,6 +110,7 @@ export default function CagrCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

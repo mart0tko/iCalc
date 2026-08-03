@@ -100,8 +100,8 @@ export default function MilesToKmConverter() {
           <CopyToClipboardButton
             result={`${result} ${
               result && direction === "milesToKm"
-                ? t("common.miles")
-                : t("common.km")
+                ? t("common.km")
+                : t("common.miles")
             }`}
           >
             <Typography

@@ -1,4 +1,5 @@
 import {
+  Alert,
   Checkbox,
   Container,
   FormControlLabel,
@@ -37,6 +38,7 @@ export default function RandomPasswordGenerator() {
     withSpecialCharacters: true,
   });
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -48,6 +50,12 @@ export default function RandomPasswordGenerator() {
 
   const handleSubmit = () => {
     setResult("");
+    const requestedLength = Number(length);
+    if (!Number.isInteger(requestedLength) || requestedLength < 1 || requestedLength > 256) {
+      setError("Length must be a whole number between 1 and 256.");
+      return;
+    }
+    setError("");
     let characters = smallLetters;
 
     if (checkboxes.withSpecialCharacters) {
@@ -62,13 +70,14 @@ export default function RandomPasswordGenerator() {
       characters = characters + capitalLetters;
     }
 
-    const result = generateString(length, characters);
+    const result = generateString(requestedLength, characters);
     setResult(result);
   };
 
   const handleClear = () => {
     length && setLength("");
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -93,13 +102,13 @@ export default function RandomPasswordGenerator() {
             label={t("randomPasswordGenerator.length")}
             variant="standard"
             value={length}
+            inputProps={{ min: 1, max: 256, step: 1 }}
             onChange={(e) => handleChange(e, setLength)}
           />
           <FormControlLabel
             control={
               <Checkbox
-                value={checkboxes.withNumbers}
-                defaultChecked
+                checked={checkboxes.withNumbers}
                 onChange={(e) =>
                   setCheckboxes({
                     ...checkboxes,
@@ -113,8 +122,7 @@ export default function RandomPasswordGenerator() {
           <FormControlLabel
             control={
               <Checkbox
-                value={checkboxes.withCapitalLetters}
-                defaultChecked
+                checked={checkboxes.withCapitalLetters}
                 onChange={(e) =>
                   setCheckboxes({
                     ...checkboxes,
@@ -128,8 +136,7 @@ export default function RandomPasswordGenerator() {
           <FormControlLabel
             control={
               <Checkbox
-                value={checkboxes.withSpecialCharacters}
-                defaultChecked
+                checked={checkboxes.withSpecialCharacters}
                 onChange={(e) =>
                   setCheckboxes({
                     ...checkboxes,
@@ -156,6 +163,7 @@ export default function RandomPasswordGenerator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons
         handleClear={handleClear}

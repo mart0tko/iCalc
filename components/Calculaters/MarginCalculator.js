@@ -1,13 +1,14 @@
-import { Container, Link, TextField, Typography } from "@mui/material";
+import { Alert, Container, Link, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
-import currency from "currency.js";
 import { useTheme } from "@mui/material/styles";
 import Description from "../Description";
 import Title from "../Title";
+import Input from "../Input";
+import { calculateMargin } from "../../lib/calculations";
 
 export default function MarginCalculator() {
   const theme = useTheme();
@@ -17,6 +18,7 @@ export default function MarginCalculator() {
   const [grossMarginResult, setGrossMarginResult] = useState(null);
   const [markupResult, setMarkupResult] = useState(null);
   const [grossProfitResult, setGrossProfitResult] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -27,26 +29,20 @@ export default function MarginCalculator() {
   };
 
   const handleSubmit = () => {
-    if (!valueOne || !valueTwo) {
-      return;
+    try {
+      setError("");
+      const calculation = calculateMargin(valueOne, valueTwo);
+      setGrossMarginResult(calculation.margin.toFixed(2));
+      setMarkupResult(
+        calculation.markup === null ? "N/A" : calculation.markup.toFixed(2)
+      );
+      setGrossProfitResult(calculation.profit.toFixed(2));
+    } catch (calculationError) {
+      setGrossMarginResult(null);
+      setMarkupResult(null);
+      setGrossProfitResult(null);
+      setError(calculationError.message);
     }
-    setGrossMarginResult(null);
-    setMarkupResult(null);
-    setGrossProfitResult(null);
-
-    const grossProfit = currency(+valueTwo, { precision: 2 }).subtract(
-      +valueOne
-    ).value;
-    const markup = currency(grossProfit, { precision: 2 })
-      .divide(+valueOne)
-      .multiply(100).value;
-    const grossMargin = currency(grossProfit, { precision: 2 })
-      .divide(+valueTwo)
-      .multiply(100).value;
-
-    setGrossMarginResult(grossMargin);
-    setMarkupResult(markup);
-    setGrossProfitResult(grossProfit);
   };
 
   const handleClear = () => {
@@ -55,6 +51,7 @@ export default function MarginCalculator() {
     grossMarginResult && setGrossMarginResult(null);
     markupResult && setMarkupResult(null);
     grossProfitResult && setGrossProfitResult(null);
+    setError("");
   };
 
   return (
@@ -82,7 +79,7 @@ export default function MarginCalculator() {
           >
             {t("common.positiveNumbersNote")}
           </Typography>
-          <TextField
+          <Input
             type="number"
             label={t("marginCalc.valueOne")}
             variant="standard"
@@ -90,7 +87,7 @@ export default function MarginCalculator() {
             onChange={(e) => handleChange(e, setValueOne)}
           />
           <br />
-          <TextField
+          <Input
             type="number"
             label={t("marginCalc.valueTwo")}
             variant="standard"
@@ -145,6 +142,7 @@ export default function MarginCalculator() {
           </Typography>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

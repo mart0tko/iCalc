@@ -37,8 +37,8 @@ export default function MToFeetConverter() {
     setResult("");
     const res =
       direction === "mToFeet"
-        ? currency(m, { precision: 2 }).multiply(3.28).value
-        : currency(m, { precision: 2 }).divide(3.28).value;
+        ? currency(m, { precision: 4 }).multiply(3.28084).value
+        : currency(m, { precision: 4 }).divide(3.28084).value;
     setResult(res.toFixed(2));
   };
 
@@ -64,9 +64,9 @@ export default function MToFeetConverter() {
           label={t("mToFeetConverter.mToFeet")}
         />
         <FormControlLabel
-          value="inchToM"
+          value="feetToM"
           control={<Radio />}
-          label={t("mToFeetConverter.mToFeet")}
+          label={t("mToFeetConverter.feetToM")}
         />
       </RadioGroup>
       <br />

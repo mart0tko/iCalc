@@ -25,14 +25,18 @@ export default function BTUtoM3Converter() {
   const [btu, setBTU] = useState(12000);
   const [result, setResult] = useState("");
 
-  
-  const handleChange = (newValue) => {   
-    const result = btuToM3(newValue);
+  const handleChange = (newValue) => {
+    if (newValue === "") {
+      setBTU("");
+      setResult("");
+      return;
+    }
+    const converted = btuToM3(Number(newValue));
 
-    setBTU(newValue)
-    setResult(!!result ? result : "");
+    setBTU(newValue);
+    setResult(Number.isFinite(converted) ? converted : "");
   };
-  
+
   const handleClear = () => {
     btu && setBTU("");
     result && setResult("");
@@ -69,8 +73,10 @@ export default function BTUtoM3Converter() {
         <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={`${result} ${t("common.m3")}`}>
-            {result && (
+          <CopyToClipboardButton
+            result={result === "" ? "" : `${result} ${t("common.m3")}`}
+          >
+            {result !== "" && (
               <Typography
                 sx={{
                   color: "success.dark",
@@ -89,7 +95,7 @@ export default function BTUtoM3Converter() {
         withoutCalc={true}
         type="convert"
       />
-       <br />
+      <br />
       <Typography sx={{ fontSize: "0.75rem" }}>
         {t("percentage.related")}
         <Link
@@ -99,10 +105,7 @@ export default function BTUtoM3Converter() {
           {t("btuToKwConverter.title")}
         </Link>
         {", "}
-        <Link
-          href="/btu-to-m2"
-          style={{ color: theme.palette.primary.main }}
-        >
+        <Link href="/btu-to-m2" style={{ color: theme.palette.primary.main }}>
           {t("btuToM2.titleReversed")}
         </Link>
       </Typography>

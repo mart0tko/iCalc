@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { memo, useCallback, useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -13,23 +13,31 @@ function LoveCalculator() {
   const [yourName, setYourName] = useState("John");
   const [yourCrush, setYourCrush] = useState("Sally");
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   const calculateLove = useCallback(
     (firstName, secondName) => {
-      if (firstName === "" || secondName === "") {
-        alert("Please enter both names.");
+      const normalizedFirst = firstName
+        .trim()
+        .toUpperCase()
+        .replace(/[^A-Z]/g, "");
+      const normalizedSecond = secondName
+        .trim()
+        .toUpperCase()
+        .replace(/[^A-Z]/g, "");
+      if (!normalizedFirst || !normalizedSecond) {
         return;
       }
 
       let totalValue = 0;
       // Summing up the numerical values for the first name
-      for (var i = 0; i < firstName.length; i++) {
-        totalValue += firstName.charCodeAt(i) - 64; // assuming uppercase letters only
+      for (var i = 0; i < normalizedFirst.length; i++) {
+        totalValue += normalizedFirst.charCodeAt(i) - 64;
       }
 
       // Summing up the numerical values for the second name
-      for (var j = 0; j < secondName.length; j++) {
-        totalValue += secondName.charCodeAt(j) - 64; // assuming uppercase letters only
+      for (var j = 0; j < normalizedSecond.length; j++) {
+        totalValue += normalizedSecond.charCodeAt(j) - 64;
       }
 
       // Calculating the love score
@@ -60,10 +68,20 @@ function LoveCalculator() {
   const handleSubmit = () => {
     setResult("");
     const res = calculateLove(yourName, yourCrush);
+    if (!res) {
+      setError("Please enter both names.");
+      return;
+    }
+    setError("");
     setResult(res);
   };
 
-  const handleClear = () => {};
+  const handleClear = () => {
+    setYourName("");
+    setYourCrush("");
+    setResult("");
+    setError("");
+  };
 
   return (
     <ThreeColumnLayout>
@@ -113,12 +131,9 @@ function LoveCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
-      <CalcButtons
-        handleClear={handleClear}
-        handleSubmit={handleSubmit}
-        withoutReset={true}
-      />
+      <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>
   );
 }

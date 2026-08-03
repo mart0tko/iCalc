@@ -1,82 +1,37 @@
-import { writeFileSync } from "fs";
-import { globby } from "globby";
+import { readFileSync, writeFileSync } from "fs";
+import { resolve } from "path";
 import prettier from "prettier";
-import InternationalLinks, {
-  InternationalLinksConvertors,
-  InternationalLinksGenerators,
-  InternationalLinksOthers,
-} from "../constants.js";
 
-// To run it add in package.json - "type": "module"
-// and run - node --experimental-modules generate-sitemap.mjs
 async function generate() {
-  const prettierConfig = await prettier.resolveConfig("./.prettierrc.js");
-  const pages = await globby([
-    "pages/*.js",
-    "data/**/*.mdx",
-    "!data/*.mdx",
-    "!pages/_*.js",
-    "!pages/api",
-    "!pages/404.js",
-  ]);
+  const root = process.cwd();
+  const constants = readFileSync(resolve(root, "constants.js"), "utf8");
+  const toolRoutes = [...constants.matchAll(/en:\s*"([^"]+)"/g)].map(
+    ([, route]) => route
+  );
+  const routes = ["/", "/privacy-policy/", "/terms-of-use/", ...toolRoutes];
 
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        ${pages
-          .map((page) => {
-            const path = page
-              .replace("pages", "")
-              .replace("data", "")
-              .replace(".js", "")
-              .replace(".mdx", "");
-            const route = path === "/index" ? "" : path;
-
+        ${routes
+          .map((route) => {
+            const normalizedRoute =
+              route === "/" ? route : `${route.replace(/\/$/, "")}/`;
             return `
               <url>
-                  <loc>${`https://wannacalc.com${route}`}</loc>
+                  <loc>${`https://wannacalc.com${normalizedRoute}`}</loc>
               </url>
             `;
           })
           .join("")}
-        ${InternationalLinks.map((page) => {
-          return `
-              <url>
-                  <loc>${`https://wannacalc.com${page["en"]}`}</loc>
-              </url>
-            `;
-        }).join("")}
-        ${InternationalLinksConvertors.map((page) => {
-          return `
-              <url>
-                  <loc>${`https://wannacalc.com${page["en"]}`}</loc>
-              </url>
-            `;
-        }).join("")}
-        ${InternationalLinksGenerators.map((page) => {
-          return `
-              <url>
-                  <loc>${`https://wannacalc.com${page["en"]}`}</loc>
-              </url>
-            `;
-        }).join("")}
-        ${InternationalLinksOthers.map((page) => {
-          return `
-              <url>
-                  <loc>${`https://wannacalc.com${page["en"]}`}</loc>
-              </url>
-            `;
-        }).join("")}
     </urlset>
     `;
 
-  const formatted = prettier.format(sitemap, {
-    ...prettierConfig,
+  const formatted = prettier.format(sitemap.trim(), {
     parser: "html",
   });
 
-  // eslint-disable-next-line no-sync
-  writeFileSync("../public/sitemap.xml", formatted);
+  writeFileSync(resolve(root, "public/sitemap.xml"), formatted);
 }
 
 generate();

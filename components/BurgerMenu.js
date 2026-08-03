@@ -1,250 +1,151 @@
-import * as React from "react";
-import Menu from "@mui/material/Menu";
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 import {
-  Collapse,
+  Box,
+  Divider,
   Icon,
   IconButton,
   List,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
+  Menu,
+  Typography,
 } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import InternationalLinks, {
+import {
+  InternationalLinks,
   InternationalLinksConvertors,
   InternationalLinksGenerators,
   InternationalLinksOthers,
 } from "../constants";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useTheme } from "@mui/material";
+
+const groups = [
+  {
+    label: "common.calculators",
+    icon: "calculate",
+    items: InternationalLinks,
+  },
+  {
+    label: "common.converters",
+    icon: "swap_horiz",
+    items: InternationalLinksConvertors,
+  },
+  {
+    label: "common.generators",
+    icon: "auto_awesome",
+    items: InternationalLinksGenerators,
+  },
+  {
+    label: "common.others",
+    icon: "handyman",
+    items: InternationalLinksOthers,
+  },
+];
 
 export default function BurgerMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [activeGroup, setActiveGroup] = useState(null);
+  const { locale = "en" } = useRouter();
   const { t } = useTranslation();
-  const { locale, defaultLocale } = useRouter();
-  const [openCalculators, setOpenCalculators] = React.useState(false);
-  const [openConverters, setOpenConverters] = React.useState(false);
-  const [openGenerators, setOpenGenerators] = React.useState(false);
-  const [openOthers, setOpenOthers] = React.useState(false);
-  const theme = useTheme();
+  const open = Boolean(anchorEl);
+
+  const close = () => {
+    setAnchorEl(null);
+    setActiveGroup(null);
+  };
 
   return (
-    <div>
+    <>
       <IconButton
-        id="basic-button"
-        aria-controls={anchorEl ? "basic-menu" : undefined}
+        id="tools-menu-button"
+        aria-controls={open ? "tools-menu" : undefined}
         aria-haspopup="true"
-        aria-expanded={anchorEl ? "true" : undefined}
+        aria-expanded={open}
+        aria-label="Browse all tools"
         onClick={(event) => setAnchorEl(event.currentTarget)}
+        sx={{ color: "text.primary" }}
       >
-        <Icon
-          sx={{
-            color: "white",
-          }}
-        >
-          menu
-        </Icon>
+        <Icon>menu</Icon>
       </IconButton>
       <Menu
-        id="basic-menu"
+        id="tools-menu"
         anchorEl={anchorEl}
-        open={anchorEl}
-        onClose={() => setAnchorEl(null)}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
+        open={open}
+        onClose={close}
+        MenuListProps={{ "aria-labelledby": "tools-menu-button" }}
+        PaperProps={{
+          sx: {
+            mt: 1,
+            width: { xs: "calc(100vw - 24px)", sm: 390 },
+            maxHeight: "min(680px, calc(100vh - 96px))",
+            border: "1px solid",
+            borderColor: "divider",
+            boxShadow: "0 20px 60px rgba(23,32,51,.16)",
+          },
         }}
       >
-        <List sx={{ padding: 0, minWidth: { xs: 250, sm: 350, md: 450 } }}>
-          <ListItemButton
-            onClick={() => setOpenCalculators(!openCalculators)}
-            sx={{ backgroundColor: theme.palette.primary.main }}
-          >
-            <ListItemText>{t("common.calculators")}</ListItemText>
-            {openCalculators ? (
-              <Icon
-                sx={{
-                  color: "black",
-                }}
+        <Box sx={{ px: 2, py: 1.5 }}>
+          <Typography variant="overline" color="text.secondary">
+            Explore WannaCalc
+          </Typography>
+          <Typography variant="h3" sx={{ fontSize: "1.1rem" }}>
+            Choose a tool
+          </Typography>
+        </Box>
+        <Divider />
+        <List disablePadding>
+          {groups.map((group, groupIndex) => (
+            <Box key={group.label}>
+              <ListItemButton
+                onClick={() =>
+                  setActiveGroup(activeGroup === groupIndex ? null : groupIndex)
+                }
+                aria-expanded={activeGroup === groupIndex}
+                sx={{ py: 1.25 }}
               >
-                expand_less
-              </Icon>
-            ) : (
-              <Icon
-                sx={{
-                  color: "black",
-                }}
-              >
-                expand_more
-              </Icon>
-            )}
-          </ListItemButton>
-          <Collapse in={openCalculators} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {InternationalLinks.map((value, index) => (
-                <Link
-                  key={value.title}
-                  href={value[locale ? locale : defaultLocale]}
-                  locale={locale ? locale : defaultLocale}
-                  onClick={() => setAnchorEl(null)}
+                <ListItemIcon sx={{ minWidth: 38, color: "primary.main" }}>
+                  <Icon>{group.icon}</Icon>
+                </ListItemIcon>
+                <ListItemText
+                  primary={t(group.label)}
+                  secondary={`${group.items.length} tools`}
+                  primaryTypographyProps={{ fontWeight: 700 }}
+                />
+                <Icon aria-hidden="true">
+                  {activeGroup === groupIndex ? "expand_less" : "expand_more"}
+                </Icon>
+              </ListItemButton>
+              {activeGroup === groupIndex && (
+                <List
+                  disablePadding
+                  sx={{ bgcolor: "background.default", py: 0.5 }}
                 >
-                  <ListItemButton
-                    sx={{
-                      pl: 4,
-                      backgroundColor:
-                        index % 2
-                          ? theme.palette.primary.second
-                          : theme.palette.primary.light,
-                    }}
-                  >
-                    <ListItemText sx={{}}>{t(value.title)}</ListItemText>
-                  </ListItemButton>
-                </Link>
-              ))}
-            </List>
-          </Collapse>
-          <ListItemButton
-            onClick={() => setOpenConverters(!openConverters)}
-            sx={{ backgroundColor: theme.palette.primary.main }}
-          >
-            <ListItemText>{t("common.converters")}</ListItemText>
-            {openConverters ? (
-              <Icon
-                sx={{
-                  color: "black",
-                }}
-              >
-                expand_less
-              </Icon>
-            ) : (
-              <Icon
-                sx={{
-                  color: "black",
-                }}
-              >
-                expand_more
-              </Icon>
-            )}
-          </ListItemButton>
-          <Collapse in={openConverters} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {InternationalLinksConvertors.map((value, index) => (
-                <Link
-                  key={value.title}
-                  href={value[locale ? locale : defaultLocale]}
-                  locale={locale ? locale : defaultLocale}
-                  onClick={() => setAnchorEl(null)}
-                >
-                  <ListItemButton
-                    sx={{
-                      pl: 4,
-                      backgroundColor:
-                        index % 2
-                          ? theme.palette.primary.second
-                          : theme.palette.primary.light,
-                    }}
-                  >
-                    <ListItemText>{t(value.title)}</ListItemText>
-                  </ListItemButton>
-                </Link>
-              ))}
-            </List>
-          </Collapse>
-          <ListItemButton
-            onClick={() => setOpenGenerators(!openGenerators)}
-            sx={{ backgroundColor: theme.palette.primary.main }}
-          >
-            <ListItemText>{t("common.generators")}</ListItemText>
-            {openGenerators ? (
-              <Icon
-                sx={{
-                  color: "black",
-                }}
-              >
-                expand_less
-              </Icon>
-            ) : (
-              <Icon
-                sx={{
-                  color: "black",
-                }}
-              >
-                expand_more
-              </Icon>
-            )}
-          </ListItemButton>
-          <Collapse in={openGenerators} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {InternationalLinksGenerators.map((value, index) => (
-                <Link
-                  key={value.title}
-                  href={value[locale ? locale : defaultLocale]}
-                  locale={locale ? locale : defaultLocale}
-                  onClick={() => setAnchorEl(null)}
-                >
-                  <ListItemButton
-                    sx={{
-                      pl: 4,
-                      backgroundColor:
-                        index % 2
-                          ? theme.palette.primary.second
-                          : theme.palette.primary.light,
-                    }}
-                  >
-                    <ListItemText>{t(value.title)}</ListItemText>
-                  </ListItemButton>
-                </Link>
-              ))}
-            </List>
-          </Collapse>
-          <ListItemButton
-            onClick={() => setOpenOthers(!openOthers)}
-            sx={{ backgroundColor: theme.palette.primary.main }}
-          >
-            <ListItemText>{t("common.others")}</ListItemText>
-            {openOthers ? (
-              <Icon
-                sx={{
-                  color: "black",
-                }}
-              >
-                expand_less
-              </Icon>
-            ) : (
-              <Icon
-                sx={{
-                  color: "black",
-                }}
-              >
-                expand_more
-              </Icon>
-            )}
-          </ListItemButton>
-          <Collapse in={openOthers} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {InternationalLinksOthers.map((value, index) => (
-                <Link
-                  key={value.title}
-                  href={value[locale ? locale : defaultLocale]}
-                  locale={locale ? locale : defaultLocale}
-                  onClick={() => setAnchorEl(null)}
-                >
-                  <ListItemButton
-                    sx={{
-                      pl: 4,
-                      backgroundColor:
-                        index % 2
-                          ? theme.palette.primary.second
-                          : theme.palette.primary.light,
-                    }}
-                  >
-                    <ListItemText>{t(value.title)}</ListItemText>
-                  </ListItemButton>
-                </Link>
-              ))}
-            </List>
-          </Collapse>
+                  {group.items.map((item) => (
+                    <ListItemButton
+                      key={item.en}
+                      component={Link}
+                      href={item[locale] || item.en}
+                      onClick={close}
+                      sx={{ pl: 7, py: 0.75 }}
+                    >
+                      <ListItemText
+                        primary={t(item.title)}
+                        primaryTypographyProps={{
+                          variant: "body2",
+                          fontWeight: 600,
+                        }}
+                      />
+                    </ListItemButton>
+                  ))}
+                </List>
+              )}
+              {groupIndex < groups.length - 1 && <Divider />}
+            </Box>
+          ))}
         </List>
       </Menu>
-    </div>
+    </>
   );
 }

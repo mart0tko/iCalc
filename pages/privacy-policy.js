@@ -1,21 +1,43 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Head from "next/head";
+import { Container, Paper, Typography } from "@mui/material";
 
 export default function PrivacyPolicy() {
   return (
     <>
-      <h1 style={{ marginTop: 0, paddingTop: "1rem" }}>
-        Privacy Policy of Calcalotor
-      </h1>
+      <Head>
+        <title>Privacy Policy | WannaCalc</title>
+        <meta
+          name="description"
+          content="Learn how WannaCalc handles analytics, cookies, and visitor information."
+        />
+        <link rel="canonical" href="https://wannacalc.com/privacy-policy/" />
+      </Head>
+      <Container maxWidth="md" sx={{ py: { xs: 4, md: 8 } }}>
+        <Paper
+          component="article"
+          elevation={0}
+          sx={{
+            p: { xs: 2.5, sm: 5 },
+            border: "1px solid",
+            borderColor: "divider",
+            "& h2": { mt: 4, mb: 1.5 },
+            "& p, & li": { color: "text.secondary", lineHeight: 1.75 },
+          }}
+        >
+      <Typography component="h1" variant="h1" sx={{ fontSize: { xs: "2rem", md: "2.7rem" }, mb: 3 }}>
+        Privacy Policy
+      </Typography>
 
       <p>
-        Calcalotor operates the www.wannacalc.com website, which provides the
+        WannaCalc operates the wannacalc.com website, which provides the
         SERVICE.
       </p>
 
       <p>
         This page is used to inform website visitors regarding our policies with
         the collection, use, and disclosure of Personal Information if anyone
-        decided to use our Service, the www.wannacalc.com website.
+        decided to use our Service, the wannacalc.com website.
       </p>
 
       <p>
@@ -28,7 +50,7 @@ export default function PrivacyPolicy() {
 
       <p>
         The terms used in this Privacy Policy have the same meanings as in our
-        Terms and Conditions, which is accessible at www.wannacalc.com, unless
+        Terms and Conditions, which is accessible at wannacalc.com, unless
         otherwise defined in this Privacy Policy.
       </p>
 
@@ -137,6 +159,8 @@ export default function PrivacyPolicy() {
         If you have any questions or suggestions about our Privacy Policy, do
         not hesitate to contact us.
       </p>
+        </Paper>
+      </Container>
     </>
   );
 }

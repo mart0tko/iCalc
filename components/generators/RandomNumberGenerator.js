@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -14,6 +14,7 @@ export default function RandomNumberGenerator() {
   const [minValue, setMinValue] = useState(1);
   const [maxValue, setMaxValue] = useState(100);
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -24,15 +25,20 @@ export default function RandomNumberGenerator() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    const result = generateRandomNumbers(minValue, maxValue, 2);
-    setResult(result);
+    try {
+      setError("");
+      setResult(generateRandomNumbers(minValue, maxValue, 2));
+    } catch (generationError) {
+      setResult("");
+      setError(generationError.message);
+    }
   };
 
   const handleClear = () => {
     minValue && setMinValue("");
     maxValue && setMaxValue("");
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -82,6 +88,7 @@ export default function RandomNumberGenerator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons
         handleClear={handleClear}

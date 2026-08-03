@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Alert, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
@@ -7,23 +7,7 @@ import CalcButtons from "../CalcButtons";
 import Input from "../Input";
 import Description from "../Description";
 import Title from "../Title";
-
-function compoundInterest(
-  principal,
-  interestRate,
-  timeInYears,
-  compoundPerYear
-) {
-  const interestRateDecimal = interestRate / 100;
-  let amount =
-    principal *
-    Math.pow(
-      1 + interestRateDecimal / compoundPerYear,
-      compoundPerYear * timeInYears
-    );
-  let interest = amount - principal;
-  return amount.toFixed(2);
-}
+import { calculateCompoundInterest } from "../../lib/calculations";
 
 const initialValues = {
   initialMoney: 10000,
@@ -41,6 +25,7 @@ export default function CompoundInterestCalculator() {
     initialValues.compoundPerYear
   );
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -51,14 +36,20 @@ export default function CompoundInterestCalculator() {
   };
 
   const handleSubmit = () => {
-    setResult("");
-    const res = compoundInterest(
-      initialMoney,
-      interestRate,
-      years,
-      compoundPerYear
-    );
-    setResult(res);
+    try {
+      setError("");
+      setResult(
+        calculateCompoundInterest(
+          initialMoney,
+          interestRate,
+          years,
+          compoundPerYear
+        ).toFixed(2)
+      );
+    } catch (calculationError) {
+      setResult("");
+      setError(calculationError.message);
+    }
   };
 
   const handleClear = () => {
@@ -67,6 +58,7 @@ export default function CompoundInterestCalculator() {
     years && setYears(initialValues.years);
     compoundPerYear && setCompoundPerYear(initialValues.compoundPerYear);
     result && setResult("");
+    setError("");
   };
 
   return (
@@ -91,6 +83,7 @@ export default function CompoundInterestCalculator() {
             label={t("compoundInterestCalculator.initialMoney")}
             variant="standard"
             value={initialMoney}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setInitialMoney)}
           />
           <Input
@@ -105,6 +98,7 @@ export default function CompoundInterestCalculator() {
             label={t("compoundInterestCalculator.years")}
             variant="standard"
             value={years}
+            inputProps={{ min: 0, step: "any" }}
             onChange={(e) => handleChange(e, setYears)}
           />
           <Input
@@ -112,7 +106,7 @@ export default function CompoundInterestCalculator() {
             label={t("compoundInterestCalculator.compoundPerYear")}
             variant="standard"
             value={compoundPerYear}
-            maxLength="5"
+            inputProps={{ min: 1, step: 1 }}
             onChange={(e) => handleChange(e, setCompoundPerYear)}
           />
         </Container>
@@ -131,6 +125,7 @@ export default function CompoundInterestCalculator() {
           </CopyToClipboardButton>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

@@ -8,16 +8,9 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  swcMinify: true,
   i18n,
   generateEtags: false,
-  serverRuntimeConfig: {
-    // Will only be available on the server side
-  },
-  publicRuntimeConfig: {
-    // Will be available on both server and client
-    isDev: process.env.DEV, // Pass through env variables
-  },
+  allowedDevOrigins: ["127.0.0.1"],
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

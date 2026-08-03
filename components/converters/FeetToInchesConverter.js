@@ -64,7 +64,7 @@ export default function FeetToInchesConverter() {
           label={t("feetToInchesConverter.feetToInch")}
         />
         <FormControlLabel
-          value="inchToCm"
+          value="inchToFeet"
           control={<Radio />}
           label={t("feetToInchesConverter.inchToFeet")}
         />
@@ -97,7 +97,13 @@ export default function FeetToInchesConverter() {
         <br />
         <Container sx={{ display: "flex", flexDirection: "column" }}>
           <Typography sx={{}}>{t("common.result")}</Typography>
-          <CopyToClipboardButton result={`${result} ${t("common.inches")}`}>
+          <CopyToClipboardButton
+            result={`${result} ${
+              direction === "feetToInch"
+                ? t("common.inches")
+                : t("common.feet")
+            }`}
+          >
             <Typography
               sx={{
                 color: "success.dark",

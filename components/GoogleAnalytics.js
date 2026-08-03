@@ -1,5 +1,3 @@
-//components/GoogleAnalytics.tsx
-import getConfig from "next/config";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { memo, useEffect } from "react";
@@ -7,7 +5,6 @@ const TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
 const isDev = process.env.NODE_ENV === "development" ? true : false;
 const GoogleAnalytics = () => {
   const router = useRouter();
-  //   const { publicRuntimeConfig } = getConfig();
   // 👇 send page views when users gets to the landing page
   useEffect(() => {
     if (!TRACKING_ID || router.isPreview || isDev) return;
@@ -18,7 +15,7 @@ const GoogleAnalytics = () => {
       page_path: window.location.pathname,
       send_to: TRACKING_ID,
     });
-  }, []);
+  }, [router.isPreview]);
   // 👇 send page views on route change
   useEffect(() => {
     const handleRouteChange = (url) => {

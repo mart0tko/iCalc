@@ -27,7 +27,7 @@ const teamNumberOptions = [
 ];
 
 function generateRandomTeam(players, numberOfTeams) {
-  const shuffledPlayers = players.sort(() => Math.random() - 0.5);
+  const shuffledPlayers = [...players].sort(() => Math.random() - 0.5);
 
   const teams = [];
   const playersPerTeam = Math.floor(shuffledPlayers.length / numberOfTeams);
@@ -39,7 +39,7 @@ function generateRandomTeam(players, numberOfTeams) {
 
     if (remainingPlayers > 0) {
       teamPlayers++;
-      remainingPlayers++;
+      remainingPlayers--;
     }
 
     const team = shuffledPlayers.slice(playerIndex, playerIndex + teamPlayers);
@@ -116,9 +116,11 @@ export default function RandomTeamGenerator() {
             >
               {team.map((element, index) => (
                 <Chip
-                  key={element}
+                  key={`${element}-${index}`}
                   label={element}
-                  onDelete={() => setTeam(team.filter((i) => i !== element))}
+                  onDelete={() =>
+                    setTeam(team.filter((_, teamIndex) => teamIndex !== index))
+                  }
                 />
               ))}
             </Stack>
@@ -130,7 +132,7 @@ export default function RandomTeamGenerator() {
             defaultValue="2"
             sx={{ marginTop: "2rem" }}
             value={numberOfTeams}
-            onChange={(e) => setNumberOfTeams(e.target.value)}
+            onChange={(e) => setNumberOfTeams(Number(e.target.value))}
           >
             {teamNumberOptions.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -143,7 +145,7 @@ export default function RandomTeamGenerator() {
         <Container sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
           {result.map((element, index) => (
             <Container
-              key={element}
+              key={`team-${index}`}
               sx={{
                 border: "1px solid black",
                 borderRadius: "0.5rem",

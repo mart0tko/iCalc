@@ -1,14 +1,14 @@
-import { Container, Link, Typography } from "@mui/material";
+import { Alert, Container, Link, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import ThreeColumnLayout from "../ThreeColumnLayout";
 import { useTranslation } from "next-i18next";
 import CopyToClipboardButton from "../CopyToClipboardButton";
 import CalcButtons from "../CalcButtons";
-import currency from "currency.js";
 import { useTheme } from "@mui/material/styles";
 import Input from "../Input";
 import Description from "../Description";
 import Title from "../Title";
+import { calculateMargin } from "../../lib/calculations";
 
 export default function ProfitMarginCalculator() {
   const theme = useTheme();
@@ -18,6 +18,7 @@ export default function ProfitMarginCalculator() {
   const [netProfitMarginResult, setNetProfitMarginResult] = useState(null);
   const [netProfitResult, setNetProfitResult] = useState(null);
   const [profitPercentageResult, setProfitPercentageResult] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     handleSubmit();
@@ -28,26 +29,20 @@ export default function ProfitMarginCalculator() {
   };
 
   const handleSubmit = () => {
-    if (!valueOne || !valueTwo) {
-      return;
+    try {
+      setError("");
+      const calculation = calculateMargin(valueOne, valueTwo);
+      setNetProfitMarginResult(calculation.margin.toFixed(2));
+      setNetProfitResult(calculation.profit.toFixed(2));
+      setProfitPercentageResult(
+        calculation.markup === null ? "N/A" : calculation.markup.toFixed(2)
+      );
+    } catch (calculationError) {
+      setNetProfitMarginResult(null);
+      setNetProfitResult(null);
+      setProfitPercentageResult(null);
+      setError(calculationError.message);
     }
-    setNetProfitMarginResult(null);
-    setNetProfitResult(null);
-    setProfitPercentageResult(null);
-
-    const netProfit = currency(+valueTwo, { precision: 2 }).subtract(
-      +valueOne
-    ).value;
-    const netProfitMargin = currency(netProfit, { precision: 2 }).divide(
-      +valueTwo
-    ).value;
-    const profitPercentage = currency(netProfit, { precision: 2 }).divide(
-      +valueOne
-    ).value;
-
-    setNetProfitMarginResult(netProfitMargin);
-    setNetProfitResult(netProfit);
-    setProfitPercentageResult(profitPercentage);
   };
 
   const handleClear = () => {
@@ -56,6 +51,7 @@ export default function ProfitMarginCalculator() {
     netProfitMarginResult && setNetProfitMarginResult(null);
     netProfitResult && setNetProfitResult(null);
     profitPercentageResult && setProfitPercentageResult(null);
+    setError("");
   };
 
   return (
@@ -148,6 +144,7 @@ export default function ProfitMarginCalculator() {
           </Typography>
         </Container>
       </Container>
+      {error && <Alert severity="error">{error}</Alert>}
       <br />
       <CalcButtons handleClear={handleClear} handleSubmit={handleSubmit} />
     </ThreeColumnLayout>

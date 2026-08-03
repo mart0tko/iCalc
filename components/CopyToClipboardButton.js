@@ -1,36 +1,50 @@
 import { useState } from "react";
-import { Container, Icon, Snackbar, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
+import { Box, Icon, IconButton, Snackbar } from "@mui/material";
+import { useTranslation } from "next-i18next";
 
 export default function CopyToClipboardButton({ children, result }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
-  const handleClick = () => {
-    setOpen(true);
-    navigator.clipboard.writeText(result.toString());
+  const handleClick = async () => {
+    try {
+      await navigator.clipboard.writeText(String(result));
+      setOpen(true);
+    } catch {
+      setOpen(false);
+    }
   };
-  if (!result) {
+  if (result === undefined || result === null || result === "") {
     return null;
   }
 
   return (
-    <Container
+    <Box
+      role="status"
+      aria-live="polite"
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        width: "100%",
+        mt: 1,
+        p: 2,
+        borderRadius: 2,
+        bgcolor: "primary.light",
+        color: "text.primary",
         wordBreak: "break-all",
       }}
     >
       {children}
-      <Icon
+      <IconButton
+        aria-label="Copy result to clipboard"
         onClick={handleClick}
         color="primary"
-        sx={{ cursor: "pointer", marginLeft: "1rem" }}
+        size="small"
+        sx={{ ml: 1 }}
       >
-        content_copy
-      </Icon>
+        <Icon fontSize="small">content_copy</Icon>
+      </IconButton>
       <Snackbar
         message={t("common.copiedToClibboard")}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
@@ -38,6 +52,6 @@ export default function CopyToClipboardButton({ children, result }) {
         onClose={() => setOpen(false)}
         open={open}
       />
-    </Container>
+    </Box>
   );
 }
